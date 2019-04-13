@@ -1,9 +1,8 @@
 @extends('nav')
 
 @section('content')
-
+<div class="row top-pad"></div>
 <section>
-    
     <div class="container">
         <div class="col-sm-7 cent">
             <div class="card card-light form-card">

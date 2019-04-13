@@ -37,42 +37,56 @@
         </div>
         <div class="integrations mt-5">
           <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-3">
               <div class="box text-center">
                 <div class="icon d-flex align-items-end"><img src="img/monitor.svg" alt="..." class="img-fluid"></div>
                 <h3 class="h4">Web desgin</h3>
                 <p class="text-small font-weight-light">Lorem Ipsum has been the industry's standard dummy text ever.</p>
               </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
               <div class="box text-center">
                 <div class="icon d-flex align-items-end"><img src="img/target.svg" alt="..." class="img-fluid"></div>
                 <h3 class="h4">Print</h3>
                 <p class="text-small font-weight-light">Lorem Ipsum has been the industry's standard dummy text ever.</p>
               </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
               <div class="box text-center">
                 <div class="icon d-flex align-items-end"><img src="img/chat.svg" alt="..." class="img-fluid"></div>
                 <h3 class="h4">SEO and SEM</h3>
                 <p class="text-small font-weight-light">Lorem Ipsum has been the industry's standard dummy text ever.</p>
               </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
               <div class="box text-center">
                 <div class="icon d-flex align-items-end"><img src="img/idea.svg" alt="..." class="img-fluid"></div>
                 <h3 class="h4">Consulting</h3>
                 <p class="text-small font-weight-light">Lorem Ipsum has been the industry's standard dummy text ever.</p>
               </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
               <div class="box text-center">
                 <div class="icon d-flex align-items-end"><img src="img/coffee-cup.svg" alt="..." class="img-fluid"></div>
                 <h3 class="h4">Email Marketing</h3>
                 <p class="text-small font-weight-light">Lorem Ipsum has been the industry's standard dummy text ever.</p>
               </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
+              <div class="box text-center">
+                <div class="icon d-flex align-items-end"><img src="img/pen.svg" alt="..." class="img-fluid"></div>
+                <h3 class="h4">UX &amp; UI</h3>
+                <p class="text-small font-weight-light">Lorem Ipsum has been the industry's standard dummy text ever.</p>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="box text-center">
+                <div class="icon d-flex align-items-end"><img src="img/pen.svg" alt="..." class="img-fluid"></div>
+                <h3 class="h4">UX &amp; UI</h3>
+                <p class="text-small font-weight-light">Lorem Ipsum has been the industry's standard dummy text ever.</p>
+              </div>
+            </div>
+            <div class="col-lg-3">
               <div class="box text-center">
                 <div class="icon d-flex align-items-end"><img src="img/pen.svg" alt="..." class="img-fluid"></div>
                 <h3 class="h4">UX &amp; UI</h3>

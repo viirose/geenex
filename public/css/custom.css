@@ -1,0 +1,18 @@
+/* your styles go here */
+@font-face{
+    font-family: 'helvetica-light';
+    src : url('../fonts/helvetica-light.otf');
+}
+
+.cent {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.form-card {
+    padding: 20px;
+}
+
+.cart-item {
+    margin: -18px;
+}

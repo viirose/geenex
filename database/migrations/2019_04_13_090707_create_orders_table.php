@@ -15,6 +15,10 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->jsonb('type');
+            $table->string('part_no');
+            $table->string('info');
+            $table->boolean('show')->default(true);
             $table->timestamps();
         });
     }

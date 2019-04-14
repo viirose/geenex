@@ -20,3 +20,11 @@
 .top-pad {
     height: 40px;
 }
+
+.list-icon {
+    height: 47px;
+    width: 47px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 10px;
+}

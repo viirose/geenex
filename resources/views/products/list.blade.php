@@ -13,40 +13,75 @@
         <div class="row"> 
           <div class="col-lg-8">   
             <div id="accordion" class="faq accordion accordion-custom pb-5">
-              <!-- question-->
+              <!-- product-->
               <div class="card">
                 <div id="headingOne" class="card-header">
                   <h4 class="mb-0 accordion-heading">
-                    <button data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="d-flex align-items-center"><i class="icon-light-bulb"></i><span>Anim pariatur cliche reprehenderit</span></button>
+                    <button data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="d-flex align-items-center">
+                      <img src="img/1.jpg" class="rounded list-icon">
+                      <span>ELECTROMAGNETIC BRAKE QKS9/10, 80VDC</span>
+                    </button>
                   </h4>
                 </div>
-                <div id="collapseOne" aria-labelledby="headingOne" data-parent="#accordion" class="collapse show">
-                  <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</div>
+                <div id="collapseOne" aria-labelledby="headingOne" data-parent="#accordion" class="collapse">
+                  <div class="card-body">
+                      <div class="cent">
+                        <img src="img/1.jpg" class="rounded">
+                      </div>
+                      <ul class="list-unstyled pl-0 mt-4">
+                        <li>Part for: SCHINDLER</li>
+                        <li>Part No.: 169643</li>
+                        <li>Availability: normal</li>
+                        <li>Remark: </li>
+                      </ul>
+                  </div>
                 </div>
               </div>
-              <!-- question        -->
+
+              <!-- product        -->
               <div class="card">
                 <div id="headingTwo" class="card-header">
                   <h4 class="mb-0 accordion-heading">
-                    <button data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="d-flex align-items-center collapsed"><i class="icon-plug"></i><span> Wolf moon officia aute, non cupidatat?</span></button>
+                    <button data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="d-flex align-items-center collapsed">
+                      <img src="img/2.jpg" class="rounded list-icon">
+                      <span>ENCODER, GEN2</span></button>
                   </h4>
                 </div>
                 <div id="collapseTwo" aria-labelledby="headingTwo" data-parent="#accordion" class="collapse">
-                  <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.</div>
+                  <div class="card-body">
+                    <img src="img/2.jpg" class="rounded">
+                    <ul class="list-unstyled pl-0 mt-4">
+                        <li>Part for: OTIS</li>
+                        <li>Part No.: AAA633AJ401</li>
+                        <li>Availability: normal</li>
+                        <li>Remark: </li>
+                      </ul>
+                    </div>
                 </div>
               </div>
-              <!-- question-->
+              <!-- product        -->
               <div class="card">
                 <div id="headingThree" class="card-header">
                   <h4 class="mb-0 accordion-heading">
-                    <button data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="d-flex align-items-center collapsed"><i class="icon-shield-settings"></i><span>Food truck quinoa nesciunt laborum?</span></button>
+                    <button data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="d-flex align-items-center collapsed">
+                      <img src="img/3.jpg" class="rounded list-icon">
+                      <span>TEST PART 3 PCB, ADC DOOR CONTROL BOARD</span></button>
                   </h4>
                 </div>
                 <div id="collapseThree" aria-labelledby="headingThree" data-parent="#accordion" class="collapse">
-                  <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.</div>
+                  <div class="card-body">
+                    <img src="img/3.jpg" class="rounded">
+                    <ul class="list-unstyled pl-0 mt-4">
+                        <li>Part for: OTIS</li>
+                        <li>Part No.: AAA633AJ401</li>
+                        <li>Availability: normal</li>
+                        <li>Remark: </li>
+                      </ul>
+                    </div>
                 </div>
               </div>
-              <!-- question            -->
+
+              <!-- product            -->
               <div class="card">
                 <div id="headingFour" class="card-header">
                   <h4 class="mb-0 accordion-heading">
@@ -64,7 +99,7 @@
               <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
             </header>
             <div id="accordion2" class="faq accordion accordion-custom">
-              <!-- question-->
+              <!-- product-->
               <div class="card">
                 <div id="headingOneAlt" class="card-header">
                   <h4 class="mb-0 accordion-heading">
@@ -75,7 +110,7 @@
                   <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.</div>
                 </div>
               </div>
-              <!-- question-->
+              <!-- product-->
               <div class="card">
                 <div id="headingTwoAlt" class="card-header">
                   <h4 class="mb-0 accordion-heading">
@@ -86,7 +121,7 @@
                   <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.</div>
                 </div>
               </div>
-              <!-- question-->
+              <!-- product-->
               <div class="card">
                 <div id="headingThreeAlt" class="card-header">
                   <h4 class="mb-0 accordion-heading">
@@ -97,7 +132,7 @@
                   <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.</div>
                 </div>
               </div>
-              <!-- question-->
+              <!-- product-->
               <div class="card">
                 <div id="headingFourAlt" class="card-header">
                   <h4 class="mb-0 accordion-heading">

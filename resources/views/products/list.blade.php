@@ -18,7 +18,7 @@
                 <div id="headingOne" class="card-header">
                   <h4 class="mb-0 accordion-heading">
                     <button data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="d-flex align-items-center">
-                      <img src="img/1.jpg" class="rounded list-icon">
+                      <img src="img/1.jpg" class="rounded list-icon ">
                       <span>ELECTROMAGNETIC BRAKE QKS9/10, 80VDC</span>
                     </button>
                   </h4>
@@ -26,7 +26,7 @@
                 <div id="collapseOne" aria-labelledby="headingOne" data-parent="#accordion" class="collapse">
                   <div class="card-body">
                       <div class="cent">
-                        <img src="img/1.jpg" class="rounded">
+                        <img src="img/1.jpg" class="rounded img-fluid">
                       </div>
                       <ul class="list-unstyled pl-0 mt-4">
                         <li>Part for: SCHINDLER</li>
@@ -49,7 +49,7 @@
                 </div>
                 <div id="collapseTwo" aria-labelledby="headingTwo" data-parent="#accordion" class="collapse">
                   <div class="card-body">
-                    <img src="img/2.jpg" class="rounded">
+                    <img src="img/2.jpg" class="rounded img-fluid">
                     <ul class="list-unstyled pl-0 mt-4">
                         <li>Part for: OTIS</li>
                         <li>Part No.: AAA633AJ401</li>
@@ -70,7 +70,7 @@
                 </div>
                 <div id="collapseThree" aria-labelledby="headingThree" data-parent="#accordion" class="collapse">
                   <div class="card-body">
-                    <img src="img/3.jpg" class="rounded">
+                    <img src="img/3.jpg" class="rounded img-fluid">
                     <ul class="list-unstyled pl-0 mt-4">
                         <li>Part for: OTIS</li>
                         <li>Part No.: AAA633AJ401</li>

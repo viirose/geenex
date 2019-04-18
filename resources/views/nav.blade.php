@@ -1,3 +1,6 @@
+<?php
+  $r = new App\Helpers\Role;
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -34,11 +37,31 @@
           <div id="navbarSupportedContent" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                   <!-- Link-->
-                  <li class="nav-item"> <a href="/products" class="nav-link"><i class="fa fa-microchip" aria-hidden="true"></i> Products</a></li>
+                  <li class="nav-item"> <a href="/products" class="nav-link"><i class="fa fa-cube" aria-hidden="true"></i> Products</a></li>
                   <!-- Link-->
-                  <li class="nav-item"><a href="/login" class="nav-link">|  <i class="fa fa-user-o" aria-hidden="true"></i> Login</a></li>
                   <!-- Link-->
-                  <li class="nav-item"><a href="/cart" class="nav-link">|  <i class="fa fa-shopping-cart" aria-hidden="true"></i> cart</a></li>
+                  <li class="nav-item"><a href="/cart" class="nav-link">|   &nbsp<i class="fa fa-shopping-cart" aria-hidden="true"></i> cart</a></li>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">|  &nbsp<i class="fa fa-{{ Auth::check() ? 'user-circle-o' : 'user-o' }}" aria-hidden="true"></i> {{ Auth::check() ? Auth::user()->name : '' }}</a>
+                    <div class="dropdown-menu">
+                    @if (Auth::check())
+                      @if($r->root())
+                      <a href="/conf/categories" class="dropdown-item"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Categories</a>
+                      <a href="/conf/brands" class="dropdown-item"><i class="fa fa-tags" aria-hidden="true"></i> Brands</a>
+                      @endif
+
+                      @if($r->admin())
+                      <a href="/products/create" class="dropdown-item"><i class="fa fa-cube" aria-hidden="true"></i> Add Products</a>
+                      @endif
+                      <a href="/logout" class="dropdown-item"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a>
+                    @else
+                      <a href="/login" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> Login</a>
+                      <a href="/register" class="dropdown-item"><i class="fa fa-anchor" aria-hidden="true"></i> Register</a>
+                    @endif
+                    </div>
+
+                  </li>
             </ul>
           </div>
         </div>
@@ -51,7 +74,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3 mb-5 mb-lg-0">
-            <div class="footer-logo"><img src="img/logo-footer.svg" alt="..." class="img-fluid"></div>
+            <div class="footer-logo"><img src="{{  asset('img/logo-footer.svg') }}" alt="..." class="img-fluid"></div>
           </div>
           <div class="col-lg-3 mb-5 mb-lg-0">
             <h5 class="footer-heading">Site pages</h5>

@@ -15,6 +15,10 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('part_no');
+            $table->integer('type_id');
+            $table->boolean('show')->default(true);
+            $table->jsonb('info');
             $table->timestamps();
         });
     }

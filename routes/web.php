@@ -11,22 +11,61 @@
 |
 */
 
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
+// 必须认证邮箱
+Auth::routes(['verify' => true]);
+
 Route::get('/', function () {
     return view('main');
 });
 
-Route::get('/login', 'UserController@login');
+// Route::get('/login', 'UserController@login');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/cart', 'OrderController@cart');
 
+Route::get('/logout', 'UserController@logout');
 Route::get('/products', 'ProductController@index');
 
-// Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['verified']], function () {
+    // 产品
+    Route::get('/products/create', 'ProductController@create');
+    Route::post('/products/store', 'ProductController@store');
+
+    Route::get('/conf/brands', 'ConfController@brands');
+    Route::get('/conf/brands/create/{key}', 'ConfController@brandCreate');
+    Route::get('/conf/brands/edit/{key}/{id}', 'ConfController@brandEdit');
+
+    Route::get('/conf/categories', 'ConfController@categories');
+    Route::get('/conf/create/{key}/{parent_id}', 'ConfController@create');
+    Route::get('/conf/edit/{key}/{id}', 'ConfController@edit');
+
+});
+
 
 Route::get('/test', function() {
-    // return view('main');
-    return view('form');
-    // return view('products.list');
+    $a = new App\Helpers\Role;
+    $b = $a->admin(1);
+    if($b){
+        echo "yes";
+    }else{
+        echo "fuck";
+    }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

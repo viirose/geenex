@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class UserController extends Controller
 {
@@ -10,8 +11,9 @@ class UserController extends Controller
      * Login
      *
      */
-    public function login()
+    public function logout()
     {
-        return view('form');
+        Auth::logout();
+        return redirect('/');
     }
 }

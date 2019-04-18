@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends('../../nav')
 
 @section('content')
+<div class="row top-pad"></div>
+<section>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -44,4 +46,5 @@
         </div>
     </div>
 </div>
+</section>
 @endsection

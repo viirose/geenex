@@ -1,6 +1,9 @@
-@extends('layouts.app')
+@extends('../../nav')
 
 @section('content')
+<div class="row top-pad"></div>
+<div class="row top-pad"></div>
+<section>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -51,7 +54,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary btn-sm">
                                     {{ __('Reset Password') }}
                                 </button>
                             </div>
@@ -62,4 +65,7 @@
         </div>
     </div>
 </div>
+</section>
+<div class="row top-pad"></div>
+<div class="row top-pad"></div>
 @endsection

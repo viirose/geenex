@@ -16,9 +16,11 @@ class CreateConfsTable extends Migration
         Schema::create('confs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('parent_id');
+            $table->integer('level');
+            $table->string('type');
             $table->string('key');
-            $table->string('text');
-            $table->string('val');
+            $table->string('text')->nullable();
+            $table->string('val')->nullable();
             $table->jsonb('info')->nullable();
             $table->timestamps();
         });

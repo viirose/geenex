@@ -1,0 +1,84 @@
+@extends('../nav')
+
+@section('content')
+<div class="row top-pad"></div>
+
+   <!-- FAQ Section-->
+    <section>
+      <div class="container">
+        <!-- wordPress installation-->
+        <header class="section header mb-5">
+          <h2><i class="fa fa-cubes" aria-hidden="true"></i> Products</h2>
+          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+        </header>
+        <div class="row"> 
+          <div class="col-lg-8">   
+            <div id="accordion" class="faq accordion accordion-custom pb-5">
+              @foreach($products as $product)
+              <div class="card">
+                <div id="headingOne" class="card-header">
+                  <h4 class="mb-0 accordion-heading">
+                    <button data-toggle="collapse" data-target="#collapse{{$product->id}}" aria-expanded="false" aria-controls="collapse{{$product->id}}" class="d-flex align-items-center">
+                      <img src="{{ $product->img ? asset('storage/app/img/'.$product->id.'.jpg') : asset('img/sample.jpg') }}" class="rounded list-icon ">
+                      <strong>{{ $product->name }}</strong> &nbsp&nbsp
+                      <span>#{{ $product->part_no }} ,for: {{ $product->brand->key }}</span>
+                    </button>
+                  </h4>
+                </div>
+                <div id="collapse{{$product->id}}" aria-labelledby="headingOne" data-parent="#accordion" class="collapse">
+                  <div class="card-body">
+                      <div class="cent">
+                        <img src="{{ $product->img ? asset('storage/app/img/'.$product->id.'.jpg') : asset('img/sample.jpg') }}" class="rounded img-fluid">
+                      </div>
+                      <ul class="list-unstyled pl-0 mt-4">
+                        <li>Part Nr: {{ $product->part_no}}</li>
+                        <li>Part for: {{ $product->brand->key }}</li>
+                        <li>Part Name.: {{ $product->name }}</li>
+                        <li>Availability: normal</li>
+                        <li>Remark: {{ $product->remark }}</li>
+                        <li>{{ $product->content }}</li>
+                        <li><a href="#" class="btn btn-outline-light btn-sm">add to cart</a></li>
+                      </ul>
+                  </div>
+                </div>
+              </div>
+              @endforeach
+
+            </div>
+          </div>
+          <!-- sidebar-->
+          <aside class="sidebar col-lg-4 mt-5 mt-lg-0">
+            <div class="search mb-4">
+              <form action="#" class="search-form">
+                <div class="form-group">
+                  <input type="search" name="search" placeholder="Search" class="form-control">
+                  <button type="submit"> <i class="fa fa-search"></i></button>
+                </div>
+              </form>
+            </div>
+            <div class="sidebar-widget mb-4">
+              <h4 class="sidebar-widget-heading">Categories</h4>
+              <ul class="list-unstyled pl-0 mt-4">
+                <li> <a href="#" class="categories-link">WordPress installation</a></li>
+                <li><a href="#" class="categories-link">Troubleshooting</a></li>
+                <li><a href="#" class="categories-link">Pricing &amp; Support</a></li>
+                <li><a href="#" class="categories-link">Tips &amp; Tricks</a></li>
+                <li><a href="#" class="categories-link">Managing Files</a></li>
+              </ul>
+            </div>
+            <div class="sidebar-widget">
+              <h4 class="sidebar-widget-heading">Brands</h4>
+              <ul class="list-inline pl-0 mt-4">
+                <li class="list-inline-item mr-0"><a href="#" class="tag-link">Design</a></li>
+                <li class="list-inline-item mr-0"><a href="#" class="tag-link">Window</a></li>
+                <li class="list-inline-item mr-0"><a href="#" class="tag-link">Science</a></li>
+                <li class="list-inline-item mr-0"><a href="#" class="tag-link">Mobile App</a></li>
+                <li class="list-inline-item mr-0"><a href="#" class="tag-link">Ios</a></li>
+                <li class="list-inline-item mr-0"><a href="#" class="tag-link">Super charge</a></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+@endsection

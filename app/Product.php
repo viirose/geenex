@@ -8,9 +8,15 @@ class Product extends Model
 {
     protected $guarded = [];
 
-    // // 老板
-    // public function prats()
-    // {
-    //     return $this->belongsTo('App\Conf', 'id', 'info->part');
-    // }
+    // category
+    public function category()
+    {
+        return $this->hasOne('App\Conf', 'id', 'category_id');
+    }
+
+    // brand
+    public function brand()
+    {
+        return $this->hasOne('App\Conf', 'id', 'brand_id');
+    }
 }

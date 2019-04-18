@@ -21,7 +21,7 @@ class ProductController extends Controller
      */
     public function index()
     { 
-        $records = Conf::where('level', 2)
+        $menus = Conf::where('level', 2)
                         ->where('type', 'parts')
                         ->with(['subs' => function ($query){
                             $query->whereHas('products', function ($q) {
@@ -31,19 +31,10 @@ class ProductController extends Controller
                         }])
                         ->get();
 
-        $products = Product::where('show', true)
-
+        $products = Product::where('img', true)
                             ->get();
 
-        // print_r($products);
-        // foreach ($records as $k) {
-        //     echo $k->key;
-        //     foreach ($k->subs as $j) {
-        //         echo "--".$j->key.'@'.$j->products_count."<br>";
-        //     }
-        //     echo "<br>";
-        // }
-        return view('products.list');
+        return view('products.all', compact('menus', 'products'));
 
     }
 

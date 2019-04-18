@@ -33,7 +33,7 @@ class ProductController extends Controller
 
                             ->get();
 
-        print_r($products);
+        // print_r($products);
         // foreach ($records as $k) {
         //     echo $k->key;
         //     foreach ($k->subs as $j) {
@@ -41,6 +41,7 @@ class ProductController extends Controller
         //     }
         //     echo "<br>";
         // }
+        return view('products.list');
 
     }
 

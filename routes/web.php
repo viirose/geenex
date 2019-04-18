@@ -33,6 +33,7 @@ Route::group(['middleware' => ['verified']], function () {
     // 产品
     Route::get('/products/create', 'ProductController@create');
     Route::post('/products/store', 'ProductController@store');
+    Route::post('/products/img/store', 'ProductController@imgStore');
 
     Route::get('/conf/brands', 'ConfController@brands');
     Route::get('/conf/brands/create/{key}', 'ConfController@brandCreate');

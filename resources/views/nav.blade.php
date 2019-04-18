@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>GEENEX</title>
     <meta name="description" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
@@ -126,5 +127,15 @@
     <script src="{{ asset('vendor/jquery.cookie/jquery.cookie.js') }}"> </script>
     <script src="{{ asset('vendor/lightbox2/js/lightbox.js') }}"></script>
     <script src="{{ asset('js/front.js') }}"></script>
+  <script>
+    // ajax csrf
+    $(function(){ 
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+        });
+    });
+</script>
   </body>
 </html>

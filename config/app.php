@@ -167,6 +167,7 @@ return [
          */
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -228,6 +229,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

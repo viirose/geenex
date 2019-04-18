@@ -16,7 +16,7 @@ class ProductForm extends Form
                         ->where('level', 3)
                         ->orderBy('key')
                         ->get();
-                        // ->pluck('key', 'id')
+                        // ->pluck('key', 'id') 
                         // ->toArray();
         $array = [];
 
@@ -40,24 +40,24 @@ class ProductForm extends Form
     public function buildForm()
     {
         $this
-        ->add('category', 'select', [
+        ->add('category_id', 'select', [
             'label' => 'Category',
             'empty_value' => '=== Select Category ===',
             'choices' => $this->categoris(),
             'rules' => 'required',
         ])
-        ->add('part_for', 'select', [
+        ->add('brand_id', 'select', [
             'empty_value' => '=== Select Brand ===',
             'choices' => $this->brands(),
             'rules' => 'required'
         ])
         ->add('part_no', 'text', [
             'label' => 'Part Nr.',
-            'rules' => 'required|min:3|max:16'
+            'rules' => 'required|min:3|max:22'
         ])
         ->add('name', 'text', [
             'label' => 'Name',
-            'rules' => 'required|min:3|max:16'
+            'rules' => 'required|min:3|max:22'
         ])
         ->add('remark', 'text', [
             'label' => 'Remark',
@@ -65,7 +65,7 @@ class ProductForm extends Form
         ])
         ->add('content', 'textarea', [
             'label' => 'Content',
-            'rules' => 'min:4|max:200'
+            'rules' => 'min:2|max:200'
         ])
         ->add('submit','submit',[
             'label' => 'Next',

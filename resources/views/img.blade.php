@@ -1,9 +1,12 @@
 <?php
   $r = new App\Helpers\Role;
 ?>
-@extends ('frame')
+@extends('nav')
 
-@section ('content')
+@section('content')
+
+<div class="row top-pad"></div>
+<div class="row top-pad"></div>
 
   <link rel="stylesheet" href="{{ URL::asset('crop/cropper.min.css') }}">
   <style>
@@ -24,26 +27,26 @@
       max-width: 100%;
     }
   </style>
-<section id="content">
+<section>
   <div class="container cent-p">
     <div class="cent cent-text">
       
       <input type="hidden" id="target_id" value="{{ $record->id }}">
-      <label class="label" data-toggle="tooltip" title="设置图片">
-        <img class="rounded" id="avatar" src="{{ URL::asset('img/product.jpg') }}" alt="{{ $record->name }}">
+      <label class="label" data-toggle="tooltip" title="set image">
+        <img class="rounded img-fluid" id="avatar" src="{{ URL::asset('img/sample.jpg') }}" alt="{{ $record->name }}">
         <input type="file" class="sr-only" id="input" name="image" accept="image/*">
       </label>
       <div class="progress">
         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
       </div>
-      <h3>{{ $record->name }} - {{ $r->show($record->info, 'model') }}</h3>
+      <h3>{{ $record->name }}</h3>
       
       <div class="alert" role="alert"></div>
       <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="modalLabel">裁剪</h5>
+              <h5 class="modal-title" id="modalLabel">Crop</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -54,8 +57,8 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-              <button type="button" class="btn btn-primary" id="crop">裁剪</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" id="crop">OK</button>
             </div>
           </div>
         </div>
@@ -108,7 +111,7 @@
 
       $modal.on('shown.bs.modal', function () {
         cropper = new Cropper(image, {
-          aspectRatio: 16/9,
+          aspectRatio: 4/3,
           viewMode: 3,
         });
       }).on('hidden.bs.modal', function () {
@@ -124,8 +127,8 @@
 
         if (cropper) {
           canvas = cropper.getCroppedCanvas({
-            width: 320,
-            height: 180,
+            width: 400,
+            height: 300,
           });
           initialAvatarURL = avatar.src;
           avatar.src = canvas.toDataURL();
@@ -138,7 +141,7 @@
             formData.append('avatar', blob, 'avatar.jpg');
             formData.append('id', target_id);
 
-            $.ajax('/img_store', {
+            $.ajax('/products/img/store', {
               type: 'POST',
               data: formData,
               processData: false,
@@ -162,12 +165,12 @@
               },
 
               success: function () {
-                $alert.show().addClass('alert-success').text('图片设置成功');
+                $alert.show().addClass('alert-success').text('success!');
               },
 
               error: function () {
                 avatar.src = initialAvatarURL;
-                $alert.show().addClass('alert-warning').text('上传失败');
+                $alert.show().addClass('alert-warning').text('fail to upload');
               },
 
               complete: function () {

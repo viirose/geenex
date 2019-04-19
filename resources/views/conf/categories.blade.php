@@ -11,7 +11,7 @@
         <br>
         <p><i class="fa fa-bookmark" aria-hidden="true"></i> {{ strtoupper($record->key) }} <a href="javascript:create({{ $record->id }});" class="btn btn-outline-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> new</a></p>
         <div id="accordion">
-            @foreach($record->subs as $sub)
+            @foreach($record->subs as $sub) 
 
             <div class="card">
               <div class="card-header">

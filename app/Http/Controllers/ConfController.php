@@ -56,7 +56,7 @@ class ConfController extends Controller
 
         Conf::create([
             'parent_id' => $parent_id,
-            'level' => $parent_id == 0 ? 2 : 3,
+            'level' => $ex->level + 1,
             'type' => 'category',
             'key' => $key,
         ]);

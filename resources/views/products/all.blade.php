@@ -61,7 +61,7 @@
               </form>
             </div>
             <div class="sidebar-widget mb-4">
-              <h4 class="sidebar-widget-heading">Categories</h4>
+              <h4 class="sidebar-widget-heading"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Categories</h4>
               <ul class="list-unstyled pl-0 mt-4">
               @if(count($categories))
                 @foreach($categories as $c)
@@ -79,7 +79,7 @@
               </ul>
             </div>
             <div class="sidebar-widget">
-              <h4 class="sidebar-widget-heading">Brands</h4>
+              <h4 class="sidebar-widget-heading"><i class="fa fa-tags" aria-hidden="true"></i> Brands</h4>
               <ul class="list-inline pl-0 mt-4">
               @if(count($brands))
                 @foreach($brands as $b)

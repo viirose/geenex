@@ -14,6 +14,7 @@
         <div class="row"> 
           <div class="col-lg-8">   
             <div id="accordion" class="faq accordion accordion-custom pb-5">
+            @if(count($products))
               @foreach($products as $product)
               <div class="card">
                 <div id="headingOne" class="card-header">
@@ -21,7 +22,7 @@
                     <button data-toggle="collapse" data-target="#collapse{{$product->id}}" aria-expanded="false" aria-controls="collapse{{$product->id}}" class="d-flex align-items-center">
                       <img src="{{ $product->img ? asset('storage/app/img/'.$product->id.'.jpg') : asset('img/sample.jpg') }}" class="rounded list-icon ">
                       <strong>{{ $product->name }}</strong> &nbsp&nbsp
-                      <span>#{{ $product->part_no }} ,for: {{ $product->brand->key }}</span>
+                      <small># {{ $product->part_no }}; for: {{ $product->brand->key }}</small>
                     </button>
                   </h4>
                 </div>
@@ -43,6 +44,9 @@
                 </div>
               </div>
               @endforeach
+            @else
+              <div class="alert alert-info">none</div>
+            @endif
 
             </div>
           </div>
@@ -59,22 +63,28 @@
             <div class="sidebar-widget mb-4">
               <h4 class="sidebar-widget-heading">Categories</h4>
               <ul class="list-unstyled pl-0 mt-4">
-                <li> <a href="#" class="categories-link">WordPress installation</a></li>
-                <li><a href="#" class="categories-link">Troubleshooting</a></li>
-                <li><a href="#" class="categories-link">Pricing &amp; Support</a></li>
-                <li><a href="#" class="categories-link">Tips &amp; Tricks</a></li>
-                <li><a href="#" class="categories-link">Managing Files</a></li>
+              @if(count($categories))
+                @foreach($categories as $c)
+
+                  <li> <a href="#" class="categories-link">{{ strtoupper($c->key) }} ({{ $c->products_count }})</a></li>
+                @endforeach
+              @else
+                  none
+              @endif
+
               </ul>
             </div>
             <div class="sidebar-widget">
               <h4 class="sidebar-widget-heading">Brands</h4>
               <ul class="list-inline pl-0 mt-4">
-                <li class="list-inline-item mr-0"><a href="#" class="tag-link">Design</a></li>
-                <li class="list-inline-item mr-0"><a href="#" class="tag-link">Window</a></li>
-                <li class="list-inline-item mr-0"><a href="#" class="tag-link">Science</a></li>
-                <li class="list-inline-item mr-0"><a href="#" class="tag-link">Mobile App</a></li>
-                <li class="list-inline-item mr-0"><a href="#" class="tag-link">Ios</a></li>
-                <li class="list-inline-item mr-0"><a href="#" class="tag-link">Super charge</a></li>
+              @if(count($brands))
+                @foreach($brands as $b)
+                  <li class="list-inline-item mr-0"><a href="#" class="tag-link">{{ $b->key }} <small>({{ $b->brand_products_count }})</small></a></li>
+                @endforeach
+              @else
+                none
+              @endif
+
               </ul>
             </div>
           </aside>

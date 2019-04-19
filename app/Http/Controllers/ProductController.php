@@ -21,8 +21,8 @@ class ProductController extends Controller
      */
     public function index()
     { 
-        $menus = Conf::where('level', 2)
-                        ->where('type', 'parts')
+        $categories = Conf::where('level', 2)
+                        ->where('type', 'category')
                         ->with(['subs' => function ($query){
                             $query->whereHas('products', function ($q) {
                                 // $q->where('content', 'like', 'foo%');
@@ -31,10 +31,17 @@ class ProductController extends Controller
                         }])
                         ->get();
 
+        $brands = Conf::where('type', 'brand')
+                        ->whereHas('brand_products', function ($query) {
+                            // $query->where('content', 'like', 'foo%');
+                        })
+                        ->withCount('brand_products')
+                        ->get();
+
         $products = Product::where('img', true)
                             ->get();
 
-        return view('products.all', compact('menus', 'products'));
+        return view('products.all', compact('categories', 'brands', 'products'));
 
     }
 

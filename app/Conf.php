@@ -8,10 +8,16 @@ class Conf extends Model
 {
     protected $guarded = [];
 
-    // 老板
+    // category
     public function products()
     {
-        return $this->hasMany('App\Product', 'type_id', 'id');
+        return $this->hasMany('App\Product', 'category_id', 'id');
+    }
+
+    // brands
+    public function brand_products()
+    {
+        return $this->hasMany('App\Product', 'brand_id', 'id');
     }
 
     // 老板

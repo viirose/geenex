@@ -55,6 +55,7 @@
                       @if($r->admin())
                       <a href="/products/create" class="dropdown-item"><i class="fa fa-cube" aria-hidden="true"></i> Add Products</a>
                       @endif
+                      <a href="/users/reset_password" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> Reset Password</a>
                       <a href="/logout" class="dropdown-item"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a>
                     @else
                       <a href="/login" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> Login</a>

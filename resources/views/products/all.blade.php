@@ -65,8 +65,12 @@
               <ul class="list-unstyled pl-0 mt-4">
               @if(count($categories))
                 @foreach($categories as $c)
-
-                  <li> <a href="#" class="categories-link">{{ strtoupper($c->key) }} ({{ $c->products_count }})</a></li>
+                  <li> <a href="#" class="categories-link"><strong>{{ strtoupper($c->key) }} </strong></a></li>
+                  @if(count($c->subs))
+                    @foreach($c->subs as $sub)
+                  <li>  -- <a href="#" class="categories-link">{{ strtoupper($sub->key) }} ({{ $sub->products_count }})</a></li>
+                    @endforeach
+                  @endif
                 @endforeach
               @else
                   none

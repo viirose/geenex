@@ -8,7 +8,7 @@
       <div class="container">
         <!-- wordPress installation-->
         <header class="section header mb-5">
-          <h2><i class="fa fa-cubes" aria-hidden="true"></i> Products</h2>
+          <h2><i class="fa fa-cube" aria-hidden="true"></i> Products</h2>
           <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
         </header>
         <div class="row"> 

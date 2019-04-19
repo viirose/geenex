@@ -68,7 +68,7 @@
                   <li> <a href="#" class="categories-link"><strong>{{ strtoupper($c->key) }} </strong></a></li>
                   @if(count($c->subs))
                     @foreach($c->subs as $sub)
-                  <li>  -- <a href="#" class="categories-link">{{ strtoupper($sub->key) }} ({{ $sub->products_count }})</a></li>
+                  <li>  &nbsp - <a href="#" class="categories-link">{{ strtoupper($sub->key) }} ({{ $sub->products_count }})</a></li>
                     @endforeach
                   @endif
                 @endforeach

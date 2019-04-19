@@ -1,4 +1,4 @@
-#### NEENEX
+## GEENEX
 
 1. auth
     1) root: categories/brands管理; 用户管理(将来); 所有admin操作

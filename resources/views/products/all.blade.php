@@ -38,7 +38,7 @@
                         <li>Availability: {{ $product->availability->key }}</li>
                         <li>Remark: {{ $product->remark }}</li>
                         <li>{{ $product->content }}</li>
-                        <li><a href="#" class="btn btn-outline-light btn-sm">add to cart</a></li>
+                        <li><a href="#" class="btn btn-outline-light btn-sm">add to My Inquiry</a></li>
                       </ul>
                   </div>
                 </div>

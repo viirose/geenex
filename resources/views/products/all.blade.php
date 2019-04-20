@@ -22,7 +22,7 @@
                     <button data-toggle="collapse" data-target="#collapse{{$product->id}}" aria-expanded="false" aria-controls="collapse{{$product->id}}" class="d-flex align-items-center">
                       <img src="{{ $product->img ? asset('storage/app/img/'.$product->id.'.jpg') : asset('img/sample.jpg') }}" class="rounded list-icon ">
                       <strong>{{ $product->name }}</strong> &nbsp&nbsp
-                      # {{ $product->part_no }}; for: {{ $product->brand->key }}
+                      #{{ $product->part_no }}
                     </button>
                   </h4>
                 </div>

@@ -42,9 +42,9 @@
                   <li class="nav-item dropdown">
                     <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-cube" aria-hidden="true"></i> Product & Service</a>
                     <div class="dropdown-menu">
-                      <a href="#" class="dropdown-item"> Spare Parts</a>
-                      <a href="#" class="dropdown-item"> Metal Processing</a>
-                      <a href="#" class="dropdown-item"> Lift Material</a>
+                      <a href="/products" class="dropdown-item"> Spare Parts</a>
+                      <a href="/products" class="dropdown-item"> Metal Processing</a>
+                      <a href="/products" class="dropdown-item"> Lift Material</a>
                     </div>
 
                   </li>

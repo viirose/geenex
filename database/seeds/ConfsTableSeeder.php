@@ -253,6 +253,26 @@ class ConfsTableSeeder extends Seeder
             'key' => 'other',
         ]);
 
+        // availability
+        Conf::create([
+            'parent_id' => 1,
+            'level' => 1,
+            'type' => 'availability',
+            'key' => 'Normal',
+        ]);
+        Conf::create([
+            'parent_id' => 1,
+            'level' => 1,
+            'type' => 'availability',
+            'key' => 'low',
+        ]);
+        Conf::create([
+            'parent_id' => 1,
+            'level' => 1,
+            'type' => 'availability',
+            'key' => 'none',
+        ]);
+
 
     }
 }

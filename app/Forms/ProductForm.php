@@ -36,6 +36,15 @@ class ProductForm extends Form
         return $array;
     }
 
+    // availability
+    private function availability()
+    {
+        $array = Conf::where('type', 'availability')
+                        ->pluck('key', 'id')
+                        ->toArray();
+        return $array;
+    }
+
     // form
     public function buildForm()
     {
@@ -57,7 +66,12 @@ class ProductForm extends Form
         ])
         ->add('name', 'text', [
             'label' => 'Name',
-            'rules' => 'required|min:3|max:22'
+            'rules' => 'required|min:3|max:32'
+        ])
+        ->add('availability_id', 'select', [
+            'empty_value' => '=== Select availability ===',
+            'choices' => $this->availability(),
+            'rules' => 'required'
         ])
         ->add('remark', 'text', [
             'label' => 'Remark',

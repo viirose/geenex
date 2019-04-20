@@ -19,4 +19,10 @@ class Product extends Model
     {
         return $this->hasOne('App\Conf', 'id', 'brand_id');
     }
+
+    // availability
+    public function availability()
+    {
+        return $this->hasOne('App\Conf', 'id', 'availability_id');
+    }
 }

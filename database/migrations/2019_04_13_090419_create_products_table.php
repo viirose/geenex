@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('part_no');
             $table->string('name');
             $table->integer('created_by');
+            $table->integer('availability_id');
             $table->string('remark')->nullable();
             $table->text('content')->nullable();
             $table->boolean('img')->default(false);

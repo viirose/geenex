@@ -35,7 +35,7 @@
                         <li>Part Nr: {{ $product->part_no}}</li>
                         <li>Part for: {{ $product->brand->key }}</li>
                         <li>Part Name.: {{ $product->name }}</li>
-                        <li>Availability: normal</li>
+                        <li>Availability: {{ $product->availability->key }}</li>
                         <li>Remark: {{ $product->remark }}</li>
                         <li>{{ $product->content }}</li>
                         <li><a href="#" class="btn btn-outline-light btn-sm">add to cart</a></li>

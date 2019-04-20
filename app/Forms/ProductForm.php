@@ -66,7 +66,7 @@ class ProductForm extends Form
         ])
         ->add('name', 'text', [
             'label' => 'Name',
-            'rules' => 'required|min:3|max:32'
+            'rules' => 'required|min:3|max:48'
         ])
         ->add('availability_id', 'select', [
             'empty_value' => '=== Select availability ===',

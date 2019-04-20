@@ -38,10 +38,19 @@
           <div id="navbarSupportedContent" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                   <!-- Link-->
-                  <li class="nav-item"> <a href="/products" class="nav-link"><i class="fa fa-cube" aria-hidden="true"></i> Products</a></li>
+                </li>
+                  <li class="nav-item dropdown">
+                    <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-cube" aria-hidden="true"></i> Product & Service</a>
+                    <div class="dropdown-menu">
+                      <a href="#" class="dropdown-item"> Spare Parts</a>
+                      <a href="#" class="dropdown-item"> Metal Processing</a>
+                      <a href="#" class="dropdown-item"> Lift Material</a>
+                    </div>
+
+                  </li>
                   <!-- Link-->
                   <!-- Link-->
-                  <li class="nav-item"><a href="/cart" class="nav-link">|   &nbsp<i class="fa fa-shopping-cart" aria-hidden="true"></i> cart</a></li>
+                  <li class="nav-item"><a href="/cart" class="nav-link">|   &nbsp<i class="fa fa-list-ul" aria-hidden="true"></i> My Inquiry</a></li>
                   </li>
                   <li class="nav-item dropdown">
                     <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">|  &nbsp<i class="fa fa-{{ Auth::check() ? 'user-circle-o' : 'user-o' }}" aria-hidden="true"></i> {{ Auth::check() ? Auth::user()->name : '' }}</a>
@@ -75,34 +84,39 @@
     <footer class="main-footer">
       <div class="container">
         <div class="row">
-          <div class="col-lg-3 mb-5 mb-lg-0">
+          <div class="col-lg-4 mb-5 mb-lg-0">
             <div class="footer-logo"><img src="{{  asset('img/logo-footer.svg') }}" alt="..." class="img-fluid"></div>
-          </div>
-          <div class="col-lg-3 mb-5 mb-lg-0">
-            <h5 class="footer-heading">Site pages</h5>
             <ul class="list-unstyled">
-              <li> <a href="index.html" class="footer-link">Home</a></li>
-              <li> <a href="faq.html" class="footer-link">FAQ</a></li>
-              <li> <a href="contact.html" class="footer-link">Contact</a></li>
-              <li> <a href="text.html" class="footer-link">Text Page</a></li>
+              <li>&nbsp<span class="footer-link">49 South Zhongba Road,</span></li>
+              <li>&nbsp<span class="footer-link">Haian, Jiangsu Province,</span></li>
+              <li>&nbsp<span class="footer-link">China 226600</span></li>
+              <li>&nbsp<span class="footer-link">+86 513 8889 2688</span></li>
+              <li>&nbsp<span class="footer-link">+86 513 8180 0823 (fax)</span></li>
+              <li>&nbsp<span class="footer-link">info@joclift.con</span></li>
+            </ul>
+
+          </div>
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <h5 class="footer-heading">INFORMATION</h5>
+            <ul class="list-unstyled">
+              <li> <a href="#" class="footer-link">Company Profile</a></li>
+              <li> <a href="#" class="footer-link">Terms & Conditions </a></li>
+              <li> <a href="#" class="footer-link">Contact</a></li>
+              <li> <a href="#" class="footer-link">Site Map</a></li>
+              <li> <a href="#" class="footer-link">Privacy Policy</a></li>
             </ul>
           </div>
-          <div class="col-lg-3 mb-5 mb-lg-0">
-            <h5 class="footer-heading">Product</h5>
+
+
+
+
+
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <h5 class="footer-heading">Product & Service</h5>
             <ul class="list-unstyled">
-              <li> <a href="#" class="footer-link">Why Appton?</a></li>
-              <li> <a href="#" class="footer-link">Enterprise</a></li>
-              <li> <a href="#" class="footer-link">Blog</a></li>
-              <li> <a href="#" class="footer-link">Pricing</a></li>
-            </ul>
-          </div>
-          <div class="col-lg-3">
-            <h5 class="footer-heading">Resources</h5>
-            <ul class="list-unstyled">
-              <li> <a href="#" class="footer-link">Download</a></li>
-              <li> <a href="#" class="footer-link">Help Center</a></li>
-              <li> <a href="#" class="footer-link">Guides</a></li>
-              <li> <a href="#" class="footer-link">Partners</a></li>
+              <li> <a href="#" class="footer-link">Spare Parts</a></li>
+              <li> <a href="#" class="footer-link">Metal Processing</a></li>
+              <li> <a href="#" class="footer-link">Lift Material</a></li>
             </ul>
           </div>
         </div>
@@ -111,7 +125,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-6 text-center text-lg-left">
-              <p class="copyrights-text mb-3 mb-lg-0"><small>Copyright &copy; 2019.GEENEX All rights reserved.</small></p>
+              <p class="copyrights-text mb-3 mb-lg-0"><small>Copyright &copy; 2019.GENNEX All rights reserved.</small></p>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
               <ul class="list-inline social mb-0">

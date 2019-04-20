@@ -6,10 +6,11 @@
       <div class="container mb-5">
         <div class="row align-items-center">
           <div class="col-lg-6">
-            <h1 class="hero-heading mb-0">Find Now</h1>
+            <h3 class="hero-heading mb-0">Your right source of spare parts</h3>
+            <h3 class="hero-heading mb-0">Find It Now</h3>
             <div class="row">
               <div class="col-lg-10">
-                <p class="lead text-muted mt-4 mb-4">Lorem ipsum dolor sit amet, consectetur. Eiusmod tempor incididunt.</p>
+                <p class="lead text-muted mt-4 mb-4">Type in the manufacturer’s part number or the part’s description to get the list of parts available.</p>
               </div>
             </div>
             <form action="#" class="subscription-form">

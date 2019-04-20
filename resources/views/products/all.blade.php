@@ -33,8 +33,8 @@
                       </div>
                       <ul class="list-unstyled pl-0 mt-4">
                         <li>Part Nr: {{ $product->part_no}}</li>
-                        <li>Part for: {{ $product->brand->key }}</li>
                         <li>Part Name.: {{ $product->name }}</li>
+                        <li>Part for: {{ $product->brand->key }}</li>
                         <li>Availability: {{ $product->availability->key }}</li>
                         <li>Remark: {{ $product->remark }}</li>
                         <li>{{ $product->content }}</li>

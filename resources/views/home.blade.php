@@ -15,7 +15,7 @@
             </div>
             <form action="#" class="subscription-form">
               <div class="form-group">
-                <input type="email" name="email" placeholder="keywords here..." class="form-control">
+                <input type="email" name="email" placeholder="keywords..." class="form-control">
                 <button type="submit" class="btn btn-primary">Search</button>
               </div>
             </form>

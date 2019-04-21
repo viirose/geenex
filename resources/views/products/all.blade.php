@@ -21,8 +21,8 @@
                   <h4 class="mb-0 accordion-heading">
                     <button data-toggle="collapse" data-target="#collapse{{$product->id}}" aria-expanded="false" aria-controls="collapse{{$product->id}}" class="d-flex align-items-center">
                       <img src="{{ $product->img ? asset('storage/app/img/'.$product->id.'.jpg') : asset('img/sample.jpg') }}" class="rounded list-icon">
-                      <strong>{{ $product->name }}</strong> &nbsp&nbsp
-                      #{{ $product->part_no }}
+                      <span class="list-head"><strong>{{ $product->part_no }}</strong><br>{{ $product->name }}</span>
+                      
                     </button>
                   </h4>
                 </div>

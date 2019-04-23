@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
 use Auth;
+use Session;
 
 use App\Forms\PasswordForm;
+use App\Forms\ContactForm;
 
 class UserController extends Controller
 {
@@ -52,7 +54,54 @@ class UserController extends Controller
         $text = 'success!';
         return view('note', compact('text'));
     }
+
+    /**
+    * 联系方式
+    *
+    */
+    public function contactCreate()
+    {
+        $form = $this->form(ContactForm::class, [
+            'method' => 'POST',
+            'url' => '/users/contact/store'
+        ]);
+
+        $title = 'Contact';
+        $icon = 'address-card-o';
+
+        return view('form', compact('form','title','icon'));
+    }
+
+    /**
+    * 保存
+    *
+    */
+    public function contactStore(Request $request)
+    {
+        $array = [
+
+            'salutation' => $request->salutation,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'company' => $request->company,
+            'street' => $request->street,
+            'city' => $request->city,
+            'country' => $request->country,
+            'phone' => $request->phone,
+    
+        ];
+
+        Auth::user()->update(['contact_verified_at' => now(), 'info->contact' => json_encode($array)]);
+
+        $path = '/';
+
+        if(Session::has('target_url')) $path = session('target_url');
+        Session::forget('target_url');
+
+        return redirect($path);
+    }
 }
+
 
 
 

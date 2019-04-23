@@ -14,6 +14,8 @@ use App\Org;
  */
 class Role
 {
+
+    // show
     public function show($json, $key) 
     {
         try {
@@ -47,6 +49,24 @@ class Role
     public function locked($id=0)
     {
         return $this->hasAndTrue($this->choose($id)->auth, 'locked');
+    }
+
+    /**
+     * 邮件已认证
+     *
+     */
+    public function emailVerified($id=0)
+    {
+        return $this->choose($id)->email_verified_at;
+    }
+
+    /**
+     * 联系方式
+     *
+     */
+    public function contactVerified($id=0)
+    {
+        return $this->choose($id)->contact_verified_at;
     }
 
 

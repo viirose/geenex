@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Kris\LaravelFormBuilder\FormBuilderTrait;
 
+use App\Forms\QuickContactForm;
 use App\Forms\ContactForm;
 
 class HomeController extends Controller
@@ -18,19 +19,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $form = $this->form(ContactForm::class, [
+        $form = $this->form(QuickContactForm::class, [
             'method' => 'POST',
-            'url' => '/contact/send'
+            'url' => '/contact/quick'
         ]);
 
         return view('home', compact('form'));
     }
 
     /**
-     * Send mail
+     * quick mail
      *
      */
-    public function send(Rquest $request)
+    public function quick(Rquest $request)
     {
         # code...
     }

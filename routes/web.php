@@ -17,18 +17,28 @@ Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@index');
-Route::post('/contact/send', 'HomeController@send');
+Route::post('/contact/quick', 'HomeController@quick');
 
 // Route::get('/login', 'UserController@login');
 // Route::get('/home', 'HomeController@index')->name('home');
 
+// 产品
+Route::get('/products', 'ProductController@index');
+Route::post('/products/search', 'ProductController@search');
+Route::get('/products/search/{type}/{id}', 'ProductController@searchType');
+Route::get('/products/clear_search/{string}', 'ProductController@searchClear');
+
+
 Route::get('/cart', 'OrderController@cart');
 
 Route::get('/logout', 'UserController@logout');
-Route::get('/products', 'ProductController@index');
+
+// 联系方式
+Route::get('/users/contact/create', 'UserController@contactCreate')->middleware('verified');
+Route::post('/users/contact/store', 'UserController@contactStore')->middleware('verified');
 
 
-Route::group(['middleware' => ['verified']], function () {
+Route::group(['middleware' => ['verified', 'state']], function () {
 
     // 人员
     Route::get('/users/reset_password', 'UserController@resetPassword');
@@ -51,7 +61,10 @@ Route::group(['middleware' => ['verified']], function () {
 
 
 Route::get('/test', function() {
-    echo now();
+    $array = \App\Conf::where('parent_id', 4)
+                                ->pluck('id')
+                                ->toArray();
+    print_r($array);
 });
 
 

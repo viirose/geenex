@@ -12,13 +12,13 @@ class ContactForm extends Form
         $this
         ->add('salutation', 'select', [
             'label' => "Salutation*",
-            'choices' => ['mr' => "Mr.", 'mrs' => "Mrs"],
+            'choices' => ['Mr.' => "Mr.", 'Mrs.' => "Mrs"],
             'rules' => 'required'
         ])
-        ->add('title', 'text', [
-            'label' => 'Title',
-            'rules' => 'min:3|max:50'
-        ])
+        // ->add('title', 'text', [
+        //     'label' => 'Title',
+        //     'rules' => 'min:3|max:50'
+        // ])
         ->add('first_name', 'text', [
             'label' => 'First name*',
             'rules' => 'required|min:2|max:32'
@@ -47,18 +47,18 @@ class ContactForm extends Form
             'label' => 'Phone',
             'rules' => 'min:2|max:20'
         ])
-        ->add('email', 'text', [
-            'label' => 'Email*',
-            'rules' => 'required|email'
-        ])
+        // ->add('email', 'text', [
+        //     'label' => 'Email*',
+        //     'rules' => 'required|email'
+        // ])
         ->add('url', 'text', [
             'label' => 'Internet URL ',
             'rules' => 'min:2|max:200'
         ])
-        ->add('content', 'textarea', [
-            'label' => 'Favorites',
-            'rules' => 'min:2|max:200'
-        ])
+        // ->add('content', 'textarea', [
+        //     'label' => 'Favorites',
+        //     'rules' => 'min:2|max:200'
+        // ])
         ->add('submit','submit',[
             'label' => 'OK',
             'attr' => ['class' => 'btn btn-primary btn-block']

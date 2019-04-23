@@ -26,13 +26,14 @@
     </section>
   
     <!-- Contact Section-->
-    <section>
+    <section  id="contact_form">
       <div class="container">
         <header class="section-header">
-          <h2 class="mb-2">For online requests please use our form below</h2>
-          <p class="lead">If you send the data entered in the contact form by clicking on the following button, you agree that we use your details to answer your inquiry or contact us. Disclosure to third parties will generally not take place unless applicable data protection regulations justify a transfer or we are legally obliged to do so. You may revoke your consent at any time with future effect. In case of cancellation your data will be deleted immediately. Your data will otherwise be deleted if we have processed your request or the purpose of the storage is omitted. You can always inform yourself about the data stored about your person. Further information on data protection can be found in the Privacy Policy of this website.
-Fields with * are required.
-</p>
+          <h2 class="mb-2">Quick Contact
+            @if(Auth::check())
+            : {{ Auth::user()->email }}
+            @endif
+          </h2>
         </header>
         <div class="row align-items-center mt-5">
           <div class="col-lg-7">

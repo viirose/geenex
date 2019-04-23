@@ -13,9 +13,10 @@
                 <p class="lead text-muted mt-4 mb-4">Type in the manufacturer’s part number or the part’s description to get the list of parts available.</p>
               </div>
             </div>
-            <form action="#" class="subscription-form">
+            <form action="/products/search" method="post" class="subscription-form">
               <div class="form-group">
-                <input type="email" name="email" placeholder="keywords..." class="form-control">
+                @csrf
+                <input type="text" name="keywords" placeholder="Search" class="form-control" value="{{ Session::has('keywords') ? session('keywords') : '' }}">
                 <button type="submit" class="btn btn-primary">Search</button>
               </div>
             </form>

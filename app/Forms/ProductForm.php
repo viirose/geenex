@@ -56,6 +56,7 @@ class ProductForm extends Form
             'rules' => 'required',
         ])
         ->add('brand_id', 'select', [
+            'label' => 'Manufacturer',
             'empty_value' => '=== Select Brand ===',
             'choices' => $this->brands(),
             'rules' => 'required'
@@ -69,6 +70,7 @@ class ProductForm extends Form
             'rules' => 'required|min:3|max:50'
         ])
         ->add('availability_id', 'select', [
+             'label' => 'Availability',
             'empty_value' => '=== Select availability ===',
             'choices' => $this->availability(),
             'rules' => 'required'

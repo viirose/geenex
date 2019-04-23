@@ -51,8 +51,7 @@ Route::group(['middleware' => ['verified']], function () {
 
 
 Route::get('/test', function() {
-    $a = str_random(16);
-    echo $a;
+    echo now();
 });
 
 

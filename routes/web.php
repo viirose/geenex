@@ -17,6 +17,7 @@ Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@index');
+Route::post('/contact/send', 'HomeController@send');
 
 // Route::get('/login', 'UserController@login');
 // Route::get('/home', 'HomeController@index')->name('home');
@@ -50,13 +51,8 @@ Route::group(['middleware' => ['verified']], function () {
 
 
 Route::get('/test', function() {
-    $a = new App\Helpers\Role;
-    $b = $a->admin(1);
-    if($b){
-        echo "yes";
-    }else{
-        echo "fuck";
-    }
+    $a = str_random(16);
+    echo $a;
 });
 
 

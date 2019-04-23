@@ -13,20 +13,25 @@ class HomeController extends Controller
     use FormBuilderTrait;
 
     /**
-     * Show the application dashboard.
+     * home 
      *
-     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
         $form = $this->form(ContactForm::class, [
             'method' => 'POST',
-            'url' => '/users/save_password'
+            'url' => '/contact/send'
         ]);
 
-        $title = 'Reset Password';
-        $icon = 'key';
-
         return view('home', compact('form'));
+    }
+
+    /**
+     * Send mail
+     *
+     */
+    public function send(Rquest $request)
+    {
+        # code...
     }
 }

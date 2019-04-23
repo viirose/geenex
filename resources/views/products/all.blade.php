@@ -17,7 +17,7 @@
             @if(Session::has('keywords') || Session::has('search_category_id') || Session::has('search_brand_id') || Session::has('search_level2'))
             <a href="/products/clear_search/all" class="btn btn-outline-primary btn-sm"> clear criteria</a>
             @else
-            all the products
+            all products
             @endif
             
 

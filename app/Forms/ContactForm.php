@@ -55,6 +55,10 @@ class ContactForm extends Form
             'label' => 'Internet URL ',
             'rules' => 'min:2|max:200'
         ])
+        ->add('content', 'textarea', [
+            'label' => 'Favorites',
+            'rules' => 'min:2|max:200'
+        ])
         ->add('submit','submit',[
             'label' => 'OK',
             'attr' => ['class' => 'btn btn-primary btn-block']

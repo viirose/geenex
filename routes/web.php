@@ -16,9 +16,7 @@ Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 // 必须认证邮箱
 Auth::routes(['verify' => true]);
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index');
 
 // Route::get('/login', 'UserController@login');
 // Route::get('/home', 'HomeController@index')->name('home');

@@ -25,129 +25,41 @@
       </div>
     </section>
   
-    <!-- Integrations Section-->
-    <section>
-      <div class="container">
-        <div class="text-center">
-          <h2>Integrations</h2>
-          <div class="row">
-            <div class="col-lg-8 mx-auto">
-              <p class="lead text-muted mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod. eiusmod tempor incididunt ut labore.</p>
-            </div>
-          </div>
-        </div>
-        <div class="integrations mt-5">
-          <div class="row">
-            <div class="col-lg-3">
-              <div class="box text-center">
-                <div class="icon d-flex align-items-end"><img src="img/monitor.svg" alt="..." class="img-fluid"></div>
-                <h3 class="h4">Web desgin</h3>
-                <p class="text-small font-weight-light">Lorem Ipsum has been the industry's standard dummy text ever.</p>
-              </div>
-            </div>
-            <div class="col-lg-3">
-              <div class="box text-center">
-                <div class="icon d-flex align-items-end"><img src="img/target.svg" alt="..." class="img-fluid"></div>
-                <h3 class="h4">Print</h3>
-                <p class="text-small font-weight-light">Lorem Ipsum has been the industry's standard dummy text ever.</p>
-              </div>
-            </div>
-            <div class="col-lg-3">
-              <div class="box text-center">
-                <div class="icon d-flex align-items-end"><img src="img/chat.svg" alt="..." class="img-fluid"></div>
-                <h3 class="h4">SEO and SEM</h3>
-                <p class="text-small font-weight-light">Lorem Ipsum has been the industry's standard dummy text ever.</p>
-              </div>
-            </div>
-            <div class="col-lg-3">
-              <div class="box text-center">
-                <div class="icon d-flex align-items-end"><img src="img/idea.svg" alt="..." class="img-fluid"></div>
-                <h3 class="h4">Consulting</h3>
-                <p class="text-small font-weight-light">Lorem Ipsum has been the industry's standard dummy text ever.</p>
-              </div>
-            </div>
-            <div class="col-lg-3">
-              <div class="box text-center">
-                <div class="icon d-flex align-items-end"><img src="img/coffee-cup.svg" alt="..." class="img-fluid"></div>
-                <h3 class="h4">Email Marketing</h3>
-                <p class="text-small font-weight-light">Lorem Ipsum has been the industry's standard dummy text ever.</p>
-              </div>
-            </div>
-            <div class="col-lg-3">
-              <div class="box text-center">
-                <div class="icon d-flex align-items-end"><img src="img/pen.svg" alt="..." class="img-fluid"></div>
-                <h3 class="h4">UX &amp; UI</h3>
-                <p class="text-small font-weight-light">Lorem Ipsum has been the industry's standard dummy text ever.</p>
-              </div>
-            </div>
-            <div class="col-lg-3">
-              <div class="box text-center">
-                <div class="icon d-flex align-items-end"><img src="img/pen.svg" alt="..." class="img-fluid"></div>
-                <h3 class="h4">UX &amp; UI</h3>
-                <p class="text-small font-weight-light">Lorem Ipsum has been the industry's standard dummy text ever.</p>
-              </div>
-            </div>
-            <div class="col-lg-3">
-              <div class="box text-center">
-                <div class="icon d-flex align-items-end"><img src="img/pen.svg" alt="..." class="img-fluid"></div>
-                <h3 class="h4">UX &amp; UI</h3>
-                <p class="text-small font-weight-light">Lorem Ipsum has been the industry's standard dummy text ever.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
     <!-- Contact Section-->
     <section>
       <div class="container">
         <header class="section-header">
-          <h2 class="mb-2">Fill out the form</h2>
-          <p class="lead">Please submit your information and we will follow up with you as soon as possible.</p>
+          <h2 class="mb-2">For online requests please use our form below</h2>
+          <p class="lead">If you send the data entered in the contact form by clicking on the following button, you agree that we use your details to answer your inquiry or contact us. Disclosure to third parties will generally not take place unless applicable data protection regulations justify a transfer or we are legally obliged to do so. You may revoke your consent at any time with future effect. In case of cancellation your data will be deleted immediately. Your data will otherwise be deleted if we have processed your request or the purpose of the storage is omitted. You can always inform yourself about the data stored about your person. Further information on data protection can be found in the Privacy Policy of this website.
+Fields with * are required.
+</p>
         </header>
         <div class="row align-items-center mt-5">
           <div class="col-lg-7">
-            <form action="#" class="contact-form text-left">
-              <div class="form-group mb-4">
-                <label>Name<sup class="text-primary">&#10033;</sup></label>
-                <input type="text" name="name" placeholder="e.g. John Smith" class="form-control">
-              </div>
-              <div class="form-group mb-4">
-                <label>Company Email<sup class="text-primary">&#10033;</sup></label>
-                <input type="text" name="email" placeholder="name@company.com" class="form-control">
-              </div>
-              <div class="form-group mb-4">
-                <label>Subject<sup class="text-primary">&#10033;</sup></label>
-                <input type="text" name="subject" placeholder="Briefly describe your question" class="form-control">
-              </div>
-              <div class="form-group mb-4">
-                <label>Now let's hear the details<sup class="text-primary">&#10033;</sup></label>
-                <textarea name="message" placeholder="Let us know what you need" class="form-control"></textarea>
-              </div>
-              <div class="form-group">
-                <input type="submit" value="Send message" class="btn btn-primary">
-              </div>
-            </form>
+            
+            {!! form($form) !!}
+
           </div>
           <div class="col-lg-5 contact-details mt-5 mt-lg-0">
             <div class="box">
               <div class="icon d-flex align-items-end"><img src="img/placeholder.svg" alt="" class="img-fluid"></div>
               <h5>Address</h5>
-              <p class="text-small font-weight-light">13/25 New Avenue, New Heaven, 45Y 73J, England, Great Britain</p>
+              <p class="text-small font-weight-light">JOC-GENNEX Engineering Technology Co., Ltd.
+49 South Zhongba Road,
+Haian, Jiangsu Province,
+China 226600
+</p>
             </div>
             <div class="box">
               <div class="icon d-flex align-items-end"><img src="img/technology.svg" alt="" class="img-fluid"></div>
-              <h5>Call center</h5>
-              <p class="text-small font-weight-light">This number is toll free if calling from Great Britain otherwise we advise you to use the electronic form of communicatio</p><strong class="text-muted">+33 555 444 333</strong>
+              <h5>Phone</h5>
+              <p class="text-small font-weight-light">FAX: +86 513 8180 0823</p><strong class="text-muted">TEL: +86 513 8889 2688</strong>
             </div>
             <div class="box">
               <div class="icon d-flex align-items-end"><img src="img/multimedia.svg" alt="" class="img-fluid"></div>
-              <h5>Electronic support</h5>
-              <p class="text-small font-weight-light">Please feel free to write an email to us or to use our electronic ticketing system.</p>
-              <ul class="text-left">
-                <li><a href="mailto:info@fakeemail.com" class="text-small">info@fakeemail.com</a></li>
-                <li><a href="#" class="text-small">Ticketio - our ticketing support platform </a></li>
-              </ul>
+              <h5>Email support</h5>
+              <p class="text-small font-weight-light"><strong>info@joclift.con email </strong> </p>
+
             </div>
           </div>
         </div>

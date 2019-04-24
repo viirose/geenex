@@ -33,7 +33,7 @@
       
       <input type="hidden" id="target_id" value="{{ $record->id }}">
       <label class="label" data-toggle="tooltip" title="set image">
-        <img class="rounded img-fluid" id="avatar" src="{{ URL::asset('img/sample.jpg') }}" alt="{{ $record->name }}">
+        <img class="rounded img-fluid" id="avatar" src="{{ $record->img ? asset($record->img) : asset('img/sample.jpg') }}" alt="{{ $record->name }}">
         <input type="file" class="sr-only" id="input" name="image" accept="image/*">
       </label>
       <div class="progress">

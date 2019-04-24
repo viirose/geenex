@@ -1,5 +1,6 @@
 <?php
   $f = new App\Helpers\Filter;
+  $r = new App\Helpers\Role;
 ?>
 @extends('../nav')
 
@@ -48,7 +49,7 @@
                 <div id="headingOne" class="card-header">
                   <h4 class="mb-0 accordion-heading">
                     <button data-toggle="collapse" data-target="#collapse{{$product->id}}" aria-expanded="false" aria-controls="collapse{{$product->id}}" class="d-flex align-items-center">
-                      <img src="{{ $product->img ? asset('storage/app/img/'.$product->id.'.jpg') : asset('img/sample.jpg') }}" class="rounded list-icon">
+                      <img src="{{ $product->img ? asset($product->img) : asset('img/sample.jpg') }}" class="rounded list-icon">
                       <span class="list-head"><strong>{!! $f->fit($product->part_no) !!}</strong><br>{!! $f->fit($product->name) !!}</span>
                       
                     </button>
@@ -57,7 +58,7 @@
                 <div id="collapse{{$product->id}}" aria-labelledby="headingOne" data-parent="#accordion" class="collapse">
                   <div class="card-body">
                       <div class="cent">
-                        <img src="{{ $product->img ? asset('storage/app/img/'.$product->id.'.jpg') : asset('img/sample.jpg') }}" class="rounded img-fluid">
+                        <img src="{{ $product->img ? asset($product->img) : asset('img/sample.jpg') }}" class="rounded img-fluid">
                       </div>
                       <ul class="list-unstyled pl-0 mt-4">
                         <li>Part Nr: {!! $f->fit($product->part_no) !!}</li>
@@ -69,6 +70,17 @@
                         <li>{!! $f->fit($product->content) !!}</li>
                         <li><a href="/inquiries/add/{{$product->id}}" class="btn btn-outline-light btn-sm">add to My Inquiry</a></li>
                       </ul>
+
+                      @if($r->admin())
+                        <ul class="list-unstyled pl-0 mt-4">
+                          <li>Created by: {{ $product->creater->name }}</li>
+                          <li>Created at: {{ $product->created_at }}</li>
+                          <li>Updated at: {{ $product->updated_at }}</li>
+                          <li><a href="/products/edit/{{$product->id}}" class="btn btn-outline-light btn-sm">edit</a></li>
+                        </ul>
+                      @endif
+
+
                   </div>
                 </div>
               </div>

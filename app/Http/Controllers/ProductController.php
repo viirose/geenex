@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
+use Illuminate\Support\Facades\Storage;
 use Auth;
 use Image;
 use Session;
@@ -46,7 +47,7 @@ class ProductController extends Controller
                             $query->whereHas('products', function ($q) {
 
                                 // 要有图片
-                                $q->where('img', true);
+                                $q->whereNotNull('img');
 
                                 // keywords
                                 if(Session::has('keywords') && trim(session('keywords')) != '') {
@@ -55,7 +56,7 @@ class ProductController extends Controller
                                       ->orWhereRaw('upper(name) like upper(?)', ['%'.session('keywords').'%'])
                                       ->orWhereRaw('upper(remark) like upper(?)', ['%'.session('keywords').'%'])
                                       ->orWhereRaw('upper(content) like upper(?)', ['%'.session('keywords').'%']);
-                                      
+
                                     // $q->where('part_no', 'like', '%'.session('keywords').'%')
                                     //   ->orWhere('name', 'like', '%'.session('keywords').'%')
                                     //   ->orWhere('remark', 'like', '%'.session('keywords').'%')
@@ -90,7 +91,7 @@ class ProductController extends Controller
                         ->whereHas('brand_products', function ($q) {
 
                             // 要有图片
-                            $q->where('img', true);
+                            $q->whereNotNull('img');
 
                             // keywords
                             if(Session::has('keywords') && trim(session('keywords')) != '') {
@@ -110,7 +111,7 @@ class ProductController extends Controller
                         ->withCount('brand_products')
                         ->get();
 
-        $products = Product::where('img', true)
+        $products = Product::whereNotNull('img')
                             ->where(function ($q1) {
                                 // search_category_id
                                 if(Session::has('search_category_id')) {
@@ -262,6 +263,42 @@ class ProductController extends Controller
     }
 
     /**
+     * edit
+     *
+     */
+    public function edit($id)
+    {
+        $record = Product::findOrFail($id);
+
+        $form = $this->form(ProductForm::class, [
+            'method' => 'POST',
+            'model' => $record,
+            'url' => '/products/update/'.$id
+        ]);
+
+        $title = 'Edit: '.$record->part_no;
+        $icon = 'wrench';
+
+        return view('form', compact('form','title','icon'));
+    }
+
+
+    /**
+     * update
+     *
+     */
+    public function update(Request $request, $id)
+    {
+        $all = $request->all();
+
+        $record = Product::findOrFail($id);
+
+        $record->update($all);
+
+        return view('img', compact('record'));
+    }
+
+    /**
      * image store
      *
      */
@@ -274,9 +311,32 @@ class ProductController extends Controller
         $exists = Product::find($id);
         if(!$exists) abort('404');
 
-        Image::make($img)->insert('img/watermark.png')->save('storage/app/img/'.$id.'.jpg', 50);
+        $new_img = 'storage/app/img/'.$id.'-'.time().'.jpg';
 
-        $exists->update(['img' => true]);
+        $image = Image::make($img)
+                ->insert('img/watermark.png')
+
+                ->text('#'.$exists->part_no, 370, 50, function($font) {
+                    $font->file('fonts/helvetica-light.otf');
+                    $font->size(50);
+                    $font->color('#fff');
+                    $font->align('center');
+                    $font->valign('top');
+                    // $font->angle(45);
+                })
+                ->text('#'.$exists->part_no, 369, 49, function($font) {
+                    $font->file('fonts/helvetica-light.otf');
+                    $font->size(50);
+                    $font->color('#000');
+                    $font->align('center');
+                    $font->valign('top');
+                    // $font->angle(45);
+                })
+                ->save($new_img, 50);
+
+        if($exists->img) unlink($exists->img);
+
+        $exists->update(['img' => $new_img]);
 
         echo '200';
     }

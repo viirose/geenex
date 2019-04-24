@@ -25,4 +25,10 @@ class Product extends Model
     {
         return $this->hasOne('App\Conf', 'id', 'availability_id');
     }
+
+    // creater
+    public function creater()
+    {
+        return $this->hasOne('App\User', 'id', 'created_by');
+    }
 }

@@ -55,6 +55,8 @@ Route::group(['middleware' => ['verified', 'state']], function () {
     Route::get('/products/create', 'ProductController@create');
     Route::post('/products/store', 'ProductController@store');
     Route::post('/products/img/store', 'ProductController@imgStore');
+    Route::get('/products/edit/{id}', 'ProductController@edit');
+    Route::post('/products/update/{id}', 'ProductController@update');
 
     Route::get('/conf/brands', 'ConfController@brands');
     Route::get('/conf/brands/create/{key}', 'ConfController@brandCreate');

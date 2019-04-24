@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->integer('availability_id');
             $table->string('remark')->nullable();
             $table->text('content')->nullable();
-            $table->boolean('img')->default(false);
+            $table->string('img')->nullable();
             $table->boolean('show')->default(true);
             $table->jsonb('info')->nullable();
             $table->timestamps();

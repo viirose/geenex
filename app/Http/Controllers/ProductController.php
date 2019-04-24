@@ -306,6 +306,9 @@ class ProductController extends Controller
     {
         $record = Product::findOrFail($id);
         if(!$record) abort('403');
+
+        if($record->img) unlink($record->img);
+        
         $record->delete();
         return redirect()->back();
     }

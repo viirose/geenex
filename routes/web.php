@@ -28,7 +28,7 @@ Route::post('/products/search', 'ProductController@search');
 Route::get('/products/search/{type}/{id}', 'ProductController@searchType');
 Route::get('/products/clear_search/{string}', 'ProductController@searchClear');
 
-
+// 咨询列表
 Route::get('/inquiries', 'OrderController@inquiries');
 Route::get('/inquiries/add/{id}', 'OrderController@add');
 Route::get('/inquiries/delete/{id}', 'OrderController@delete');
@@ -42,6 +42,9 @@ Route::post('/users/contact/store', 'UserController@contactStore')->middleware('
 
 
 Route::group(['middleware' => ['verified', 'state']], function () {
+
+    // 咨询列表 - 邮件
+    Route::post('/inquiries/send', 'OrderController@send');
 
     // 人员
     Route::get('/users/reset_password', 'UserController@resetPassword');
@@ -67,7 +70,10 @@ Route::get('/test', function() {
     $a=[1,2,3];
     $b = array_push($a, 3);
     // print_r($a);
-    Session::forget('inquiries');
+    // Session::forget('inquiries');
+    // echo(Auth::user()->email);
+    // echo(config('mail.to.address'));
+    // print_r(config('mail.to'));
     // $a = array_unique($a);
 
     // array_splice($a, 1,2);

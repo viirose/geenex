@@ -23,16 +23,13 @@
 
               </ol>
             </blockquote>
-            <form action="#" class="contact-form text-left">
+            <form action="/inquiries/send" method="post" class="contact-form text-left">
               <div class="form-group mb-4">
-                <label>Subject<sup class="text-primary">&#10033;</sup></label>
-                <input type="text" name="subject" placeholder="Briefly describe your question" class="form-control">
-              </div>
-              <div class="form-group mb-4">
-                <label>Now let's hear the details<sup class="text-primary">&#10033;</sup></label>
+                <label>Message</label>
                 <textarea name="message" placeholder="Let us know what you need" class="form-control"></textarea>
               </div>
               <div class="form-group">
+                @csrf
                 <input type="submit" value="Send message" class="btn btn-outline-primary btn-sm">
                 <a href="/inquiries/clear" class="btn btn-outline-danger btn-sm"> clear my Inquiry</a>
               </div>

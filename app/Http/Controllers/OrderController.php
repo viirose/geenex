@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
+use Mail;
 
+use App\Mail\OrderShipped;
 use App\Product;
 
 class OrderController extends Controller
@@ -68,6 +70,16 @@ class OrderController extends Controller
     {
         if(Session::has('inquiries')) Session::forget('inquiries');
         return redirect()->back();
+    }
+
+
+    /**
+     * 邮件
+     *
+     */
+    public function send(Request $request)
+    {
+        Mail::to(config('mail.reply_to.address'))->send(new OrderShipped($request));
     }
 
 

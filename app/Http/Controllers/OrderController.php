@@ -80,6 +80,13 @@ class OrderController extends Controller
     public function send(Request $request)
     {
         Mail::to(config('mail.reply_to.address'))->send(new OrderShipped($request));
+
+        if(Session::has('inquiries')) Session::forget('inquiries');
+
+        $text = 'your email has been send successfully!';
+        $color = 'success';
+        $icon = 'paper-plane-o';
+        return view('note', compact('text', 'color', 'icon'));
     }
 
 }

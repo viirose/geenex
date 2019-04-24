@@ -34,5 +34,10 @@ class HomeController extends Controller
     public function quick(Request $request)
     {
         Mail::to(config('mail.reply_to.address'))->send(new QuickMail($request));
+
+        $text = 'your email has been send successfully!';
+        $color = 'success';
+        $icon = 'paper-plane-o';
+        return view('note', compact('text', 'color', 'icon'));
     }
 }

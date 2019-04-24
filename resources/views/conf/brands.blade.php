@@ -30,7 +30,7 @@
         </div>
    
         <div class="modal-body">
-          <input type="text" id="conf_key" placeholder="input type name" onchange="javascript:set_url()">
+          <input type="text" id="conf_key" placeholder="input brand name" onchange="javascript:set_url()">
           <input type="hidden" id="parent_id">
           <input type="hidden" id="edit_id">
         </div>

@@ -63,6 +63,7 @@
                         <li>Part Nr: {!! $f->fit($product->part_no) !!}</li>
                         <li>Part Name.: {!! $f->fit($product->name) !!}</li>
                         <li>Part for: {{ $product->brand->key }}</li>
+                        <li>Category: {{ $product->category->key }}</li>
                         <li>Availability: {{ $product->availability->key }}</li>
                         <li>Remark: {!! $f->fit($product->remark) !!}</li>
                         <li>{!! $f->fit($product->content) !!}</li>

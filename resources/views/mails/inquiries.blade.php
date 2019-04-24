@@ -2,7 +2,7 @@
     $m = new App\Helpers\Mail;
 ?>
 <div>
-    == New Query ==<br> 
+    == New Inquiry ==<br> 
     From: {{ Auth::user()->email }}<br>
     Customer: {{ Auth::user()->name }}
 </div>

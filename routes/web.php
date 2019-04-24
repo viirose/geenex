@@ -34,6 +34,7 @@ Route::get('/inquiries/add/{id}', 'OrderController@add');
 Route::get('/inquiries/delete/{id}', 'OrderController@delete');
 Route::get('/inquiries/clear', 'OrderController@clear');
 
+
 Route::get('/logout', 'UserController@logout');
 
 // 联系方式

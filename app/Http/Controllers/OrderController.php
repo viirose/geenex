@@ -82,8 +82,6 @@ class OrderController extends Controller
         Mail::to(config('mail.reply_to.address'))->send(new OrderShipped($request));
     }
 
-
-
 }
 
 

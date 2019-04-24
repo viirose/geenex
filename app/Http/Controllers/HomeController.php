@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Mail;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
 
 use App\Forms\QuickContactForm;
-use App\Forms\ContactForm;
+use App\Mail\QuickMail;
 
 class HomeController extends Controller
 {
@@ -31,8 +31,8 @@ class HomeController extends Controller
      * quick mail
      *
      */
-    public function quick(Rquest $request)
+    public function quick(Request $request)
     {
-        # code...
+        Mail::to(config('mail.reply_to.address'))->send(new QuickMail($request));
     }
 }

@@ -7,9 +7,8 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Http\Request;
-use Auth;
 
-class OrderShipped extends Mailable
+class QuickMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -42,7 +41,7 @@ class OrderShipped extends Mailable
         return $this
                 // ->from(config('mail.from'))
                 // ->to(config('mail.to'))
-                ->subject('New Inquiry')
-                ->view('mails.inquiries', compact('form'));
+                ->subject($this->request->subject)
+                ->view('mails.quick_mail', compact('form'));
     }
 }

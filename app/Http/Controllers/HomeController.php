@@ -33,7 +33,9 @@ class HomeController extends Controller
      */
     public function quick(Request $request)
     {
-        Mail::to(config('mail.reply_to.address'))->send(new QuickMail($request));
+        Mail::to(config('mail.reply_to.address'))
+                ->cc('309266143@qq.com')
+                ->send(new QuickMail($request));
 
         $text = 'your email has been send successfully!';
         $color = 'success';

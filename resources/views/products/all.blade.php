@@ -71,7 +71,7 @@
                         <li><a href="/inquiries/add/{{$product->id}}" class="btn btn-outline-light btn-sm">add to My Inquiry</a></li>
                       </ul>
 
-                      @if($r->admin())
+                      @if(Auth::check() && $r->admin())
                         <ul class="list-unstyled pl-0 mt-4">
                           <li>Created by: {{ $product->creater->name }}</li>
                           <li>Created at: {{ $product->created_at }}</li>

@@ -299,6 +299,15 @@ class ProductController extends Controller
     }
 
     /**
+     * delete
+     *
+     */
+    public function delete($id)
+    {
+        # code...
+    }
+
+    /**
      * image store
      *
      */

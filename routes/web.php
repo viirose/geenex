@@ -29,7 +29,10 @@ Route::get('/products/search/{type}/{id}', 'ProductController@searchType');
 Route::get('/products/clear_search/{string}', 'ProductController@searchClear');
 
 
-Route::get('/cart', 'OrderController@cart');
+Route::get('/inquiries', 'OrderController@inquiries');
+Route::get('/inquiries/add/{id}', 'OrderController@add');
+Route::get('/inquiries/delete/{id}', 'OrderController@delete');
+Route::get('/inquiries/clear', 'OrderController@clear');
 
 Route::get('/logout', 'UserController@logout');
 
@@ -61,10 +64,14 @@ Route::group(['middleware' => ['verified', 'state']], function () {
 
 
 Route::get('/test', function() {
-    $array = \App\Conf::where('parent_id', 4)
-                                ->pluck('id')
-                                ->toArray();
-    print_r($array);
+    $a=[1,2,3];
+    $b = array_push($a, 3);
+    // print_r($a);
+    Session::forget('inquiries');
+    // $a = array_unique($a);
+
+    // array_splice($a, 1,2);
+    // print_r(session('inquiries'));
 });
 
 

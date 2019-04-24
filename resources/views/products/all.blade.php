@@ -66,7 +66,7 @@
                         <li>Availability: {{ $product->availability->key }}</li>
                         <li>Remark: {!! $f->fit($product->remark) !!}</li>
                         <li>{!! $f->fit($product->content) !!}</li>
-                        <li><a href="#" class="btn btn-outline-light btn-sm">add to My Inquiry</a></li>
+                        <li><a href="/inquiries/add/{{$product->id}}" class="btn btn-outline-light btn-sm">add to My Inquiry</a></li>
                       </ul>
                   </div>
                 </div>

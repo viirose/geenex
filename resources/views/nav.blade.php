@@ -50,7 +50,12 @@
                   </li>
                   <!-- Link-->
                   <!-- Link-->
-                  <li class="nav-item"><a href="/cart" class="nav-link">|   &nbsp<i class="fa fa-list-ul" aria-hidden="true"></i> My Inquiry <span class="badge badge-danger">4</span></a></li>
+                  <li class="nav-item"><a href="/inquiries" class="nav-link">|   &nbsp<i class="fa fa-list-ul" aria-hidden="true"></i> My Inquiry 
+                    @if(Session::has('inquiries') && count(session('inquiries')))
+                      <span class="badge badge-danger">{{ count(session('inquiries')) }}</span>
+                    @endif
+                  </a>
+                </li>
                   </li>
                   <li class="nav-item dropdown">
                     <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">|  &nbsp<i class="fa fa-{{ Auth::check() ? 'user-circle-o' : 'user-o' }}" aria-hidden="true"></i> {{ Auth::check() ? Auth::user()->name : '' }} {!! Auth::check() && !$r->emailVerified() ? ' <span class="text-danger">[not verified]</span>' : '' !!}</a>

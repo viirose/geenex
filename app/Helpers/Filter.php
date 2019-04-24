@@ -25,7 +25,9 @@ class Filter
      */
     public function fit($text)
     {
-        return str_replace($this->keywords, '<strong class="text-warning">'.$this->keywords.'</strong>', $text);
+        $text = strtoupper($text);
+
+        return str_replace(strtoupper($this->keywords), '<strong class="text-warning">'.strtoupper($this->keywords).'</strong>', $text);
     }
 
      /**

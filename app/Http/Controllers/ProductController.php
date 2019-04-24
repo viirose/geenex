@@ -255,7 +255,7 @@ class ProductController extends Controller
         $exists = Product::find($id);
         if(!$exists) abort('404');
 
-        Image::make($img)->insert('img/watermark.png')->save('storage/app/img/'.$id.'.jpg', 100);
+        Image::make($img)->insert('img/watermark.png')->save('storage/app/img/'.$id.'.jpg', 50);
 
         $exists->update(['img' => true]);
 

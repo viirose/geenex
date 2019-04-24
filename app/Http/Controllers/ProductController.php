@@ -304,7 +304,10 @@ class ProductController extends Controller
      */
     public function delete($id)
     {
-        # code...
+        $record = Product::findOrFail($id);
+        if(!$record) abort('403');
+        $record->delete();
+        return redirect()->back();
     }
 
     /**

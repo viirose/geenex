@@ -76,7 +76,10 @@
                           <li>Created by: {{ $product->creater->name }}</li>
                           <li>Created at: {{ $product->created_at }}</li>
                           <li>Updated at: {{ $product->updated_at }}</li>
-                          <li><a href="/products/edit/{{$product->id}}" class="btn btn-outline-light btn-sm">edit</a></li>
+                          <li>
+                            <a href="/products/edit/{{$product->id}}" class="btn btn-outline-light btn-sm">edit</a>
+                            <a href="javascript:del({{ $product->id }})" class="btn btn-danger btn-sm">delete!</a>
+                          </li>
                         </ul>
                       @endif
 
@@ -142,9 +145,35 @@
         </div>
       </div>
     </section>
+
+    <!-- 模态框 -->
+  <div class="modal fade" id="delete_confirm">
+    <div class="modal-dialog">
+      <div class="modal-content">
+   
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+   
+        <div class="modal-body">
+          you can NOT cancel this operation!! 
+        </div>
+   
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">close</button>
+          <a href="#" class="btn btn-danger btn-sm" id="go">delete!!</a>
+        </div>
+   
+      </div>
+    </div>
+  </div>
+
     <script>
-      function search() {
-        alert('Fuck');
+      function del(id) {
+        $("#delete_confirm").modal();
+        
+        var url = '/products/delete/' + id;
+        $("#go").attr('href', url);
       }
     </script>
 @endsection

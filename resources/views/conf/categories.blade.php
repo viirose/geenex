@@ -77,6 +77,8 @@
     var conf_key = $("#conf_key").val();
     var parent_id = $("#parent_id").val();
     var edit_id = $("#edit_id").val();
+    
+    conf_key = encodeURI(conf_key);
     var url = '/conf/create/' + conf_key;
 
 
@@ -86,7 +88,7 @@
       url = '/conf/edit/'+ conf_key +'/'+ edit_id;
     }
 
-    url = encodeURI(url);
+    // url = encodeURI(url);
     if($.trim(conf_key) != '') $("#go").attr('href', url);
   }
 

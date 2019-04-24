@@ -331,23 +331,21 @@ class ProductController extends Controller
         $image = Image::make($img)
                 ->insert('img/watermark.png')
 
-                ->text('#'.$exists->part_no, 370, 50, function($font) {
+                ->text('Part Nr. '.$exists->part_no, 390, 50, function($font) {
                     $font->file('fonts/helvetica-light.otf');
-                    $font->size(50);
+                    $font->size(36);
                     $font->color('#fff');
                     $font->align('center');
                     $font->valign('top');
-                    // $font->angle(45);
                 })
-                ->text('#'.$exists->part_no, 369, 49, function($font) {
+                ->text('Part Nr. '.$exists->part_no, 389, 49, function($font) {
                     $font->file('fonts/helvetica-light.otf');
-                    $font->size(50);
+                    $font->size(36);
                     $font->color('#000');
                     $font->align('center');
                     $font->valign('top');
-                    // $font->angle(45);
                 })
-                ->save($new_img, 50);
+                ->save($new_img, 60);
 
         if($exists->img) unlink($exists->img);
 

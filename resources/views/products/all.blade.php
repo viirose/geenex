@@ -61,11 +61,12 @@
                         <img src="{{ $product->img ? asset($product->img) : asset('img/sample.jpg') }}" class="rounded img-fluid">
                       </div>
                       <ul class="list-unstyled pl-0 mt-4">
-                        <li>Part Nr: {!! $f->fit($product->part_no) !!}</li>
+                        <li>GENNEX Ref.: </li>
                         <li>Part Name.: {!! $f->fit($product->name) !!}</li>
+                        <li>Part Nr: {!! $f->fit($product->part_no) !!}</li>
                         <li>Part for: {{ $product->brand->key }}</li>
-                        <li>Category: {{ $product->category->key }}</li>
-                        <li>Availability: {{ $product->availability->key }}</li>
+                        <li>Category:</li>
+                        <li>Weight:</li>
                         <li>Remark: {!! $f->fit($product->remark) !!}</li>
                         <li>{!! $f->fit($product->content) !!}</li>
                         <li><a href="/inquiries/add/{{$product->id}}" class="btn btn-outline-light btn-sm">add to My Inquiry</a></li>
@@ -73,6 +74,7 @@
 
                       @if(Auth::check() && $r->admin())
                         <ul class="list-unstyled pl-0 mt-4">
+                          <li>Availability: {{ $product->availability->key }}</li>
                           <li>Created by: {{ $product->creater->name }}</li>
                           <li>Created at: {{ $product->created_at }}</li>
                           <li>Updated at: {{ $product->updated_at }}</li>

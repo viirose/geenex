@@ -82,7 +82,7 @@ class OrderController extends Controller
         Mail::to(config('mail.reply_to.address'))
                 ->cc('309266143@qq.com')
                 ->send(new OrderShipped($request));
-
+        
         if(Session::has('inquiries')) Session::forget('inquiries');
 
         $text = 'your email has been send successfully!';

@@ -28,7 +28,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-   
+   <form method="post" action="/conf/brands/do">
         <div class="modal-body">
           <input type="text" id="conf_key" placeholder="input brand name" onchange="javascript:set_url()">
           <input type="hidden" id="parent_id">
@@ -37,9 +37,10 @@
    
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">close</button>
-          <a id="go" href="#" class="btn btn-primary btn-sm">Confirm</a>
+          <button type="submit" class="btn btn-primary btn-sm">Confirm</button>
         </div>
-   
+   </form>
+
       </div>
     </div>
   </div>
@@ -55,12 +56,15 @@
   function set_url() {
     var conf_key = $("#conf_key").val();
     var edit_id = $("#edit_id").val();
+
+    conf_key = encodeURI(conf_key);
+
     var url = '/conf/brands/create/' + conf_key;
 
     if(edit_id >= 1) url = '/conf/brands/edit/'+ conf_key +'/'+ edit_id;
 
 
-    url = encodeURI(url);
+    // url = encodeURI(url);
     if($.trim(conf_key) != '') $("#go").attr('href', url);
   }
 

@@ -52,9 +52,9 @@ class ProductController extends Controller
                                 if(Session::has('keywords') && trim(session('keywords')) != '') {
 
                                     $q->whereRaw('upper(part_no) like upper(?)', ['%'.session('keywords').'%'])
-                                      ->orWhereRaw('upper(name) like lower(?)', ['%'.session('keywords').'%'])
-                                      ->orWhereRaw('upper(remark) like lower(?)', ['%'.session('keywords').'%'])
-                                      ->orWhereRaw('upper(content) like lower(?)', ['%'.session('keywords').'%']);
+                                      ->orWhereRaw('upper(name) like upper(?)', ['%'.session('keywords').'%'])
+                                      ->orWhereRaw('upper(remark) like upper(?)', ['%'.session('keywords').'%'])
+                                      ->orWhereRaw('upper(content) like upper(?)', ['%'.session('keywords').'%']);
                                       
                                     // $q->where('part_no', 'like', '%'.session('keywords').'%')
                                     //   ->orWhere('name', 'like', '%'.session('keywords').'%')
@@ -96,9 +96,9 @@ class ProductController extends Controller
                             if(Session::has('keywords') && trim(session('keywords')) != '') {
 
                                 $q->whereRaw('upper(part_no) like upper(?)', ['%'.session('keywords').'%'])
-                                      ->orWhereRaw('upper(name) like lower(?)', ['%'.session('keywords').'%'])
-                                      ->orWhereRaw('upper(remark) like lower(?)', ['%'.session('keywords').'%'])
-                                      ->orWhereRaw('upper(content) like lower(?)', ['%'.session('keywords').'%']);
+                                      ->orWhereRaw('upper(name) like upper(?)', ['%'.session('keywords').'%'])
+                                      ->orWhereRaw('upper(remark) like upper(?)', ['%'.session('keywords').'%'])
+                                      ->orWhereRaw('upper(content) like upper(?)', ['%'.session('keywords').'%']);
 
                                 // $q->where('part_no', 'like', '%'.session('keywords').'%')
                                 //   ->orWhere('name', 'like', '%'.session('keywords').'%')
@@ -135,9 +135,9 @@ class ProductController extends Controller
                                 if(Session::has('keywords') && trim(session('keywords')) != '') {
 
                                     $q->whereRaw('upper(part_no) like upper(?)', ['%'.session('keywords').'%'])
-                                      ->orWhereRaw('upper(name) like lower(?)', ['%'.session('keywords').'%'])
-                                      ->orWhereRaw('upper(remark) like lower(?)', ['%'.session('keywords').'%'])
-                                      ->orWhereRaw('upper(content) like lower(?)', ['%'.session('keywords').'%']);
+                                      ->orWhereRaw('upper(name) like upper(?)', ['%'.session('keywords').'%'])
+                                      ->orWhereRaw('upper(remark) like upper(?)', ['%'.session('keywords').'%'])
+                                      ->orWhereRaw('upper(content) like upper(?)', ['%'.session('keywords').'%']);
 
 
                                     // $q->Where('part_no', 'like', '%'.session('keywords').'%')

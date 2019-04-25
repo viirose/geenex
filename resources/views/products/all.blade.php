@@ -61,19 +61,15 @@
                         <img src="{{ $product->img ? asset($product->img) : asset('img/sample.jpg') }}" class="rounded img-fluid">
                       </div>
                       <ul class="list-unstyled pl-0 mt-4">
-                        <li>GENNEX Ref. G
-                          {{ $f->show($product->brand->info, 'code', '-') }}
-
-                          {{ $f->show($product->category->master->master->info, 'code', '-') }}
-                          {{ $f->show($product->category->master->info, 'code', '-') }}
-                          {{ $f->show($product->category->info, 'code', '-') }}
+                        <li>GENNEX Ref. 
+                          G{{ $f->show($product->brand->info, 'code', '-') }}{{ $f->show($product->category->master->master->info, 'code', '-') }}{{ $f->show($product->category->master->info, 'code', '-') }}{{ $f->show($product->category->info, 'code', '-') }}
                         </li>
                         <li>Part Name: {!! $f->fit($product->name) !!}</li>
                         <li>Part Nr. {!! $f->fit($product->part_no) !!}</li>
                         <li>Part for: {{ $product->brand->key }}</li>
                         <li>Category: 
-                          {{ $product->category->master->master->key }} / 
-                          {{ $product->category->master->key }} / 
+                          {{ $product->category->master->master->key }} -
+                          {{ $product->category->master->key }} -
                           {{ $product->category->key }} 
                         </li>
                         <li>Weight: {{ $product->weight }}</li>

@@ -60,23 +60,44 @@
                       <div class="cent">
                         <img src="{{ $product->img ? asset($product->img) : asset('img/sample.jpg') }}" class="rounded img-fluid">
                       </div>
-                      <ul class="list-unstyled pl-0 mt-4">
-                        <li>GENNEX Ref. 
-                          G{{ $f->show($product->brand->info, 'code', '-') }}{{ $f->show($product->category->master->master->info, 'code', '-') }}{{ $f->show($product->category->master->info, 'code', '-') }}{{ $f->show($product->category->info, 'code', '-') }}
-                        </li>
-                        <li>Part Name: {!! $f->fit($product->name) !!}</li>
-                        <li>Part Nr. {!! $f->fit($product->part_no) !!}</li>
-                        <li>Part for: {{ $product->brand->key }}</li>
-                        <li>Category: 
-                          {{ $product->category->master->master->key }} -
-                          {{ $product->category->master->key }} -
-                          {{ $product->category->key }} 
-                        </li>
-                        <li>Weight: {{ $product->weight }}</li>
-                        <li>Remark: {!! $f->fit($product->remark) !!}</li>
-                        <li>{!! $f->fit($product->content) !!}</li>
-                        <li><a href="/inquiries/add/{{$product->id}}" class="btn btn-outline-light btn-sm">add to My Inquiry</a></li>
-                      </ul>
+                      <p></p>
+                      <table class="table text-white">
+                        <tbody>
+                          <tr>
+                            <td>GENNEX Ref.</td>
+                            <td>G{{ $f->show($product->brand->info, 'code', '-') }}{{ $f->show($product->category->master->master->info, 'code', '-') }}{{ $f->show($product->category->master->info, 'code', '-') }}{{ $f->show($product->category->info, 'code', '-') }}</td>
+                          </tr>
+                          <tr>
+                            <td>Part Name</td>
+                            <td>{!! $f->fit($product->name) !!}</td>
+                          </tr>
+                          <tr>
+                            <td>Part Nr.</td>
+                            <td>{!! $f->fit($product->part_no) !!}</td>
+                          </tr>
+                          <tr>
+                            <td>Part for</td>
+                            <td>{{ $product->brand->key }}</td>
+                          </tr>
+                          <tr>
+                            <td>Category</td>
+                            <td>
+                              {{ $product->category->master->master->key }} -
+                              {{ $product->category->master->key }} -
+                              {{ $product->category->key }} 
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Weight</td>
+                            <td>{{ $product->weight }}</td>
+                          </tr>
+                          <tr>
+                            <td>Remark</td>
+                            <td>{!! $f->fit($product->remark) !!}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <a href="/inquiries/add/{{$product->id}}" class="btn btn-outline-light btn-sm">add to My Inquiry</a>
 
                       @if(Auth::check() && $r->admin())
                         <ul class="list-unstyled pl-0 mt-4">

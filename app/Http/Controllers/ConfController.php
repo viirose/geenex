@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 use App\Conf;
 
@@ -36,95 +37,63 @@ class ConfController extends Controller
     }
 
     /**
-     * 新建
+     * category handler
      * 
      */ 
-    public function create($key, $parent_id)
+    public function categoryDo(Request $request)
     {
-        if(trim($key) == '') abort('403');
+        $new = [];
+        if($request->name) $new = Arr::add($new, 'key', $request->name);
+        if($request->code) $new = Arr::add($new, 'info->code', $request->code);
 
-        $ex = Conf::findOrFail($parent_id);
-        if(!$ex) abort('403');
+        if($request->id) {
 
+            $record = Conf::findOrFail($request->id);
+            if(count($new)) $record->update($new);
 
-        $same_key = Conf::where('key', $key)->where('type', 'category')->first();
+        }elseif(!$request->id && $request->parent_id){
 
-        if($same_key) {
-           $text = 'key name: '.$key.' has already exsits!';
-           return view('note', compact('text'));
+            $parent = Conf::findOrFail($request->parent_id);
+
+            $new = Arr::add($new, 'parent_id', $request->parent_id);
+            $new = Arr::add($new, 'level', $parent->level + 1);
+            $new = Arr::add($new, 'type', 'category');
+            Conf::create($new);
+
         }
-
-        Conf::create([
-            'parent_id' => $parent_id,
-            'level' => $ex->level + 1,
-            'type' => 'category',
-            'key' => $key,
-        ]);
 
         return redirect()->back();
     }
 
+
+
     /**
-     * 修改
+     * brand handler
      * 
      */ 
-    public function edit($key, $id)
+    public function brandDo(Request $request)
     {
-        $ex = Conf::findOrFail($id);
+        $new = [];
+        if($request->name) $new = Arr::add($new, 'key', $request->name);
+        if($request->code) $new = Arr::add($new, 'info->code', $request->code);
 
-        $same_key = Conf::where('key', $key)->where('type', $ex->type)->first();
+        if($request->id) {
 
-        if($same_key) {
-            $text = 'key name: '.$key.' has already exsits!';
-            return view('note', compact('text'));
+            $record = Conf::findOrFail($request->id);
+            if(count($new)) $record->update($new);
+
+        }else{
+
+            $new = Arr::add($new, 'parent_id', 1);
+            $new = Arr::add($new, 'level', 1);
+            $new = Arr::add($new, 'type', 'brand');
+            Conf::create($new);
+
         }
-        $ex->update(['key'=>$key]);
-        
+
         return redirect()->back();
     }
 
-    /**
-     * 新品牌
-     * 
-     */
-    public function brandCreate($key)
-    {
-        $same_key = Conf::where('key', $key)->where('type', 'brand')->first();
-
-        if($same_key) {
-            $text = 'key name: '.$key.' has already exsits!';
-            return view('note', compact('text'));
-        }
-
-        Conf::create([
-            'parent_id' => 1,
-            'level' => 1,
-            'type' => 'brand',
-            'key' => $key,
-        ]);
-
-        return redirect()->back();
-
-    }
-
-    /**
-     * 修改品牌
-     * 
-     */
-    public function brandEdit($key, $id)
-    {
-        $ex = Conf::findOrFail($id);
-        $same_key = Conf::where('key', $key)->where('type', 'brand')->first();
-
-        if($same_key) {
-            $text = 'key name: '.$key.' has already exsits!';
-            return view('note', compact('text'));
-        }
-
-        $ex->update(['key' => $key]);
-        
-        return redirect()->back();
-    }
 
 
     /**

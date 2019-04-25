@@ -1,3 +1,6 @@
+<?php
+  $f = new App\Helpers\Filter;
+?>
 @extends('../nav')
 
 @section('content')
@@ -5,12 +8,17 @@
 <div class="row top-pad"></div>
 <section>
     <div class="container">
-        <h3><i class="fa fa-tags" aria-hidden="true"></i> Brands</h3>
+        <h3><i class="fa fa-tags" aria-hidden="true"></i> Manufacturers</h3>
         <p><a href="javascript:create();" class="btn btn-outline-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> new</a></p>
         <div class="alert alert-info">
           @if(isset($records) && count($records))
             @foreach($records as $record)
-              <h3><a href="javascript:edit({{$record->id}})" class="badge badge-info">{{ $record->key }}</a></h3>
+              <h3>
+                <a href="javascript:edit({{$record->id}})" class="badge badge-info">
+                  {{ $record->key }}
+                  <small>code: {{ $f->show($record->info, 'code') }}</small>
+                </a>
+              </h3>
             @endforeach
           @else
               null
@@ -24,15 +32,24 @@
   <div class="modal fade" id="new_type">
     <div class="modal-dialog">
       <div class="modal-content">
-   
         <div class="modal-header">
+        <strong>Manufacturers</strong>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
    <form method="post" action="/conf/brands/do">
         <div class="modal-body">
-          <input type="text" id="conf_key" placeholder="input brand name" onchange="javascript:set_url()">
-          <input type="hidden" id="parent_id">
-          <input type="hidden" id="edit_id">
+
+          @csrf
+          <input type="hidden" name="id" id="edit_id">
+          <div class="form-group"  >
+            <label for="name" class="control-label">Name</label>
+            <input class="form-control" minlength="2" maxlength="32" name="name" type="text" id="name">
+          </div>
+          <div class="form-group"  >
+            <label for="code" class="control-label">Code</label>
+            <input class="form-control" minlength="1" maxlength="1" name="code" type="text" id="code">
+          </div>
+
         </div>
    
         <div class="modal-footer">
@@ -46,39 +63,21 @@
   </div>
 
 <script>
-
-  function reset() {
-    $("#conf_key").val('');
+  function clear() {
     $("#edit_id").val('');
-  }
-
-  //url
-  function set_url() {
-    var conf_key = $("#conf_key").val();
-    var edit_id = $("#edit_id").val();
-
-    conf_key = encodeURI(conf_key);
-
-    var url = '/conf/brands/create/' + conf_key;
-
-    if(edit_id >= 1) url = '/conf/brands/edit/'+ conf_key +'/'+ edit_id;
-
-
-    // url = encodeURI(url);
-    if($.trim(conf_key) != '') $("#go").attr('href', url);
+    $("#name").val('');
+    $("#code").val('');
   }
 
   function create() {
-      reset();
-
+      clear();
       $("#new_type").modal();
   }
 
   function edit(id) {
-      reset();
-
-      $("#new_type").modal();
+      clear();
       $("#edit_id").val(id);
+      $("#new_type").modal();
   }
 
 </script>

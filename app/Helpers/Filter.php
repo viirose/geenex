@@ -30,14 +30,14 @@ class Filter
         return str_replace(strtoupper($this->keywords), '<strong class="text-warning">'.strtoupper($this->keywords).'</strong>', $text);
     }
 
-     /**
+    /**
      * show conf
      *
      */
      public function showConf($id)
      {
-        if(is_array($id)) {
-            $target = Conf::findOrFail($id[0])->master;
+        if(is_array($id) && Session::has('search_level_id')) {
+            $target = Conf::findOrFail(session('search_level_id'));
         }else{
             $target = Conf::findOrFail($id);
         }
@@ -45,5 +45,46 @@ class Filter
         return $target->key;
      }
 
+    /**
+     * show json
+     *
+     */
+    public function show($json, $key, $flag=0) 
+    {
+        try {
+            $arr = json_decode($json);
+            if($arr && array_key_exists($key, $arr)){
+                return $arr->$key;
+            } else {
+                return $flag === 0 ? null : $flag;
+            }
+
+        } catch (Exception $e) {
+            return $flag === 0 ? null : $flag;
+            exit();
+        }
+
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

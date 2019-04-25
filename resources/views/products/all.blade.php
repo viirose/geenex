@@ -15,7 +15,7 @@
           <h2><i class="fa fa-cube" aria-hidden="true"></i> Products [{{ $products->count() }}] </h2>
           <p class="lead">
 
-            @if(Session::has('keywords') || Session::has('search_category_id') || Session::has('search_brand_id') || Session::has('search_level2'))
+            @if(Session::has('keywords') || Session::has('search_category_id') || Session::has('search_brand_id') || Session::has('search_level'))
             <a href="/products/clear_search/all" class="btn btn-outline-primary btn-sm"> clear criteria</a>
             @else
             all products
@@ -30,8 +30,8 @@
               <a href="/products/clear_search/search_category_id" class="badge badge-info">Category: {{ $f->showConf(session('search_category_id')) }}</a>
             @endif
 
-            @if(Session::has('search_level2'))
-              <a href="/products/clear_search/search_level2" class="badge badge-danger">Categories: {{ $f->showConf(session('search_level2')) }}</a>
+            @if(Session::has('search_level') && Session::has('search_level_id'))
+              <a href="/products/clear_search/search_level" class="badge badge-danger">Categories: {{ $f->showConf(session('search_level')) }}</a>
             @endif
 
             @if(Session::has('search_brand_id'))
@@ -61,11 +61,21 @@
                         <img src="{{ $product->img ? asset($product->img) : asset('img/sample.jpg') }}" class="rounded img-fluid">
                       </div>
                       <ul class="list-unstyled pl-0 mt-4">
-                        <li>GENNEX Ref.: </li>
-                        <li>Part Name.: {!! $f->fit($product->name) !!}</li>
-                        <li>Part Nr: {!! $f->fit($product->part_no) !!}</li>
+                        <li>GENNEX Ref. G
+                          {{ $f->show($product->brand->info, 'code', '-') }}
+
+                          {{ $f->show($product->category->master->master->info, 'code', '-') }}
+                          {{ $f->show($product->category->master->info, 'code', '-') }}
+                          {{ $f->show($product->category->info, 'code', '-') }}
+                        </li>
+                        <li>Part Name: {!! $f->fit($product->name) !!}</li>
+                        <li>Part Nr. {!! $f->fit($product->part_no) !!}</li>
                         <li>Part for: {{ $product->brand->key }}</li>
-                        <li>Category:</li>
+                        <li>Category: 
+                          {{ $product->category->master->master->key }} / 
+                          {{ $product->category->master->key }} / 
+                          {{ $product->category->key }} 
+                        </li>
                         <li>Weight:</li>
                         <li>Remark: {!! $f->fit($product->remark) !!}</li>
                         <li>{!! $f->fit($product->content) !!}</li>
@@ -116,11 +126,16 @@
               <h4 class="sidebar-widget-heading"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Categories</h4>
               <ul class="list-unstyled pl-0 mt-4">
               @if(count($categories))
-                @foreach($categories as $c)
-                  <li> <a href="/products/search/level2/{{ $c->id }}" class="categories-link"><strong>{{ $c->key }} </strong></a></li>
-                  @if(count($c->subs))
-                    @foreach($c->subs as $sub)
-                  <li>  &nbsp - <a href="/products/search/category/{{ $sub->id }}" class="categories-link">{{ $sub->key }} ({{ $sub->products_count }})</a></li>
+                @foreach($categories as $level_1)
+                  <li> <a href="/products/search/level1/{{ $level_1->id }}" class="categories-link"><strong>{{ $level_1->key }} </strong></a></li>
+                  @if(count($level_1->subs))
+                    @foreach($level_1->subs as $level_2)
+                  <li>  &nbsp <a href="/products/search/level2/{{ $level_2->id }}" class="categories-link">{{ $level_2->key }} </a></li>
+                      @if(count($level_2->subs))
+                         @foreach($level_2->subs as $level_3)
+                  <li>  &nbsp&nbsp - <a href="/products/search/category/{{ $level_3->id }}" class="categories-link">{{ $level_3->key }} ({{ $level_3->products_count }})</a></li>
+                         @endforeach
+                      @endif
                     @endforeach
                   @endif
                 @endforeach

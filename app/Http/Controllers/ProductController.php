@@ -23,50 +23,47 @@ class ProductController extends Controller
      */
     public function index()
     { 
-        $categories = Conf::where('level', 2)
+        $categories = Conf::where('level', 1)
                         ->where('type', 'category')
-                        ->with(['subs' => function ($query){
-                            $query->whereHas('products', function ($q1) {
-                                if(Session::has('search_category_id')) {
-                                    $q1->where('category_id', session('search_category_id'));
-                                }
-                            });
-                            $query->whereHas('products', function ($q2) {
-                                // search_brand_id
-                                if(Session::has('search_brand_id')) {
-                                    $q2->where('brand_id', session('search_brand_id'));
-                                }
-                            });
-                            $query->whereHas('products', function ($q3) {
-                                // search_level2
-                                if(Session::has('search_level2')) {
-                                    $q3->whereIn('category_id', session('search_level2'));
-                                }
-                            });
+                        ->with(['subs' => function ($query_1){
+                            $query_1->with(['subs' => function ($query){
+                                $query->whereHas('products', function ($q1) {
+                                    if(Session::has('search_category_id')) {
+                                        $q1->where('category_id', session('search_category_id'));
+                                    }
+                                });
+                                $query->whereHas('products', function ($q2) {
+                                    // search_brand_id
+                                    if(Session::has('search_brand_id')) {
+                                        $q2->where('brand_id', session('search_brand_id'));
+                                    }
+                                });
+                                $query->whereHas('products', function ($q3) {
+                                    // search_level
+                                    if(Session::has('search_level')) {
+                                        $q3->whereIn('category_id', session('search_level'));
+                                    }
+                                });
 
-                            $query->whereHas('products', function ($q) {
+                                $query->whereHas('products', function ($q) {
 
-                                // 要有图片
-                                $q->whereNotNull('img');
+                                    // 要有图片
+                                    $q->whereNotNull('img');
 
-                                // keywords
-                                if(Session::has('keywords') && trim(session('keywords')) != '') {
+                                    // keywords
+                                    if(Session::has('keywords') && trim(session('keywords')) != '') {
 
-                                    $q->whereRaw('upper(part_no) like upper(?)', ['%'.session('keywords').'%'])
-                                      ->orWhereRaw('upper(name) like upper(?)', ['%'.session('keywords').'%'])
-                                      ->orWhereRaw('upper(remark) like upper(?)', ['%'.session('keywords').'%'])
-                                      ->orWhereRaw('upper(content) like upper(?)', ['%'.session('keywords').'%']);
-
-                                    // $q->where('part_no', 'like', '%'.session('keywords').'%')
-                                    //   ->orWhere('name', 'like', '%'.session('keywords').'%')
-                                    //   ->orWhere('remark', 'like', '%'.session('keywords').'%')
-                                    //   ->orWhere('content', 'like', '%'.session('keywords').'%');
-                                }
+                                        $q->whereRaw('upper(part_no) like upper(?)', ['%'.session('keywords').'%'])
+                                          ->orWhereRaw('upper(name) like upper(?)', ['%'.session('keywords').'%'])
+                                          ->orWhereRaw('upper(remark) like upper(?)', ['%'.session('keywords').'%'])
+                                          ->orWhereRaw('upper(content) like upper(?)', ['%'.session('keywords').'%']);
+                                    }
 
 
-                            });
+                                });
 
-                            $query->withCount('products');
+                                $query->withCount('products');
+                            }]);
                         }])
                         ->get();
 
@@ -83,9 +80,9 @@ class ProductController extends Controller
                             }
                         })
                         ->whereHas('brand_products', function ($q3) {
-                            // search_level2
-                            if(Session::has('search_level2')) {
-                                $q3->whereIn('category_id', session('search_level2'));
+                            // search_level
+                            if(Session::has('search_level')) {
+                                $q3->whereIn('category_id', session('search_level'));
                             }
                         })
                         ->whereHas('brand_products', function ($q) {
@@ -125,9 +122,9 @@ class ProductController extends Controller
                                 }
                             })
                             ->where(function ($q3) {
-                                // search_level2
-                                if(Session::has('search_level2')) {
-                                    $q3->whereIn('category_id', session('search_level2'));
+                                // search_level
+                                if(Session::has('search_level')) {
+                                    $q3->whereIn('category_id', session('search_level'));
                                 }
                             })
                             ->where(function ($q) {
@@ -173,6 +170,21 @@ class ProductController extends Controller
     public function searchType($type, $id)
     {
         switch ($type) {
+            case 'level1':
+                $level_2 = Conf::where('parent_id', $id)
+                                ->pluck('id')
+                                ->toArray();
+
+                $array = Conf::whereIn('parent_id', $level_2)
+                                ->pluck('id')
+                                ->toArray();
+
+                $this->clearSession('search_category_id#search_brand_id#keywords');
+
+                session(['search_level' => $array]);
+                session(['search_level_id' => $id]);
+                break;
+
             case 'level2':
                 $array = Conf::where('parent_id', $id)
                                 ->pluck('id')
@@ -180,7 +192,8 @@ class ProductController extends Controller
 
                 $this->clearSession('search_category_id#search_brand_id#keywords');
 
-                session(['search_level2' => $array]);
+                session(['search_level' => $array]);
+                session(['search_level_id' => $id]);
                 break;
 
             case 'category':
@@ -206,7 +219,7 @@ class ProductController extends Controller
      */
     private function clearSession($string)
     {
-        $limit = ['search_level2','search_category_id', 'search_brand_id', 'keywords'];
+        $limit = ['search_level','search_category_id', 'search_brand_id', 'keywords'];
 
         $array = explode('#', $string);
 

@@ -60,19 +60,24 @@ Route::group(['middleware' => ['verified', 'state']], function () {
     Route::get('/products/delete/{id}', 'ProductController@delete');
 
     Route::get('/conf/brands', 'ConfController@brands');
-    Route::get('/conf/brands/create/{key}', 'ConfController@brandCreate');
-    Route::get('/conf/brands/edit/{key}/{id}', 'ConfController@brandEdit');
+    Route::post('/conf/brands/do', 'ConfController@brandDo');
+    // Route::get('/conf/brands/create/{key}', 'ConfController@brandCreate');
+    // Route::get('/conf/brands/edit/{key}/{id}', 'ConfController@brandEdit');
 
     Route::get('/conf/categories', 'ConfController@categories');
-    Route::get('/conf/create/{key}/{parent_id}', 'ConfController@create');
-    Route::get('/conf/edit/{key}/{id}', 'ConfController@edit');
+    Route::post('/conf/categories/do', 'ConfController@categoryDo');
+    // Route::get('/conf/create/{key}/{parent_id}', 'ConfController@create');
+    // Route::get('/conf/edit/{key}/{id}', 'ConfController@edit');
 
 });
 
 
 Route::get('/test', function() {
     $a=[1,2,3];
-    $b = array_push($a, 3);
+    // $b = array_push($a, 3);
+    $a=Arr::add($a, 'na', 100);
+
+    print_r($a);
     // print_r($a);
     // Session::forget('inquiries');
     // echo(Auth::user()->email);

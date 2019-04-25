@@ -6,9 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
 use App\Conf;
+use App\Helpers\Role;
 
 class ConfController extends Controller
 {
+
+    function __construct(Role $role)
+    {
+        if(!$role->root()) abort('403');
+    }
+
     /**
      * 标签
      * 

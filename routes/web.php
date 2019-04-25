@@ -70,7 +70,7 @@ Route::group(['middleware' => ['verified', 'state']], function () {
 
 
 Route::get('/test', function() {
-    // 
+    abort('500');
 });
 
 

@@ -12,6 +12,7 @@ use Session;
 use App\Product;
 use App\Conf;
 use App\Forms\ProductForm;
+use App\Helpers\Role;
 
 class ProductController extends Controller
 {
@@ -247,8 +248,10 @@ class ProductController extends Controller
      * create
      *
      */
-    public function create()
+    public function create(Role $role)
     {
+        if(!$role->admin()) abort(403);
+
         $form = $this->form(ProductForm::class, [
             'method' => 'POST',
             'url' => '/products/store'
@@ -264,8 +267,10 @@ class ProductController extends Controller
      * store
      *
      */
-    public function store(Request $request)
+    public function store(Request $request, Role $role)
     {
+        if(!$role->admin()) abort(403);
+
         $all = $request->all();
 
         $all['created_by'] = Auth::id();
@@ -279,8 +284,10 @@ class ProductController extends Controller
      * edit
      *
      */
-    public function edit($id)
+    public function edit(Role $role, $id)
     {
+        if(!$role->admin()) abort(403);
+
         $record = Product::findOrFail($id);
 
         $form = $this->form(ProductForm::class, [
@@ -300,8 +307,10 @@ class ProductController extends Controller
      * update
      *
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, Role $role)
     {
+        if(!$role->admin()) abort(403);
+
         $all = $request->all();
 
         $record = Product::findOrFail($id);
@@ -315,8 +324,10 @@ class ProductController extends Controller
      * delete
      *
      */
-    public function delete($id)
+    public function delete(Role $role, $id)
     {
+        if(!$role->admin()) abort(403);
+
         $record = Product::findOrFail($id);
         if(!$record) abort('403');
 
@@ -330,8 +341,10 @@ class ProductController extends Controller
      * image store
      *
      */
-    public function imgStore(Request $request)
+    public function imgStore(Request $request, Role $role)
     {
+        if(!$role->admin()) abort(403);
+        
         $img = $request->file('avatar');
         $id = $request->id;
         // $extension = $img->getClientOriginalExtension();

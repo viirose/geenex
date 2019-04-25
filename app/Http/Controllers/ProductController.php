@@ -344,14 +344,14 @@ class ProductController extends Controller
         $image = Image::make($img)
                 ->insert('img/watermark.png')
 
-                ->text('Part Nr. '.$exists->part_no, 390, 50, function($font) {
+                ->text('Part Nr. '.strtoupper($exists->part_no), 390, 50, function($font) {
                     $font->file('fonts/helvetica-light.otf');
                     $font->size(36);
                     $font->color('#fff');
                     $font->align('center');
                     $font->valign('top');
                 })
-                ->text('Part Nr. '.$exists->part_no, 389, 49, function($font) {
+                ->text('Part Nr. '.strtoupper($exists->part_no), 389, 49, function($font) {
                     $font->file('fonts/helvetica-light.otf');
                     $font->size(36);
                     $font->color('#000');

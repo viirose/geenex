@@ -59,34 +59,18 @@ Route::group(['middleware' => ['verified', 'state']], function () {
     Route::post('/products/update/{id}', 'ProductController@update');
     Route::get('/products/delete/{id}', 'ProductController@delete');
 
+    // conf
     Route::get('/conf/brands', 'ConfController@brands');
     Route::post('/conf/brands/do', 'ConfController@brandDo');
-    // Route::get('/conf/brands/create/{key}', 'ConfController@brandCreate');
-    // Route::get('/conf/brands/edit/{key}/{id}', 'ConfController@brandEdit');
 
     Route::get('/conf/categories', 'ConfController@categories');
     Route::post('/conf/categories/do', 'ConfController@categoryDo');
-    // Route::get('/conf/create/{key}/{parent_id}', 'ConfController@create');
-    // Route::get('/conf/edit/{key}/{id}', 'ConfController@edit');
 
 });
 
 
 Route::get('/test', function() {
-    $a=[1,2,3];
-    // $b = array_push($a, 3);
-    $a=Arr::add($a, 'na', 100);
-
-    print_r($a);
-    // print_r($a);
-    // Session::forget('inquiries');
-    // echo(Auth::user()->email);
-    // echo(config('mail.to.address'));
-    // print_r(config('mail.to'));
-    // $a = array_unique($a);
-
-    // array_splice($a, 1,2);
-    // print_r(session('inquiries'));
+    // 
 });
 
 

@@ -70,7 +70,8 @@ Route::group(['middleware' => ['verified', 'state']], function () {
 
 
 Route::get('/test', function() {
-    abort('500');
+    $a = new App\Helpers\Role;
+    if($a->admin()) abort('500');
 });
 
 

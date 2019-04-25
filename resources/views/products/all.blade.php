@@ -61,7 +61,7 @@
                         <img src="{{ $product->img ? asset($product->img) : asset('img/sample.jpg') }}" class="rounded img-fluid">
                       </div>
                       <p></p>
-                      <table class="table text-white">
+                      <table class="text-white">
                         <tbody>
                           <tr>
                             <td>GENNEX Ref.</td>

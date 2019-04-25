@@ -76,7 +76,6 @@ class Role
      */
     public function root($id=0)
     {
-
         return $this->hasAndTrue($this->choose($id)->auth, 'root');
     }
 

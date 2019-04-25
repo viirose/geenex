@@ -11,17 +11,14 @@ use App\Helpers\Role;
 class ConfController extends Controller
 {
 
-    function __construct(Role $role)
-    {
-        if(!$role->root()) abort('403');
-    }
-
     /**
      * 标签
      * 
      */ 
-    public function brands()
+    public function brands(Role $role)
     {
+        if(!$role->root()) abort('403');
+
         $records = Conf::where('type', 'brand')
                         // ->orderBy('key')
                         ->get();
@@ -33,8 +30,10 @@ class ConfController extends Controller
      * 类型
      * 
      */ 
-    public function categories()
+    public function categories(Role $role)
     {
+        if(!$role->root()) abort('403');
+
         $records = Conf::where('level',1)
                         ->where('type', 'category')
                         // ->latest()
@@ -47,8 +46,10 @@ class ConfController extends Controller
      * category handler
      * 
      */ 
-    public function categoryDo(Request $request)
+    public function categoryDo(Request $request, Role $role)
     {
+        if(!$role->root()) abort('403');
+
         $new = [];
         if($request->name) $new = Arr::add($new, 'key', $request->name);
         if($request->code) $new = Arr::add($new, 'info->code', $request->code);
@@ -78,8 +79,10 @@ class ConfController extends Controller
      * brand handler
      * 
      */ 
-    public function brandDo(Request $request)
+    public function brandDo(Request $request, Role $role)
     {
+        if(!$role->root()) abort('403');
+        
         $new = [];
         if($request->name) $new = Arr::add($new, 'key', $request->name);
         if($request->code) $new = Arr::add($new, 'info->code', $request->code);

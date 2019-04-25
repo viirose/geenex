@@ -79,6 +79,10 @@ class ProductForm extends Form
             'label' => 'Remark',
             'rules' => 'min:2|max:32'
         ])
+        ->add('weight', 'text', [
+            'label' => 'Weight',
+            'rules' => 'min:3|max:20'
+        ])
         ->add('content', 'textarea', [
             'label' => 'Content',
             'rules' => 'min:2|max:200'

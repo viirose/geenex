@@ -76,7 +76,7 @@
                           {{ $product->category->master->key }} / 
                           {{ $product->category->key }} 
                         </li>
-                        <li>Weight:</li>
+                        <li>Weight: {{ $product->weight }}</li>
                         <li>Remark: {!! $f->fit($product->remark) !!}</li>
                         <li>{!! $f->fit($product->content) !!}</li>
                         <li><a href="/inquiries/add/{{$product->id}}" class="btn btn-outline-light btn-sm">add to My Inquiry</a></li>

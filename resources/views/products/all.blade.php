@@ -119,14 +119,14 @@
               </form>
             </div>
             <div class="sidebar-widget mb-4">
-              <h4 class="sidebar-widget-heading"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Categories</h4>
+              <h3 class="sidebar-widget-heading"><i class="fa fa-bookmark" aria-hidden="true"></i> Categories</h3>
               <ul class="list-unstyled pl-0 mt-4">
               @if(count($categories))
                 @foreach($categories as $level_1)
-                  <li> <a href="/products/search/level1/{{ $level_1->id }}" class="categories-link"><strong>{{ $level_1->key }} </strong></a></li>
+                  <li> <a href="/products/search/level1/{{ $level_1->id }}" class="categories-link"><h5><i class="fa fa-bookmark-o" aria-hidden="true"></i> {{ $level_1->key }} </h5></a></li>
                   @if(count($level_1->subs))
                     @foreach($level_1->subs as $level_2)
-                  <li>  &nbsp <a href="/products/search/level2/{{ $level_2->id }}" class="categories-link">{{ $level_2->key }} </a></li>
+                  <li>  &nbsp <a href="/products/search/level2/{{ $level_2->id }}" class="categories-link"><i class="fa fa-angle-right" aria-hidden="true"></i> <strong>{{ $level_2->key }} </strong></a></li>
                       @if(count($level_2->subs))
                          @foreach($level_2->subs as $level_3)
                   <li>  &nbsp&nbsp - <a href="/products/search/category/{{ $level_3->id }}" class="categories-link">{{ $level_3->key }} ({{ $level_3->products_count }})</a></li>
@@ -134,6 +134,7 @@
                       @endif
                     @endforeach
                   @endif
+                  <br>
                 @endforeach
               @else
                   none

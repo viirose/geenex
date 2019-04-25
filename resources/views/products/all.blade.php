@@ -88,6 +88,10 @@
                             </td>
                           </tr>
                           <tr>
+                            <td>Availability</td>
+                            <td>{{ $product->availability->key }}</td>
+                          </tr>
+                          <tr>
                             <td>Weight</td>
                             <td>{{ $product->weight }}</td>
                           </tr>
@@ -101,7 +105,6 @@
 
                       @if(Auth::check() && $r->admin())
                         <ul class="list-unstyled pl-0 mt-4">
-                          <li>Availability: {{ $product->availability->key }}</li>
                           <li>Created by: {{ $product->creater->name }}</li>
                           <li>Created at: {{ $product->created_at }}</li>
                           <li>Updated at: {{ $product->updated_at }}</li>

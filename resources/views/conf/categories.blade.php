@@ -9,7 +9,7 @@
 <section>
     <div class="container">
         <h3><i class="fa fa-bookmark-o" aria-hidden="true"></i> Categories</h3>
-        <p><a href="javascript:create(1)" class="btn btn-outline-primary btn-sm">+ new top level</a></p>
+        <p><a href="javascript:create(1)" class="btn btn-outline-primary btn-sm">+ new </a></p>
         <div class="card">
           <div class="card-body">
               @if(isset($records) && count($records))

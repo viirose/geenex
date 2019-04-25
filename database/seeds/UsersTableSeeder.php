@@ -17,6 +17,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Kris',
             'email' => 'kris@viirose.com',
             'email_verified_at' => today(),
+            'contact_verified_at' => today(),
             'password' => bcrypt('000000'),
             'auth' => '{"root":true}',
         ]);

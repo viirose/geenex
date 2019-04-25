@@ -16,7 +16,7 @@ class ConfController extends Controller
     public function brands()
     {
         $records = Conf::where('type', 'brand')
-                        ->orderBy('key')
+                        // ->orderBy('key')
                         ->get();
 
         return view('conf.brands', compact('records'));
@@ -30,7 +30,7 @@ class ConfController extends Controller
     {
         $records = Conf::where('level',1)
                         ->where('type', 'category')
-                        ->latest()
+                        // ->latest()
                         ->get();
 
         return view('conf.categories', compact('records'));

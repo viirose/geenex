@@ -109,7 +109,8 @@ class ProductController extends Controller
                         ->withCount('brand_products')
                         ->get();
 
-        $products = Product::where(function ($q1) {
+        $products = Product::whereNotNull('img')
+                            ->where(function ($q1) {
                                 // search_category_id
                                 if(Session::has('search_category_id')) {
                                     $q1->where('category_id', session('search_category_id'));

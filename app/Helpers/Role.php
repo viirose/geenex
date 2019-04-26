@@ -38,7 +38,7 @@ class Role
     // 选择目标
     private function choose($id=0)
     {
-        if (!Auth::check() && $id==0) abort('403');
+        if (!Auth::check() && $id==0) return false;
         return $id == 0 ? Auth::user() : User::findOrFail($id);
     }
 
@@ -69,13 +69,13 @@ class Role
         return $this->choose($id)->contact_verified_at;
     }
 
-
     /**
      * root : 超级管理员
      *
      */
     public function root($id=0)
     {
+        if(!$this->choose()) return false;
         return $this->hasAndTrue($this->choose($id)->auth, 'root');
     }
 
@@ -85,8 +85,9 @@ class Role
      */
     public function admin($id=0)
     {
-        if($this->root($id)) return true;
+        if(!$this->choose()) return false;
 
+        if($this->root($id)) return true;
         return $this->hasAndTrue($this->choose($id)->auth, 'admin');
     }
 

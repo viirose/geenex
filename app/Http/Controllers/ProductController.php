@@ -27,6 +27,13 @@ class ProductController extends Controller
         $categories = Conf::where('level', 1)
                         ->where('type', 'category')
                         ->with(['subs' => function ($query_1){
+                            // $query_1->withCount('subs');
+                            // $query_1->withCount(['subs' => function ($qc){
+                            //     // 
+                            //     // return 100;
+
+                            // }]);
+                            
                             $query_1->with(['subs' => function ($query){
                                 $query->whereHas('products', function ($q1) {
                                     if(Session::has('search_category_id')) {
@@ -52,9 +59,6 @@ class ProductController extends Controller
 
                                 $query->whereHas('products', function ($q) {
 
-                                    // 要有图片
-                                    // $q->whereNotNull('img');
-
                                     // keywords
                                     if(Session::has('keywords') && trim(session('keywords')) != '') {
 
@@ -69,9 +73,19 @@ class ProductController extends Controller
 
                                 $query->withCount('products');
                             }]);
-                            // $query1->withCount('subs');
+
                         }])
                         ->get();
+
+
+
+        // foreach ($categories as $c) {
+        //     $c->level2_count = 0;
+        //     $c->level2_count += $c->products_count;
+        // }
+
+
+
 
         $brands = Conf::where('type', 'brand')
                         ->whereHas('brand_products', function ($q1) {
@@ -97,9 +111,6 @@ class ProductController extends Controller
                         })
                         ->whereHas('brand_products', function ($q) {
 
-                            // 要有图片
-                            // $q->whereNotNull('img');
-
                             // keywords
                             if(Session::has('keywords') && trim(session('keywords')) != '') {
 
@@ -107,11 +118,6 @@ class ProductController extends Controller
                                       ->orWhereRaw('upper(name) like upper(?)', ['%'.session('keywords').'%'])
                                       ->orWhereRaw('upper(remark) like upper(?)', ['%'.session('keywords').'%'])
                                       ->orWhereRaw('upper(content) like upper(?)', ['%'.session('keywords').'%']);
-
-                                // $q->where('part_no', 'like', '%'.session('keywords').'%')
-                                //   ->orWhere('name', 'like', '%'.session('keywords').'%')
-                                //   ->orWhere('remark', 'like', '%'.session('keywords').'%')
-                                //   ->orWhere('content', 'like', '%'.session('keywords').'%');
                             }
 
                         })
@@ -141,12 +147,12 @@ class ProductController extends Controller
 
                                 // keywords
                                 if(Session::has('keywords') && trim(session('keywords')) != '') {
-
+                                    
+                                    // 不区分大小写
                                     $q->whereRaw('upper(part_no) like upper(?)', ['%'.session('keywords').'%'])
                                       ->orWhereRaw('upper(name) like upper(?)', ['%'.session('keywords').'%'])
                                       ->orWhereRaw('upper(remark) like upper(?)', ['%'.session('keywords').'%'])
                                       ->orWhereRaw('upper(content) like upper(?)', ['%'.session('keywords').'%']);
-
 
                                     // $q->Where('part_no', 'like', '%'.session('keywords').'%')
                                     //   ->orWhere('name', 'like', '%'.session('keywords').'%')

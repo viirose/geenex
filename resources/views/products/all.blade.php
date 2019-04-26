@@ -153,7 +153,11 @@
                   <li>  &nbsp <a href="/products/search/level2/{{ $level_2->id }}" class="categories-link"><i class="fa fa-angle-right" aria-hidden="true"></i> <strong>{{ $level_2->key }} </strong></a></li>
                       @if(count($level_2->subs))
                          @foreach($level_2->subs as $level_3)
-                  <li>  &nbsp&nbsp - <a href="/products/search/category/{{ $level_3->id }}" class="categories-link">{{ $level_3->key }} ({{ $level_3->products_count }})</a></li>
+                  <li>  &nbsp&nbsp - <a href="/products/search/category/{{ $level_3->id }}" class="categories-link">{{ $level_3->key }}
+                    @if($r->admin())
+                   ({{ $level_3->products_count }})
+                    @endif
+                 </a></li>
                          @endforeach
                       @endif
                     @endforeach
@@ -171,7 +175,11 @@
               <ul class="list-inline pl-0 mt-4">
               @if(count($brands))
                 @foreach($brands as $b)
-                  <li class="list-inline-item mr-0"><a href="/products/search/brand/{{ $b->id }}" class="tag-link">{{ $b->key }} <small>({{ $b->brand_products_count }})</small></a></li>
+                  <li class="list-inline-item mr-0"><a href="/products/search/brand/{{ $b->id }}" class="tag-link">{{ $b->key }} 
+                    @if($r->admin())
+                    <small>({{ $b->brand_products_count }})</small>
+                    @endif
+                  </a></li>
                 @endforeach
               @else
                 none

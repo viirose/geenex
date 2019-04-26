@@ -45,11 +45,15 @@ class ProductController extends Controller
                                         $q3->whereIn('category_id', session('search_level'));
                                     }
                                 });
+                                $query->whereHas('products', function ($q4) {
+                                    // 有图片
+                                    $q4->whereNotNull('img');
+                                });
 
                                 $query->whereHas('products', function ($q) {
 
                                     // 要有图片
-                                    $q->whereNotNull('img');
+                                    // $q->whereNotNull('img');
 
                                     // keywords
                                     if(Session::has('keywords') && trim(session('keywords')) != '') {
@@ -86,10 +90,14 @@ class ProductController extends Controller
                                 $q3->whereIn('category_id', session('search_level'));
                             }
                         })
+                        ->whereHas('brand_products', function ($q4) {
+                            // 有图片
+                            $q4->whereNotNull('img');
+                        })
                         ->whereHas('brand_products', function ($q) {
 
                             // 要有图片
-                            $q->whereNotNull('img');
+                            // $q->whereNotNull('img');
 
                             // keywords
                             if(Session::has('keywords') && trim(session('keywords')) != '') {

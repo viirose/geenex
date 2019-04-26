@@ -71,9 +71,25 @@ Route::group(['middleware' => ['verified', 'state']], function () {
 
 Route::get('/test', function() {
     // abort('500');
-    return view('dropdown');
+    // return view('dropdown');
+    $all = App\Product::all();
+    // print_r($a);
+    foreach ($all as $a) {
+        echo $a->id.' | '.$a->name.' | '.$a->img.'<br>';
+    }
 });
-
+            // $table->integer('category_id');
+            // $table->integer('brand_id');
+            // $table->string('part_no');
+            // $table->string('name');
+            // $table->integer('created_by');
+            // $table->integer('availability_id');
+            // $table->string('weight')->nullable();
+            // $table->string('remark')->nullable();
+            // $table->text('content')->nullable();
+            // $table->string('img')->nullable();
+            // $table->boolean('show')->default(true);
+            // $table->jsonb('info')->nullable();
 
 
 

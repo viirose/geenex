@@ -75,7 +75,7 @@ Route::get('/test', function() {
     $all = App\Product::all();
     // print_r($a);
     foreach ($all as $a) {
-        echo $a->id.' | '.$a->name.' | '.$a->img.'<br>';
+        echo $a->id.' | '.$a->name.' | '.$a->category_id.' | '.$a->brand_id.' | '.$a->created_by.' | '.$a->availability_id.' | '.$a->img.'<br>';
     }
 });
             // $table->integer('category_id');

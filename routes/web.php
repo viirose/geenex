@@ -20,7 +20,7 @@ Route::get('/', 'HomeController@index');
 Route::post('/contact/quick', 'HomeController@quick');
 
 // Route::get('/login', 'UserController@login');
-// Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home'); 
 
 // 产品
 Route::get('/products', 'ProductController@index');
@@ -70,7 +70,8 @@ Route::group(['middleware' => ['verified', 'state']], function () {
 
 
 Route::get('/test', function() {
-    abort('500');
+    // abort('500');
+    return view('dropdown');
 });
 
 

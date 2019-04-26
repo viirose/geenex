@@ -22,12 +22,12 @@ class Filter
     /**
      * fit
      *
+     * 不区分大小写
+     *
      */
     public function fit($text)
     {
-        $text = strtoupper($text);
-
-        return str_replace(strtoupper($this->keywords), '<strong class="text-warning">'.strtoupper($this->keywords).'</strong>', $text);
+        return str_ireplace($this->keywords, '<strong class="text-warning">'.$this->keywords.'</strong>', $text);
     }
 
     /**

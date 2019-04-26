@@ -69,6 +69,7 @@ class ProductController extends Controller
 
                                 $query->withCount('products');
                             }]);
+                            // $query1->withCount('subs');
                         }])
                         ->get();
 

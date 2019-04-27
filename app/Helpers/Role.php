@@ -91,6 +91,26 @@ class Role
         return $this->hasAndTrue($this->choose($id)->auth, 'admin');
     }
 
+    /**
+     * self : 自己
+     *
+     */
+    public function self($id)
+    {
+        return Auth::id() == $id;
+    }
+
+    /**
+     * grater than : 有权
+     *
+     */
+    public function gt($id)
+    {
+        if($this->root() && !$this->root($id)) return true;
+        if($this->admin() && !$this->admin($id)) return true;
+        return false;
+    }
+
 }
 
 

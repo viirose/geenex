@@ -17,6 +17,7 @@ Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 Route::post('/contact/quick', 'HomeController@quick');
 
 // Route::get('/login', 'UserController@login');
@@ -48,6 +49,9 @@ Route::group(['middleware' => ['verified', 'state']], function () {
     Route::post('/inquiries/send', 'OrderController@send');
 
     // 人员
+    Route::get('/users', 'UserController@index');
+    Route::get('/users/lock/{id}', 'UserController@lock');
+    Route::get('/users/unlock/{id}', 'UserController@unlock');
     Route::get('/users/reset_password', 'UserController@resetPassword');
     Route::post('/users/save_password', 'UserController@savePassword');
 

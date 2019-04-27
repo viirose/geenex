@@ -25,8 +25,10 @@ class Filter
      * 不区分大小写
      *
      */
-    public function fit($text)
+    public function fit($text, $keyName=0)
     {
+        if(!$keyName == 0) $this->keywords = Session::has($keyName) ? trim(session($keyName)) : '';
+
         return str_ireplace($this->keywords, '<strong class="text-warning">'.$this->keywords.'</strong>', $text);
     }
 

@@ -7,12 +7,40 @@ use Kris\LaravelFormBuilder\FormBuilderTrait;
 use Auth;
 use Session;
 
+use App\User;
 use App\Forms\PasswordForm;
 use App\Forms\ContactForm;
 
 class UserController extends Controller
 {
     use FormBuilderTrait;
+
+    /**
+     * Index
+     *
+     */
+    public function index()
+    {
+        $records = User::all();
+
+        return view('users.list', compact('records'));
+
+    }
+
+        // lock 锁定
+    public function lock($id)
+    {
+        User::findOrFail($id)->update(['auth->locked' => true]);
+        return redirect()->back();
+    }
+
+    // lock 解锁
+    public function unlock($id)
+    {
+        User::findOrFail($id)->update(['auth->locked' => false]);
+        return redirect()->back();
+    }
+
 
     /**
      * Login

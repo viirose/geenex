@@ -60,27 +60,51 @@
                       <div class="cent">
                         <img src="{{ $product->img ? asset($product->img) : asset('img/sample.jpg') }}" class="rounded img-fluid">
                       </div>
-                      <ul class="list-unstyled pl-0 mt-4">
-                        <li>GENNEX Ref. 
-                          G{{ $f->show($product->brand->info, 'code', '-') }}{{ $f->show($product->category->master->master->info, 'code', '-') }}{{ $f->show($product->category->master->info, 'code', '-') }}{{ $f->show($product->category->info, 'code', '-') }}
-                        </li>
-                        <li>Part Name: {!! $f->fit($product->name) !!}</li>
-                        <li>Part Nr. {!! $f->fit($product->part_no) !!}</li>
-                        <li>Part for: {{ $product->brand->key }}</li>
-                        <li>Category: 
-                          {{ $product->category->master->master->key }} -
-                          {{ $product->category->master->key }} -
-                          {{ $product->category->key }} 
-                        </li>
-                        <li>Weight: {{ $product->weight }}</li>
-                        <li>Remark: {!! $f->fit($product->remark) !!}</li>
-                        <li>{!! $f->fit($product->content) !!}</li>
-                        <li><a href="/inquiries/add/{{$product->id}}" class="btn btn-outline-light btn-sm">add to My Inquiry</a></li>
-                      </ul>
+                      <p></p>
+                      <table class="text-white">
+                        <tbody>
+                          <tr>
+                            <td>GENNEX Ref.</td>
+                            <td>G{{ $f->show($product->brand->info, 'code', '-') }}{{ $f->show($product->category->master->master->info, 'code', '-') }}{{ $f->show($product->category->master->info, 'code', '-') }}{{ $f->show($product->category->info, 'code', '-') }}{{ $product->id }}</td>
+                          </tr>
+                          <tr>
+                            <td>Part Name</td>
+                            <td>{!! $f->fit($product->name) !!}</td>
+                          </tr>
+                          <tr>
+                            <td>Part Nr.</td>
+                            <td>{!! $f->fit($product->part_no) !!}</td>
+                          </tr>
+                          <tr>
+                            <td>Part for</td>
+                            <td>{{ $product->brand->key }}</td>
+                          </tr>
+                          <tr>
+                            <td>Category</td>
+                            <td>
+                              {{ $product->category->master->master->key }} -
+                              {{ $product->category->master->key }} -
+                              {{ $product->category->key }} 
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Availability</td>
+                            <td>{{ $product->availability->key }}</td>
+                          </tr>
+                          <tr>
+                            <td>Weight</td>
+                            <td>{{ $product->weight }}</td>
+                          </tr>
+                          <tr>
+                            <td>Remark</td>
+                            <td>{!! $f->fit($product->remark) !!}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <a href="/inquiries/add/{{$product->id}}" class="btn btn-outline-light btn-sm">add to My Inquiry</a>
 
                       @if(Auth::check() && $r->admin())
                         <ul class="list-unstyled pl-0 mt-4">
-                          <li>Availability: {{ $product->availability->key }}</li>
                           <li>Created by: {{ $product->creater->name }}</li>
                           <li>Created at: {{ $product->created_at }}</li>
                           <li>Updated at: {{ $product->updated_at }}</li>
@@ -129,7 +153,11 @@
                   <li>  &nbsp <a href="/products/search/level2/{{ $level_2->id }}" class="categories-link"><i class="fa fa-angle-right" aria-hidden="true"></i> <strong>{{ $level_2->key }} </strong></a></li>
                       @if(count($level_2->subs))
                          @foreach($level_2->subs as $level_3)
-                  <li>  &nbsp&nbsp - <a href="/products/search/category/{{ $level_3->id }}" class="categories-link">{{ $level_3->key }} ({{ $level_3->products_count }})</a></li>
+                  <li>  &nbsp&nbsp - <a href="/products/search/category/{{ $level_3->id }}" class="categories-link">{{ $level_3->key }}
+                    @if($r->admin())
+                   ({{ $level_3->products_count }})
+                    @endif
+                 </a></li>
                          @endforeach
                       @endif
                     @endforeach
@@ -147,7 +175,11 @@
               <ul class="list-inline pl-0 mt-4">
               @if(count($brands))
                 @foreach($brands as $b)
-                  <li class="list-inline-item mr-0"><a href="/products/search/brand/{{ $b->id }}" class="tag-link">{{ $b->key }} <small>({{ $b->brand_products_count }})</small></a></li>
+                  <li class="list-inline-item mr-0"><a href="/products/search/brand/{{ $b->id }}" class="tag-link">{{ $b->key }} 
+                    @if($r->admin())
+                    <small>({{ $b->brand_products_count }})</small>
+                    @endif
+                  </a></li>
                 @endforeach
               @else
                 none

@@ -682,7 +682,7 @@ class ConfsTableSeeder extends Seeder
             'parent_id' => 1,
             'level' => 1,
             'type' => 'availability',
-            'key' => 'Normal',
+            'key' => 'normal',
         ]);
         Conf::create([
             'parent_id' => 1,

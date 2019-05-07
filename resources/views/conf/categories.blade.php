@@ -26,7 +26,7 @@
                       @foreach($level_1->subs as $level_2)
                         <li>&nbsp <i class="fa fa-angle-right" aria-hidden="true"></i> <a href="javascript:edit({{$level_2->id}})"><strong>{{ $level_2->key }}</strong></a> 
                           <span>(编码: {{ $f->show($level_2->info, 'code') }})</span>
-                          <a href="javascript:create({{$level_2->id}})" class="badge badge-success"> + 增加</a>
+                          
                           @if($level_2->subs->count())
                             <ul class="list-unstyled">
                               @foreach($level_2->subs as $level_3)

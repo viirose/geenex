@@ -40,7 +40,7 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name' => 'Carol.Chen',
             'email' => '1624925120@qq.com',
-            'auth' => '{"admin":true}',
+            'auth' => '{"root":true}',
             'email_verified_at' => today(),
             'password' => bcrypt('000000'),
         ]);

@@ -51,6 +51,7 @@
                   <p>
                     # {!! $f->fit($product->part_no) !!} <br>
                     <strong>{!! $f->fit($product->name) !!}</strong> <br>
+                    {{ $product->category->master->key }}/{{ $product->category->key }}<br>
                     {!! $f->fit($product->remark) !!}<br>
                     <a href="/inquiries/add/{{ $product->id }}" class="btn btn-sm btn-outline-primary">咨询</a>
                     <a href="/products/show/{{ $product->id }}" class="btn btn-sm btn-outline-primary">详情</a>

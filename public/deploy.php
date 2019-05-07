@@ -1,6 +1,6 @@
 <?php
 
-$path = "/mnt/www/joclift.com";
+$path = "/mnt/www/guntleson.com";
 $key = 'kingking';
 
 $github_signature = @$_SERVER['HTTP_X_HUB_SIGNATURE'];

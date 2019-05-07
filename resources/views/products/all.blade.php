@@ -90,7 +90,7 @@
                   <li> <a href="/products/search/level2/{{ $level_1->id }}" class="categories-link"><h5><i class="fa fa-bookmark" aria-hidden="true"></i> {{ $level_1->key }} </h5></a></li>
                   @if(count($level_1->subs))
                     @foreach($level_1->subs as $level_2)
-                  <li>  &nbsp <a href="/products/search/category/{{ $level_2->id }}" class="categories-link"><i class="fa fa-angle-right" aria-hidden="true"></i> {{ $level_2->key }} ({{ $level_2->products_count }})</a></li>
+                  <li>  &nbsp <a href="/products/search/category/{{ $level_2->id }}" class="categories-link"><i class="fa fa-angle-right" aria-hidden="true"></i> {{ $level_2->key }} <small>({{ $level_2->products_count }})</small></a></li>
    
                     @endforeach
                   @endif

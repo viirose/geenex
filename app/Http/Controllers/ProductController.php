@@ -262,7 +262,7 @@ class ProductController extends Controller
             'url' => '/products/store'
         ]);
 
-        $title = '添加产品';
+        $title = '发布产品';
         $icon = 'cube';
 
         return view('form', compact('form','title','icon'));

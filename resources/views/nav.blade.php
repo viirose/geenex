@@ -29,7 +29,7 @@
   @endif
     <!-- Favicon-->
   @if(config('site.info.icon'))
-    <link rel="shortcut icon" href="{{ asset('img/'.config('site.info.icon')) }}">
+    <link rel="shortcut icon" href="{{ asset('img/'.config('site.info.icon')) }}">  
   @endif
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -46,7 +46,7 @@
                   <!-- Link-->
                 </li>
                   <li class="nav-item dropdown">
-                    <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">产品-服务</a>
+                    <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">产品和服务</a>
                     <div class="dropdown-menu">
                       <a href="/products" class="dropdown-item"> 产品</a>
                       <a href="/products" class="dropdown-item"> 项目服务</a>

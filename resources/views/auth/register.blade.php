@@ -68,6 +68,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('注册') }}
                                 </button>
+                                &nbsp &nbsp <small><a class="text" href="/login">已有账号,去登录</a></small>
                             </div>
                         </div>
                     </form>

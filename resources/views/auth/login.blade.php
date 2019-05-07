@@ -61,10 +61,14 @@
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <small>
+                                    <a href="{{ route('password.request') }}">
                                         {{ __('忘记密码?') }}
                                     </a>
+                                </small>
                                 @endif
+
+                                <small><a class="text text-warning" href="/register">没有账号, 去注册!</a></small>
                             </div>
                         </div>
                     </form>

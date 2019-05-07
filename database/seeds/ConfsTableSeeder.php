@@ -35,7 +35,7 @@ class ConfsTableSeeder extends Seeder
             'parent_id' => 1,
             'level' => 1,
             'type' => 'category',
-            'key' => '缩合布线',
+            'key' => '综合布线',
             'info' => '{"code":2}',
         ]);
 

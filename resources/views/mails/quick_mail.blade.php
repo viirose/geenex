@@ -1,15 +1,15 @@
 <div>
-    == Quick Mail ==<br> 
-    From: 
+    == 马上联系 ==<br> 
+    来自: 
     @if(Auth::check())
     {{ Auth::user()->email }}
     @else
-    New Customer: <br>
+    未注册用户: <br>
     {{ $form->email }}
     @endif
     <br>
 </div>
 
 <div>
-    message: {{ $form->message }}
+    消息: {{ $form->message }}
 </div>

@@ -2,17 +2,17 @@
     $m = new App\Helpers\Mail;
 ?>
 <div>
-    == New Inquiry ==<br> 
-    From: {{ Auth::user()->email }}<br>
-    Customer: {{ Auth::user()->name }}
+    == 新咨询 ==<br> 
+    来自: {{ Auth::user()->email }}<br>
+    用户: {{ Auth::user()->name }}
 </div>
 
 <div>
-    message: {{ $form->message }}
+    信息: {{ $form->message }}
 </div>
 
 @if($m->productList())
-    products:<br>
+    产品:<br>
     ------------<br>
     <div>
         @foreach($m->productList() as $record)

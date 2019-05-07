@@ -26,53 +26,43 @@ class ProductController extends Controller
     { 
         $categories = Conf::where('level', 1)
                         ->where('type', 'category')
-                        ->with(['subs' => function ($query_1){
-                            // $query_1->withCount('subs');
-                            // $query_1->withCount(['subs' => function ($qc){
-                            //     // 
-                            //     // return 100;
+                        ->with(['subs' => function ($query){
 
-                            // }]);
+                            $query->whereHas('products', function ($q1) {
+                                if(Session::has('search_category_id')) {
+                                    $q1->where('category_id', session('search_category_id'));
+                                }
+                            });
+                            $query->whereHas('products', function ($q2) {
+                                // search_brand_id
+                                if(Session::has('search_brand_id')) {
+                                    $q2->where('brand_id', session('search_brand_id'));
+                                }
+                            });
+                            $query->whereHas('products', function ($q3) {
+                                // search_level
+                                if(Session::has('search_level')) {
+                                    $q3->whereIn('category_id', session('search_level'));
+                                }
+                            });
+                            $query->whereHas('products', function ($q4) {
+                                // 有图片
+                                $q4->whereNotNull('img');
+                            });
+
+                            $query->whereHas('products', function ($q) {
+
+                                // keywords
+                                if(Session::has('keywords') && trim(session('keywords')) != '') {
+
+                                    $q->whereRaw('upper(part_no) like upper(?)', ['%'.session('keywords').'%'])
+                                      ->orWhereRaw('upper(name) like upper(?)', ['%'.session('keywords').'%'])
+                                      ->orWhereRaw('upper(remark) like upper(?)', ['%'.session('keywords').'%'])
+                                      ->orWhereRaw('upper(content) like upper(?)', ['%'.session('keywords').'%']);
+                                }
+                            });
                             
-                            $query_1->with(['subs' => function ($query){
-                                $query->whereHas('products', function ($q1) {
-                                    if(Session::has('search_category_id')) {
-                                        $q1->where('category_id', session('search_category_id'));
-                                    }
-                                });
-                                $query->whereHas('products', function ($q2) {
-                                    // search_brand_id
-                                    if(Session::has('search_brand_id')) {
-                                        $q2->where('brand_id', session('search_brand_id'));
-                                    }
-                                });
-                                $query->whereHas('products', function ($q3) {
-                                    // search_level
-                                    if(Session::has('search_level')) {
-                                        $q3->whereIn('category_id', session('search_level'));
-                                    }
-                                });
-                                $query->whereHas('products', function ($q4) {
-                                    // 有图片
-                                    $q4->whereNotNull('img');
-                                });
-
-                                $query->whereHas('products', function ($q) {
-
-                                    // keywords
-                                    if(Session::has('keywords') && trim(session('keywords')) != '') {
-
-                                        $q->whereRaw('upper(part_no) like upper(?)', ['%'.session('keywords').'%'])
-                                          ->orWhereRaw('upper(name) like upper(?)', ['%'.session('keywords').'%'])
-                                          ->orWhereRaw('upper(remark) like upper(?)', ['%'.session('keywords').'%'])
-                                          ->orWhereRaw('upper(content) like upper(?)', ['%'.session('keywords').'%']);
-                                    }
-
-
-                                });
-
-                                $query->withCount('products');
-                            }]);
+                            $query->withCount('products');
 
                         }])
                         ->get();

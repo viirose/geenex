@@ -34,6 +34,10 @@
                 <td>{{ $record->name  }}</td>
               </tr>
               <tr>
+                <td>类型</td>
+                <td>{{ $record->category->master->key }} / {{ $record->category->key }}</td>
+              </tr>
+              <tr>
                 <td>简介</td>
                 <td>{{ $record->remark  }}</td>
               </tr>

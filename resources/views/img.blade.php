@@ -57,8 +57,8 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-primary" id="crop">OK</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary" id="crop">确定</button>
             </div>
           </div>
         </div>
@@ -127,8 +127,8 @@
 
         if (cropper) {
           canvas = cropper.getCroppedCanvas({
-            width: 800,
-            height: 600,
+            width: 400,
+            height: 300,
           });
           initialAvatarURL = avatar.src;
           avatar.src = canvas.toDataURL();

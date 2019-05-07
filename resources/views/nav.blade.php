@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>GEENEX</title>
+    <title>{{ config('site.info.name') }}</title>
     <meta name="description" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,11 +20,17 @@
     <!-- Custom font icons-->
     <link rel="stylesheet" href="{{ asset('css/fontastic.css') }}">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="{{ asset('css/style.blue.css') }}" id="theme-stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.'.config('site.info.color').'.css') }}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
+  @if(config('site.info.icon'))
+    <link rel="stylesheet" href="{{ asset('css/'.config('site.info.css').'.css') }}">
+  @endif
     <!-- Favicon-->
-    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
+  @if(config('site.info.icon'))
+    <link rel="shortcut icon" href="{{ asset('img/'.config('site.info.icon')) }}">
+  @endif
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -33,24 +39,24 @@
     <!-- navbar-->
     <header class="header">
       <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container"><a href="/" class="navbar-brand"><img src="{{ asset('img/logo.svg') }}" alt="" class="img-fluid"></a>
+        <div class="container"><a href="/" class="navbar-brand"><img src="{{ asset('img/'.config('site.info.logo')) }}" alt="" class="img-fluid"></a>
           <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right">Menu<i class="fa fa-bars ml-2"></i></button>
           <div id="navbarSupportedContent" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                   <!-- Link-->
                 </li>
                   <li class="nav-item dropdown">
-                    <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-cube" aria-hidden="true"></i> Product & Service</a>
+                    <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">产品-服务</a>
                     <div class="dropdown-menu">
-                      <a href="/products" class="dropdown-item"> Spare Parts</a>
-                      <a href="/products" class="dropdown-item"> Metal Processing</a>
-                      <a href="/products" class="dropdown-item"> Lift Material</a>
+                      <a href="/products" class="dropdown-item"> 产品</a>
+                      <a href="/products" class="dropdown-item"> 项目服务</a>
+                      <a href="/products" class="dropdown-item"> 订制</a>
                     </div>
 
                   </li>
                   <!-- Link-->
                   <!-- Link-->
-                  <li class="nav-item"><a href="/inquiries" class="nav-link">|   &nbsp<i class="fa fa-list-ul" aria-hidden="true"></i> My Inquiry 
+                  <li class="nav-item"><a href="/inquiries" class="nav-link">|   &nbsp<i class="fa fa-list-ul" aria-hidden="true"></i> 咨询
                     @if(Session::has('inquiries') && count(session('inquiries')))
                       <span class="badge badge-danger">{{ count(session('inquiries')) }}</span>
                     @endif
@@ -62,19 +68,19 @@
                     <div class="dropdown-menu">
                     @if (Auth::check())
                       @if($r->root())
-                      <a href="/conf/categories" class="dropdown-item"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Categories</a>
-                      <a href="/conf/brands" class="dropdown-item"><i class="fa fa-tags" aria-hidden="true"></i> Manufacturers</a>
+                      <a href="/conf/categories" class="dropdown-item"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 产品类型</a>
+                      <a href="/conf/brands" class="dropdown-item"><i class="fa fa-tags" aria-hidden="true"></i> 品牌</a>
                       @endif
 
                       @if($r->admin())
-                      <a href="/products/create" class="dropdown-item"><i class="fa fa-cube" aria-hidden="true"></i> Add Products</a>
-                      <a href="/users" class="dropdown-item"><i class="fa fa-users" aria-hidden="true"></i> Users</a>
+                      <a href="/products/create" class="dropdown-item"><i class="fa fa-cube" aria-hidden="true"></i> 发布产品</a>
+                      <a href="/users" class="dropdown-item"><i class="fa fa-users" aria-hidden="true"></i> 用户</a>
                       @endif
-                      <a href="/users/reset_password" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> Reset Password</a>
-                      <a href="/logout" class="dropdown-item"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a>
+                      <a href="/users/reset_password" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> 重置密码</a>
+                      <a href="/logout" class="dropdown-item"><i class="fa fa-power-off" aria-hidden="true"></i> 安全退出</a>
                     @else
-                      <a href="/login" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> Login</a>
-                      <a href="/register" class="dropdown-item"><i class="fa fa-anchor" aria-hidden="true"></i> Register</a>
+                      <a href="/login" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> 登录</a>
+                      <a href="/register" class="dropdown-item"><i class="fa fa-anchor" aria-hidden="true"></i> 注册</a>
                     @endif
                     </div>
 
@@ -87,64 +93,19 @@
 
     @yield('content')
 
-    <footer class="main-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <div class="footer-logo"><img src="{{  asset('img/logo-footer.svg') }}" alt="..." class="img-fluid"></div>
-            <ul class="list-unstyled">
-              <li>&nbsp<span class="footer-link">49 South Zhongba Road,</span></li>
-              <li>&nbsp<span class="footer-link">Haian, Jiangsu Province,</span></li>
-              <li>&nbsp<span class="footer-link">China 226600</span></li>
-              <li>&nbsp<span class="footer-link">+86 513 8889 2688</span></li>
-              <li>&nbsp<span class="footer-link">+86 513 8180 0823 (fax)</span></li>
-              <li>&nbsp<span class="footer-link">info@joclift.con</span></li>
-            </ul>
 
-          </div>
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <h5 class="footer-heading">INFORMATION</h5>
-            <ul class="list-unstyled">
-              <li> <a href="#" class="footer-link">Company Profile</a></li>
-              <li> <a href="#" class="footer-link">Terms & Conditions </a></li>
-              <li> <a href="#" class="footer-link">Contact</a></li>
-              <li> <a href="#" class="footer-link">Site Map</a></li>
-              <li> <a href="#" class="footer-link">Privacy Policy</a></li>
-            </ul>
-          </div>
+<div class="footer">
+  <div class="text-center">
+    <p>
+      <small>&copy; {{ today()->year }} {{ config('site.info.corp_full_name') }}</small> <br>
+      <small><a href="http://www.miitbeian.gov.cn">{{ config('site.info.beian') }}</a></small>
+    </p>
+    <p>
+      
+    </p>
+  </div>
+</div>
 
-
-
-
-
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <h5 class="footer-heading">Product & Service</h5>
-            <ul class="list-unstyled">
-              <li> <a href="#" class="footer-link">Spare Parts</a></li>
-              <li> <a href="#" class="footer-link">Metal Processing</a></li>
-              <li> <a href="#" class="footer-link">Lift Material</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="copyrights">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 text-center text-lg-left">
-              <p class="copyrights-text mb-3 mb-lg-0">
-                <small>Copyright &copy; 2019.GENNEX</small> 
-                <small><a href="http://www.miitbeian.gov.cn">苏ICP备08013754号</a></small>
-              </p>
-            </div>
-            <div class="col-lg-6 text-center text-lg-right">
-              <ul class="list-inline social mb-0">
-                <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook"></i></a><a href="#" class="social-link"><i class="fa fa-twitter"></i></a><a href="#" class="social-link"><i class="fa fa-youtube-play"></i></a><a href="#" class="social-link"><i class="fa fa-vimeo"></i></a><a href="#" class="social-link"><i class="fa fa-pinterest"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
     <!-- JavaScript files-->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

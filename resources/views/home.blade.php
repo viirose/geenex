@@ -6,18 +6,17 @@
       <div class="container mb-5">
         <div class="row align-items-center">
           <div class="col-lg-6">
-            <h3 class="hero-heading mb-0">Your right source of spare parts</h3>
-            <h3 class="hero-heading mb-0">Find It Now</h3>
+            <h3 class="hero-heading mb-0">10年磨一剑, 精品为您呈现!</h3>
             <div class="row">
               <div class="col-lg-10">
-                <p class="lead text-muted mt-4 mb-4">Type in the manufacturer’s part number or the part’s description to get the list of parts available.</p>
+                <p class="lead text-muted mt-4 mb-4">Guntleson(匠森)是{{ config('site.info.corp_name') }}精心打造的综合布线品牌, 在这里您可以找到优质实惠的产品, 专业周到的服务, 欢迎垂询!</p>
               </div>
             </div>
             <form action="/products/search" method="post" class="subscription-form">
               <div class="form-group">
                 @csrf
-                <input type="text" name="keywords" placeholder="Search" class="form-control" value="{{ Session::has('keywords') ? session('keywords') : '' }}">
-                <button type="submit" class="btn btn-primary">Search</button>
+                <input type="text" name="keywords" placeholder="产品信息" class="form-control" value="{{ Session::has('keywords') ? session('keywords') : '' }}">
+                <button type="submit" class="btn btn-primary">查询</button>
               </div>
             </form>
           </div>
@@ -30,7 +29,7 @@
     <section  id="contact_form">
       <div class="container">
         <header class="section-header">
-          <h2 class="mb-2">Quick Contact
+          <h2 class="mb-2">马上联系
             @if(Auth::check())
             : {{ Auth::user()->email }}
             @endif
@@ -45,22 +44,20 @@
           <div class="col-lg-5 contact-details mt-5 mt-lg-0">
             <div class="box">
               <div class="icon d-flex align-items-end"><img src="img/placeholder.svg" alt="" class="img-fluid"></div>
-              <h5>Address</h5>
-              <p class="text-small font-weight-light">JOC-GENNEX Engineering Technology Co., Ltd.
-49 South Zhongba Road,
-Haian, Jiangsu Province,
-China 226600
-</p>
+              <h5>地址</h5>
+              <p class="text-small font-weight-light">{{ config('site.info.addr') }}</p>
             </div>
             <div class="box">
               <div class="icon d-flex align-items-end"><img src="img/technology.svg" alt="" class="img-fluid"></div>
-              <h5>Phone</h5>
-              <p class="text-small font-weight-light">FAX: +86 513 8180 0823</p><strong class="text-muted">TEL: +86 513 8889 2688</strong>
+              <h5>联系电话</h5>
+
+              <p class="text-small font-weight-light">传真: {{ config('site.info.fax') }}</p>
+              <strong class="text-muted">电话: {{ config('site.info.tel') }}</strong>
             </div>
             <div class="box">
               <div class="icon d-flex align-items-end"><img src="img/multimedia.svg" alt="" class="img-fluid"></div>
-              <h5>Email support</h5>
-              <p class="text-small font-weight-light"><strong>info@joclift.con email </strong> </p>
+              <h5>邮件</h5>
+              <p class="text-small font-weight-light"><strong>{{ config('site.info.email') }} </strong> </p>
 
             </div>
           </div>

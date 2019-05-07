@@ -17,32 +17,32 @@ class UsersTableSeeder extends Seeder
             'name' => 'Kris',
             'email' => 'kris@viirose.com',
             'email_verified_at' => today(),
-            'contact_verified_at' => today(),
             'password' => bcrypt('000000'),
             'auth' => '{"root":true}',
         ]);
 
         User::create([
-            'name' => 'Bella',
-            'email' => 'bella@viirose.com',
+            'name' => 'Patrick.Wu',
+            'email' => 'patrick.wu@guntleson.com',
+            'auth' => '{"root":true}',
+            'email_verified_at' => today(),
             'password' => bcrypt('000000'),
+        ]);
+
+        User::create([
+            'name' => 'Chris.Ding',
+            'email' => 'djj3334@126.com',
+            'auth' => '{"root":true}',
+            'email_verified_at' => today(),
+            'password' => bcrypt('000000'),
+        ]);
+
+        User::create([
+            'name' => 'Carol.Chen',
+            'email' => '1624925120@qq.com',
             'auth' => '{"admin":true}',
-        ]);
-
-        User::create([
-            'name' => 'Jiang',
-            'email' => 'j@test.com',
             'email_verified_at' => today(),
             'password' => bcrypt('000000'),
-            'auth' => '{"root":true}',
-        ]);
-
-        User::create([
-            'name' => 'Wang',
-            'email' => 'w@test.com',
-            'email_verified_at' => today(),
-            'password' => bcrypt('000000'),
-            'auth' => '{"root":true}',
         ]);
     }
 }

@@ -19,10 +19,10 @@ class State
         $role = new Role;
 
         if($role->locked()) abort('403');
-        if(!$role->contactVerified()) {
-            session(['target_url' => $request->fullUrl()]);
-            return redirect('/users/contact/create');
-        }
+        // if(!$role->contactVerified()) {
+        //     session(['target_url' => $request->fullUrl()]);
+        //     return redirect('/users/contact/create');
+        // }
         return $next($request);
     }
 }

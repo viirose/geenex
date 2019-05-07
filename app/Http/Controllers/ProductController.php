@@ -272,7 +272,7 @@ class ProductController extends Controller
             'url' => '/products/store'
         ]);
 
-        $title = 'Add a Product';
+        $title = '添加产品';
         $icon = 'cube';
 
         return view('form', compact('form','title','icon'));
@@ -311,7 +311,7 @@ class ProductController extends Controller
             'url' => '/products/update/'.$id
         ]);
 
-        $title = 'Edit: '.$record->part_no;
+        $title = '修改信息: '.$record->part_no;
         $icon = 'wrench';
 
         return view('form', compact('form','title','icon'));
@@ -370,29 +370,25 @@ class ProductController extends Controller
         $new_img = 'storage/app/img/'.$id.'-'.time().'.jpg';
 
         $image = Image::make($img)
-                ->insert('img/watermark.png')
-
-                ->text('Part Nr. '.strtoupper($exists->part_no), 390, 50, function($font) {
-                    $font->file('fonts/helvetica-light.otf');
-                    $font->size(36);
-                    $font->color('#fff');
-                    $font->align('center');
-                    $font->valign('top');
-                })
-                ->text('Part Nr. '.strtoupper($exists->part_no), 389, 49, function($font) {
-                    $font->file('fonts/helvetica-light.otf');
-                    $font->size(36);
-                    $font->color('#000');
-                    $font->align('center');
-                    $font->valign('top');
-                })
-                ->save($new_img, 60);
+                ->insert('img/guntleson_mark.png')
+                ->save($new_img, 70);
 
         if($exists->img) unlink($exists->img);
 
         $exists->update(['img' => $new_img]);
 
         echo '200';
+    }
+
+    /**
+     * 详情
+     *
+     */
+    public function show($id)
+    {
+        $record = Product::findOrFail($id);
+
+        return view('products.show', compact('record'));
     }
 
 

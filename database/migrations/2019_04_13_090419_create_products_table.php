@@ -20,8 +20,8 @@ class CreateProductsTable extends Migration
             $table->string('part_no');
             $table->string('name');
             $table->integer('created_by');
-            $table->integer('availability_id');
-            $table->string('weight')->nullable();
+            // $table->integer('availability_id');
+            // $table->string('weight')->nullable();
             $table->string('remark')->nullable();
             $table->text('content')->nullable();
             $table->string('img')->nullable();

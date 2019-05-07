@@ -12,22 +12,22 @@ class QuickContactForm extends Form
         if(!Auth::check()){
             $this
             ->add('email', 'email', [
-                'label' => 'Email*',
+                'label' => '您的邮件*',
                 'rules' => 'required'
             ]);
         }
 
         $this
         ->add('subject', 'text', [
-            'label' => 'Subject',
+            'label' => '标题',
             'rules' => 'min:2|max:200'
         ])
         ->add('message', 'textarea', [
-            'label' => 'Message',
+            'label' => '咨询内容',
             'rules' => 'min:2|max:200'
         ])
         ->add('submit','submit',[
-            'label' => 'OK',
+            'label' => '发送',
             'attr' => ['class' => 'btn btn-primary btn-block']
         ]);
     }

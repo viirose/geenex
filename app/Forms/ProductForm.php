@@ -13,11 +13,9 @@ class ProductForm extends Form
     private function categoris()
     {
         $records = Conf::where('type', 'category')
-                        ->where('level', 3)
+                        ->where('level', 2)
                         ->orderBy('key')
                         ->get();
-                        // ->pluck('key', 'id') 
-                        // ->toArray();
         $array = [];
 
         foreach ($records as $record) {
@@ -36,59 +34,40 @@ class ProductForm extends Form
         return $array;
     }
 
-    // availability
-    private function availability()
-    {
-        $array = Conf::where('type', 'availability')
-                        ->pluck('key', 'id')
-                        ->toArray();
-        return $array;
-    }
-
     // form
     public function buildForm()
     {
         $this
         ->add('category_id', 'select', [
-            'label' => 'Category',
-            'empty_value' => '=== Select Category ===',
+            'label' => '分类',
+            'empty_value' => '=== 选择 ===',
             'choices' => $this->categoris(),
             'rules' => 'required',
         ])
         ->add('brand_id', 'select', [
-            'label' => 'Manufacturer',
-            'empty_value' => '=== Select Manufacturer ===',
+            'label' => '品牌',
+            'empty_value' => '=== 选择 ===',
             'choices' => $this->brands(),
             'rules' => 'required'
         ])
         ->add('part_no', 'text', [
-            'label' => 'Part Nr.',
+            'label' => '货号',
             'rules' => 'required|min:3|max:22'
         ])
         ->add('name', 'text', [
-            'label' => 'Name',
+            'label' => '产品名称',
             'rules' => 'required|min:3|max:50'
         ])
-        ->add('availability_id', 'select', [
-            'label' => 'Availability',
-            'empty_value' => '=== Select Availability ===',
-            'choices' => $this->availability(),
-            'rules' => 'required'
-        ])
         ->add('remark', 'text', [
-            'label' => 'Remark',
-            'rules' => 'min:2|max:32'
-        ])
-        ->add('weight', 'text', [
-            'label' => 'Weight',
-            'rules' => 'min:3|max:20'
+            'label' => '简介',
+            'rules' => 'required|min:3|max:22'
         ])
         ->add('content', 'textarea', [
-            'label' => 'Content',
-            'rules' => 'min:2|max:200'
+            'label' => '详情',
+            'rules' => 'min:2|max:1000'
         ])
         ->add('submit','submit',[
-            'label' => 'Next',
+            'label' => '下一步',
             'attr' => ['class' => 'btn btn-success btn-block']
         ]);
     }

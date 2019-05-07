@@ -28,6 +28,7 @@ Route::get('/products', 'ProductController@index');
 Route::post('/products/search', 'ProductController@search');
 Route::get('/products/search/{type}/{id}', 'ProductController@searchType');
 Route::get('/products/clear_search/{string}', 'ProductController@searchClear');
+Route::get('/products/show/{id}', 'ProductController@show');
 
 // 咨询列表
 Route::get('/inquiries', 'OrderController@inquiries');

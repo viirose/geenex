@@ -108,9 +108,9 @@
               @if(count($brands))
                 @foreach($brands as $b)
                   <li class="list-inline-item mr-0"><a href="/products/search/brand/{{ $b->id }}" class="tag-link">{{ $b->key }} 
-                    @if($r->admin())
+                    
                     <small>({{ $b->brand_products_count }})</small>
-                    @endif
+                    
                   </a></li>
                 @endforeach
               @else

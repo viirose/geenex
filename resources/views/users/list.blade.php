@@ -10,7 +10,7 @@
 <div class="row top-pad"></div>
 <section>
     <div class="container">
-      <h4><i class="fa fa-users" aria-hidden="true"></i> Users</h4>
+      <h4><i class="fa fa-users" aria-hidden="true"></i> 用户</h4>
         <div class="col-sm-8 cent">
           <div class="row text-left">
             <div class="card card-light form-card col-12">
@@ -20,8 +20,8 @@
               <form action="/users/search" method="post" class="subscription-form">
                 <div class="form-group">
                   @csrf
-                  <input type="text" name="keywords" placeholder="Search" class="form-control" value="{{ Session::has('keywords_user') ? session('keywords_user') : '' }}">
-                  <button type="submit" class="btn btn-primary">Search</button>
+                  <input type="text" name="keywords" placeholder="关键词" class="form-control" value="{{ Session::has('keywords_user') ? session('keywords_user') : '' }}">
+                  <button type="submit" class="btn btn-primary">查询</button>
                 </div>
               </form>
             </div>
@@ -30,9 +30,9 @@
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Status</th>
+                  <th>姓名</th>
+                  <th>邮件</th>
+                  <th>状态</th>
                   <th></th>
                 </tr>
               </thead>
@@ -45,7 +45,7 @@
                     
 
                     @if($r->self($record->id))
-                      <span class="badge badge-success">me</span>
+                      <span class="badge badge-success">我</span>
                     @endif
 
 
@@ -54,30 +54,27 @@
                   <td>
                     @if($r->locked($record->id))
                       @if($r->gt($record->id))
-                        <a href="/users/unlock/{{ $record->id }}" class="badge badge-warning">Locked: <i class="fa fa-unlock" aria-hidden="true"></i> </a>
+                        <a href="/users/unlock/{{ $record->id }}" class="badge badge-warning">锁定: <i class="fa fa-unlock" aria-hidden="true"></i> </a>
                       @else
-                        <span class="badge badge-danger">Locked</span>
+                        <span class="badge badge-danger">锁定</span>
                       @endif
                     @else
                       @if($r->gt($record->id))
-                        <a href="/users/lock/{{ $record->id }}" class="badge badge-success">Normal: <i class="fa fa-lock" aria-hidden="true"></i></a>
+                        <a href="/users/lock/{{ $record->id }}" class="badge badge-success">正常: <i class="fa fa-lock" aria-hidden="true"></i></a>
                       @else
-                        <span class="badge badge-success">Normal</span>
+                        <span class="badge badge-success">正常</span>
                       @endif
                     @endif
                   </td>
                   <td>
                     @if($r->admin($record->id))
-                      <span class="badge badge-primary">Admin</span>
+                      <span class="badge badge-primary">管理员</span>
                     @endif
 
                     @if(!$r->emailVerified($record->id))
-                      <span class="badge badge-danger">Email Not Verified</span>
+                      <span class="badge badge-danger">邮件未认证</span>
                     @endif
 
-                    @if(!$r->contactVerified($record->id))
-                      <span class="badge badge-warning">No Contact Info</span>
-                    @endif
                   </td>
                   <td></td>
                 </tr>

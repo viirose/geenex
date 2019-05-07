@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $records = User::all();
+        $records = User::where('id', '>', 1)->get();
 
         return view('users.list', compact('records'));
 

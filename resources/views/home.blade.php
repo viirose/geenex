@@ -15,7 +15,7 @@
             <form action="/products/search" method="post" class="subscription-form">
               <div class="form-group">
                 @csrf
-                <input type="text" name="keywords" placeholder="产品信息" class="form-control" value="{{ Session::has('keywords') ? session('keywords') : '' }}">
+                <input type="text" name="keywords" placeholder="关键词" class="form-control" value="{{ Session::has('keywords') ? session('keywords') : '' }}">
                 <button type="submit" class="btn btn-primary">查询</button>
               </div>
             </form>

@@ -1,11 +1,3 @@
-<?php
-  $f = new App\Helpers\Filter;
-  $r = new App\Helpers\Role;
-  $array = json_decode($record->info, true);
-  $contacts = json_decode($array['contact'], true);
-
-?>
-
 @extends('../nav')
 
 @section('content')

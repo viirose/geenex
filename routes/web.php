@@ -23,6 +23,8 @@ Route::post('/contact/quick', 'HomeController@quick');
 // Route::get('/login', 'UserController@login');
 // Route::get('/home', 'HomeController@index')->name('home'); 
 
+// 产品
+Route::get('/products/share/{id}/{token}', 'ProductController@share');
 
 
 // 咨询列表
@@ -65,6 +67,8 @@ Route::group(['middleware' => ['verified', 'state']], function () {
     Route::get('/products/edit/{id}', 'ProductController@edit');
     Route::post('/products/update/{id}', 'ProductController@update');
     Route::get('/products/delete/{id}', 'ProductController@delete');
+    Route::get('/products/show/{id}', 'ProductController@show');
+    Route::post('/products/send', 'ProductController@send');
 
     // spare only
     Route::group(['middleware' => ['spare']], function () {

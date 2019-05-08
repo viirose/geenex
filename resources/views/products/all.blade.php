@@ -101,7 +101,9 @@
                           </tr>
                         </tbody>
                       </table>
-                      <a href="/inquiries/add/{{$product->id}}" class="btn btn-outline-light btn-sm">add to My Inquiry</a>
+                      <a href="/products/show/{{$product->id}}" class="btn btn-light btn-sm">show</a>
+                      <a href="/inquiries/add/{{$product->id}}" class="btn btn-light btn-sm">add to My Inquiry</a>
+                      <a href="javascript:send({{$product->id}})" class="btn btn-outline-light btn-sm">Email to a friend</a>
 
                       @if(Auth::check() && $r->admin())
                         <ul class="list-unstyled pl-0 mt-4">
@@ -109,7 +111,7 @@
                           <li>Created at: {{ $product->created_at }}</li>
                           <li>Updated at: {{ $product->updated_at }}</li>
                           <li>
-                            <a href="/products/edit/{{$product->id}}" class="btn btn-outline-light btn-sm">edit</a>
+                            <a href="/products/edit/{{ $product->id }}" class="btn btn-outline-light btn-sm">edit</a>
                             <a href="javascript:del({{ $product->id }})" class="btn btn-danger btn-sm">delete!</a>
                           </li>
                         </ul>
@@ -146,39 +148,54 @@
               <h3 class="sidebar-widget-heading"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Categories</h3>
               <ul class="list-unstyled pl-0 mt-4">
               @if(count($categories))
+                  <div id="categories_menu">
                 @foreach($categories as $level_1)
+
+
+
                   <li> <a href="/products/search/level1/{{ $level_1->id }}" class="categories-link"><h5><i class="fa fa-bookmark" aria-hidden="true"></i> {{ $level_1->key }} </h5></a></li>
                   @if(count($level_1->subs))
                     @foreach($level_1->subs as $level_2)
-                  <li>  &nbsp <a href="/products/search/level2/{{ $level_2->id }}" class="categories-link"><i class="fa fa-angle-right" aria-hidden="true"></i> <strong>{{ $level_2->key }} </strong></a></li>
+
+                  <li>  &nbsp <a href="#collapse_{{ $level_2->id }}" data-toggle="collapse" class="categories-link"><i class="fa fa-angle-right" aria-hidden="true"></i> <strong>{{ $level_2->key }} </strong></a></li>
+
+
+               <div id="collapse_{{$level_2->id}}" class="collapse" data-parent="#categories_menu">
                       @if(count($level_2->subs))
                          @foreach($level_2->subs as $level_3)
                   <li>  &nbsp&nbsp - <a href="/products/search/category/{{ $level_3->id }}" class="categories-link">{{ $level_3->key }}
-                    @if($r->admin())
+                    
                    ({{ $level_3->products_count }})
-                    @endif
+                  
                  </a></li>
                          @endforeach
+                      @else
+                      <li><span class="categories-link">&nbsp&nbsp&nbsp&nbsp -- null --</span></li>
                       @endif
+              </div>
+
+
                     @endforeach
                   @endif
                   <br>
                 @endforeach
+                  </div>
               @else
                   none
               @endif
 
               </ul>
             </div>
+
             <div class="sidebar-widget">
               <h4 class="sidebar-widget-heading"><i class="fa fa-tags" aria-hidden="true"></i> Sort By Manufacturer</h4>
               <ul class="list-inline pl-0 mt-4">
               @if(count($brands))
                 @foreach($brands as $b)
                   <li class="list-inline-item mr-0"><a href="/products/search/brand/{{ $b->id }}" class="tag-link">{{ $b->key }} 
-                    @if($r->admin())
+                    
                     <small>({{ $b->brand_products_count }})</small>
-                    @endif
+                    
                   </a></li>
                 @endforeach
               @else
@@ -214,6 +231,35 @@
     </div>
   </div>
 
+      <!-- 模态框 -->
+  <div class="modal fade" id="email_send">
+        <form action="/products/send"  method="post">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+        <h3>Email to a Friend</h3>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+   
+        <div class="modal-body">
+          @csrf
+            <input type="hidden" name="id" id="product_id">
+            <div class="form-group"  >
+              <label for="email" class="control-label">Email</label>
+              <input class="form-control" minlength="2" maxlength="32" name="email" type="text" id="email">
+            </div>
+        </div>
+   
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">close</button>
+          <button class="btn btn-sm btn-outline-primary" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i> send email</button>
+        </div>
+   
+      </div>
+    </div>
+          </form>
+  </div>
+
     <script>
       function del(id) {
         $("#delete_confirm").modal();
@@ -221,6 +267,12 @@
         var url = '/products/delete/' + id;
         $("#go").attr('href', url);
       }
+
+      function send(id) {
+        $("#email_send").modal();
+        $("#product_id").val(id);
+      }
+
     </script>
 @endsection
 

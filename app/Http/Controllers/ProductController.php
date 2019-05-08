@@ -8,11 +8,13 @@ use Illuminate\Support\Facades\Storage;
 use Auth;
 use Image;
 use Session;
+use Mail;
 
 use App\Product;
 use App\Conf;
 use App\Forms\ProductForm;
 use App\Helpers\Role;
+use App\Mail\Share;
 
 class ProductController extends Controller
 {
@@ -275,7 +277,7 @@ class ProductController extends Controller
         $title = 'Add a Product';
         $icon = 'cube';
 
-        return view('form', compact('form','title','icon'));
+        return view('form_product', compact('form','title','icon'));
     }
 
     /**
@@ -393,6 +395,71 @@ class ProductController extends Controller
         $exists->update(['img' => $new_img]);
 
         echo '200';
+    }
+
+    /**
+     * show 
+     *
+     */
+    public function show($id)
+    {
+        $record = Product::findOrFail($id);
+
+        return view('products.show', compact('record'));
+    }
+
+
+    /**
+     * token 提取
+     *
+     */
+    public function share($id, $token)
+    {
+        $record = Product::findOrFail($id);
+
+        if($record->token === $token) {
+            return $this->show($id);
+        }else{
+            abort('403');
+        }
+    }
+
+    /**
+     * 邮件
+     *
+     */
+    public function send(Request $request)
+    {
+        $record = Product::findOrFail($request->id);
+        $token = $record->token;
+        $url = config('app.url').'/products/share/'.$request->id.'/';
+
+        if($token){
+            $url .= $token;
+        }else{
+            $new_token = str_random(16);
+            $record->update(['token' => $new_token]);
+            $url .= $new_token;
+        }
+
+        $info = [
+            'url' => $url,
+            'part_no' => $record->part_no,
+            'to' => $request->email,
+            'name' => Auth::user()->name,
+            'from' => Auth::user()->email,
+        ];
+
+        Mail::to(config('mail.reply_to.address'))
+        ->send(new Share($info));
+
+
+        $text = 'A Product shared successfully!<br><a href="/products" class="btn btn-success btn-sm"> all products</a>';
+        $color = 'success';
+        $icon = 'user-o';
+        return view('note', compact('text', 'color', 'icon'));
+
+        // return view('products.show', compact('record'));
     }
 
 

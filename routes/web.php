@@ -78,8 +78,6 @@ Route::group(['middleware' => ['verified', 'state']], function () {
         Route::get('/products/clear_search/{string}', 'ProductController@searchClear');
     });
 
-    
-
     // conf
     Route::get('/conf/brands', 'ConfController@brands');
     Route::post('/conf/brands/do', 'ConfController@brandDo');
@@ -91,9 +89,7 @@ Route::group(['middleware' => ['verified', 'state']], function () {
 
 
 Route::get('/test', function() {
-    $password = str_random(6);
-    $password = strtolower($password);
-    echo $password;
+
 });
 
 

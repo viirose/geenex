@@ -16,12 +16,7 @@
         </div>
     </div>
 
-  <script src="{{ asset('js/bootnavbar.js') }}"></script>
-  <script>
-    $(function () {
-        $('#bootnavbar').bootnavbar();
-    })
-</script>
 </section>
 
 @endsection
+

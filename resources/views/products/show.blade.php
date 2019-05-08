@@ -15,7 +15,7 @@
             
           <img src="{{ $record->img ? asset($record->img) : asset('img/sample.jpg') }}" class="img-fluid img-thumbnail">
         </div>
-
+            <p></p>
             <h4>{{ $record->name }}</h4>   
             <p><a href="/inquiries/add/{{ $record->id }}" class="btn btn-sm btn-outline-primary">加入咨询列表</a>
                     <a href="/products" class="btn btn-sm btn-outline-primary">返回</a></p>        

@@ -23,11 +23,7 @@ Route::post('/contact/quick', 'HomeController@quick');
 // Route::get('/login', 'UserController@login');
 // Route::get('/home', 'HomeController@index')->name('home'); 
 
-// 产品
-Route::get('/products', 'ProductController@index');
-Route::post('/products/search', 'ProductController@search');
-Route::get('/products/search/{type}/{id}', 'ProductController@searchType');
-Route::get('/products/clear_search/{string}', 'ProductController@searchClear');
+
 
 // 咨询列表
 Route::get('/inquiries', 'OrderController@inquiries');
@@ -54,6 +50,13 @@ Route::group(['middleware' => ['verified', 'state']], function () {
     Route::get('/users/unlock/{id}', 'UserController@unlock');
     Route::get('/users/reset_password', 'UserController@resetPassword');
     Route::post('/users/save_password', 'UserController@savePassword');
+    Route::get('/users/create', 'UserController@create');
+    Route::post('/users/store', 'UserController@store');
+    Route::get('/users/spare_cancel/{id}', 'UserController@spareCancel');
+    Route::get('/users/spare_give/{id}', 'UserController@spareGive');
+    Route::post('/users/search', 'UserController@search');
+    Route::get('/users/show/{id}', 'UserController@show');
+    Route::get('/users/delete/{id}', 'UserController@delete');
 
     // 产品
     Route::get('/products/create', 'ProductController@create');
@@ -62,6 +65,16 @@ Route::group(['middleware' => ['verified', 'state']], function () {
     Route::get('/products/edit/{id}', 'ProductController@edit');
     Route::post('/products/update/{id}', 'ProductController@update');
     Route::get('/products/delete/{id}', 'ProductController@delete');
+
+    // spare only
+    Route::group(['middleware' => ['spare']], function () {
+        Route::get('/products', 'ProductController@index');
+        Route::post('/products/search', 'ProductController@search');
+        Route::get('/products/search/{type}/{id}', 'ProductController@searchType');
+        Route::get('/products/clear_search/{string}', 'ProductController@searchClear');
+    });
+
+    
 
     // conf
     Route::get('/conf/brands', 'ConfController@brands');
@@ -74,13 +87,9 @@ Route::group(['middleware' => ['verified', 'state']], function () {
 
 
 Route::get('/test', function() {
-    // abort('500');
-    // return view('dropdown');
-    $all = App\Product::all();
-    // print_r($a);
-    foreach ($all as $a) {
-        echo $a->id.' | '.$a->name.' | '.$a->category_id.' | '.$a->brand_id.' | '.$a->created_by.' | '.$a->availability_id.' | '.$a->img.'<br>';
-    }
+    $password = str_random(6);
+    $password = strtolower($password);
+    echo $password;
 });
 
 

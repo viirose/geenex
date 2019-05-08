@@ -100,6 +100,19 @@ class Role
         return Auth::id() == $id;
     }
 
+
+    /**
+     * spare
+     *
+     */
+    public function spare($id=0)
+    {
+        if(!$this->choose()) return false;
+
+        // if($this->admin($id)) return true;
+        return $this->hasAndTrue($this->choose($id)->auth, 'spare');
+    }
+
     /**
      * grater than : 有权
      *

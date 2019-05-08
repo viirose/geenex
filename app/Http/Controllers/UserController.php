@@ -6,10 +6,14 @@ use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
 use Auth;
 use Session;
+use Mail;
 
 use App\User;
 use App\Forms\PasswordForm;
 use App\Forms\ContactForm;
+use App\Forms\UserForm;
+use App\Mail\Password;
+use App\Helpers\Role;
 
 class UserController extends Controller
 {
@@ -19,26 +23,127 @@ class UserController extends Controller
      * Index
      *
      */
-    public function index()
+    public function index(Role $role)
     {
-        $records = User::all();
+        if(!$role->admin()) abort('403');
+
+        $records = User::where('id', '>', 1)
+                        ->where(function ($query) {
+                            if(Session::has('keywords_user')) {
+                                $query->whereRaw('upper(email) like upper(?)', ['%'.session('keywords_user').'%'])
+                                      ->orWhereRaw('upper(name) like upper(?)', ['%'.session('keywords_user').'%']);
+                            }
+                        })
+                        ->orderBy('auth->root')
+                        ->orderBy('auth->admin')
+                        ->orderBy('auth->spare')  
+                        ->oldest()  
+                        ->paginate(50);
 
         return view('users.list', compact('records'));
 
     }
 
-        // lock 锁定
-    public function lock($id)
+    /**
+     * search
+     *
+     */
+    public function search(Request $request)
     {
+        session(['keywords_user' => $request->keywords]);
+
+        return $this->index();
+    }
+
+    /**
+     * show
+     *
+     */
+    public function show($id, Role $role)
+    {
+        if(!$role->admin()) abort('403');
+
+        $record = User::findOrFail($id);
+        return view('users.show', compact('record'));
+    }
+
+
+    // lock 锁定
+    public function lock($id, Role $role)
+    {
+        if(!$role->admin() || !$role->gt($id)) abort('403');
+
         User::findOrFail($id)->update(['auth->locked' => true]);
         return redirect()->back();
     }
 
     // lock 解锁
-    public function unlock($id)
+    public function unlock($id, Role $role)
     {
+        if(!$role->admin() || !$role->gt($id)) abort('403');
+
         User::findOrFail($id)->update(['auth->locked' => false]);
         return redirect()->back();
+    }
+
+    /**
+     * new User
+     *
+     */
+    public function create(Role $role)
+    {
+        if(!$role->admin()) abort('403');
+
+        $form = $this->form(UserForm::class, [
+            'method' => 'POST',
+            'url' => '/users/store'
+        ]);
+
+        $title = 'Create User';
+        $icon = 'user-o';
+
+        return view('form', compact('form','title','icon'));
+    }
+
+    /**
+     * new User store
+     *
+     */
+    public function store(Request $request, Role $role)
+    {
+        if(!$role->admin()) abort('403');
+
+        $exists = User::where('email', $request->email)->first();
+        if($exists) return redirect()->back()->withErrors(['email'=>'this Email has been taken!'])->withInput();
+
+        $password = str_random(6);
+        $password = strtolower($password);
+
+        $new = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($password),
+            'email_verified_at' => now(),
+        ];
+
+        if($request->spare) $new['auth->spare'] = true;
+
+        User::create($new);
+
+        $message = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $password,
+        ];
+
+        Mail::to(config('mail.reply_to.address'))
+                ->send(new Password($message));
+
+
+        $text = 'A User has been created successfully!<br><a href="/users" class="btn btn-success btn-sm"> all users</a>';
+        $color = 'success';
+        $icon = 'user-o';
+        return view('note', compact('text', 'color', 'icon'));
     }
 
 
@@ -127,6 +232,34 @@ class UserController extends Controller
         Session::forget('target_url');
 
         return redirect($path);
+    }
+
+
+    // spare 锁定
+    public function spareCancel($id, Role $role)
+    {
+        if(!$role->admin() || !$role->gt($id)) abort('403');
+
+        User::findOrFail($id)->update(['auth->spare' => false]);
+        return redirect()->back();
+    }
+
+    // spare 解锁
+    public function spareGive($id, Role $role)
+    {
+        if(!$role->admin() || !$role->gt($id)) abort('403');
+
+        User::findOrFail($id)->update(['auth->spare' => true]);
+        return redirect()->back();
+    }
+
+    // delete
+    public function delete($id, Role $role)
+    {
+        if(!$role->admin() || !$role->gt($id)) abort('403');
+        
+        User::findOrFail($id)->delete();
+        return redirect('users');
     }
 }
 

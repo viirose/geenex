@@ -6,6 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="机柜,冷通道,PDU,切换器,综合布线,guntleson,匠森,希贝元"/>
     <title>{{ config('site.info.name') }}</title>
     <meta name="description" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">

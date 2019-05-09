@@ -19,7 +19,7 @@ class Spare
     {
         $role = new Role;
 
-        if(!$role->spare() && !$role->admin()) abort('403');
+        if(!$role->spare() && !$role->admin()) abort('401');
         return $next($request);
     }
 }

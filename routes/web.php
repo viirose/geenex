@@ -89,7 +89,7 @@ Route::group(['middleware' => ['verified', 'state']], function () {
 
 
 Route::get('/test', function() {
-    return view('test');
+    abort('401');
 });
 
 

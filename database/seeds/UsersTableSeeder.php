@@ -25,6 +25,8 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name' => 'Bella',
             'email' => 'bella@viirose.com',
+            'email_verified_at' => today(),
+            'contact_verified_at' => today(),
             'password' => bcrypt('000000'),
             'auth' => '{"admin":true}',
         ]);
@@ -33,6 +35,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Jiang',
             'email' => 'j@test.com',
             'email_verified_at' => today(),
+            'contact_verified_at' => today(),
             'password' => bcrypt('000000'),
             'auth' => '{"root":true}',
         ]);
@@ -41,6 +44,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Wang',
             'email' => 'w@test.com',
             'email_verified_at' => today(),
+            'contact_verified_at' => today(),
             'password' => bcrypt('000000'),
             'auth' => '{"root":true}',
         ]);

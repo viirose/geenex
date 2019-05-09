@@ -450,6 +450,7 @@ class ProductController extends Controller
         $info = [
             'url' => $url,
             'part_no' => $record->part_no,
+            'part_name' => $record->name,
             'to' => $request->email,
             'name' => Auth::user()->name,
             'from' => Auth::user()->email,

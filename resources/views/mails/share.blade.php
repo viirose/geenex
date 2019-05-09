@@ -1,7 +1,11 @@
-<div>
-Hi,<br>
-    Your Friend {{ $info['name'] }} has shared a product of GENNEX part Nr.{{ $info['part_no'] }} from  {{ $info['from'] }}, please click <a href="{{$info['url']}}" class="btn btn-sm btn-success" >HERE</a> or copy: {{ $info['url'] }} to your browser!<br>
+<div>    
+Hello,<br>
+<br>
+I see {{ $info['part_name'] }} with part number {{ $info['part_no'] }} on GENNEX’s spare part web (www.joclift.com), here is the link: {{ $info['url'] }} <br>
+<br>
 
-Yours Sincerely<br>
-GENNEX Sales Team<br>
+Hope it’ll help. <br>
+<br>
+Best Regards <br>
+{{ $info['name'] }} <br> 
 </div>

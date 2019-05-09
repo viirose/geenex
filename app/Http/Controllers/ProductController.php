@@ -9,6 +9,7 @@ use Auth;
 use Image;
 use Session;
 use Mail;
+use Illuminate\Support\Arr;
 
 use App\Product;
 use App\Conf;
@@ -288,9 +289,13 @@ class ProductController extends Controller
     {
         if(!$role->admin()) abort(403);
 
+        // $input = $request->except(['category_text']);
+
         $all = $request->all();
 
         $all['created_by'] = Auth::id();
+
+        Arr::forget($all, 'category_text');
 
         $record = Product::create($all);
 

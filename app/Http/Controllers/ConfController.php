@@ -104,6 +104,22 @@ class ConfController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * ajax 返回选择信息
+     * 
+     */ 
+    public function categoryInfo($id)
+    {
+        $record = Conf::findOrFail($id);
+
+        $level3 = $record->key;
+        if(isset($record->master)) $level2 = $record->master->key;
+        if(isset($record->master->master)) $level1 = $record->master->master->key;
+
+        echo $level1.'-'.$level2.'-'.$level3;
+
+    }
+
 
 
     /**

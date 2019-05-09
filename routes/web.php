@@ -22,6 +22,7 @@ Route::post('/contact/quick', 'HomeController@quick');
 
 // Route::get('/login', 'UserController@login');
 // Route::get('/home', 'HomeController@index')->name('home'); 
+Route::get('/conf/category_info/{id}', 'ConfController@categoryInfo');
 
 // 产品
 Route::get('/products/share/{id}/{token}', 'ProductController@share');
@@ -81,7 +82,6 @@ Route::group(['middleware' => ['verified', 'state']], function () {
     // conf
     Route::get('/conf/brands', 'ConfController@brands');
     Route::post('/conf/brands/do', 'ConfController@brandDo');
-
     Route::get('/conf/categories', 'ConfController@categories');
     Route::post('/conf/categories/do', 'ConfController@categoryDo');
 
@@ -89,7 +89,7 @@ Route::group(['middleware' => ['verified', 'state']], function () {
 
 
 Route::get('/test', function() {
-
+    return view('test');
 });
 
 

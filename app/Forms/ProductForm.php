@@ -10,22 +10,22 @@ use App\Conf;
 class ProductForm extends Form
 {
     // category array
-    private function categoris()
-    {
-        $records = Conf::where('type', 'category')
-                        ->where('level', 3)
-                        ->orderBy('key')
-                        ->get();
-                        // ->pluck('key', 'id') 
-                        // ->toArray();
-        $array = [];
+    // private function categoris()
+    // {
+    //     $records = Conf::where('type', 'category')
+    //                     ->where('level', 3)
+    //                     ->orderBy('key')
+    //                     ->get();
+    //                     // ->pluck('key', 'id') 
+    //                     // ->toArray();
+    //     $array = [];
 
-        foreach ($records as $record) {
-            $array = Arr::add($array, $record->id, $record->key.' - '.$record->master->key);
-        }
+    //     foreach ($records as $record) {
+    //         $array = Arr::add($array, $record->id, $record->key.' - '.$record->master->key);
+    //     }
 
-        return $array;
-    }
+    //     return $array;
+    // }
 
     // brand array
     private function brands()
@@ -49,11 +49,15 @@ class ProductForm extends Form
     public function buildForm()
     {
         $this
-        ->add('category_id', 'select', [
-            'label' => 'Category',
-            'empty_value' => '=== Select Category ===',
-            'choices' => $this->categoris(),
+        
+        ->add('category_text', 'text', [
+            'attr' => ['readonly' => 'readonly'],
+            'label' => 'Category (use selector)',
             'rules' => 'required',
+        ])
+
+        ->add('category_id', 'hidden', [
+            'attr' => ['id' => 'category_id'],
         ])
         ->add('brand_id', 'select', [
             'label' => 'Manufacturer',

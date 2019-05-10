@@ -435,6 +435,29 @@ class ProductController extends Controller
      */
     public function send(Request $request)
     {
+        $emails = explode("\n", $request->emails);
+
+        // 单次限制数量
+        $limit = 3;
+
+        // 验证邮件
+        if(!count($emails) || count($emails) > $limit) {
+            $text = 'Support 1-3 email(s) one time!';
+            $color = 'danger';
+            $icon = 'at';
+            return view('note', compact('text', 'color', 'icon')); 
+        }
+
+        foreach ($emails as $email) {
+            if(!filter_var(trim($email), FILTER_VALIDATE_EMAIL)) {
+                $text = $email.' is not an available email!';
+                $color = 'danger';
+                $icon = 'at';
+                return view('note', compact('text', 'color', 'icon'));
+            }
+        }
+
+        // 生成token
         $record = Product::findOrFail($request->id);
         $token = $record->token;
         $url = config('app.url').'/products/share/'.$request->id.'/';
@@ -451,21 +474,45 @@ class ProductController extends Controller
             'url' => $url,
             'part_no' => $record->part_no,
             'part_name' => $record->name,
-            'to' => $request->email,
+            // 'to' => $request->email,
             'name' => Auth::user()->name,
             'from' => Auth::user()->email,
         ];
 
-        Mail::to(config('mail.reply_to.address'))
-        ->send(new Share($info));
+        $num = count($emails);
 
+        switch ($num) {
+            case 1:
+                Mail::to(trim($emails[0]))
+                    ->send(new Share($info));
+
+                break;
+
+            case 2:
+                Mail::to(trim($emails[0]))
+                    ->cc(trim($emails[1]))
+                    ->send(new Share($info));
+
+                break;
+
+            case 3:
+                Mail::to(trim($emails[0]))
+                    ->cc(trim($emails[1]))
+                    ->bcc(trim($emails[2]))
+                    ->send(new Share($info));
+                break;
+            
+            default:
+                abort('403');
+                break;
+        }
 
         $text = 'A Product shared successfully!<br><a href="/products" class="btn btn-success btn-sm"> all products</a>';
         $color = 'success';
         $icon = 'user-o';
         return view('note', compact('text', 'color', 'icon'));
 
-        // return view('products.show', compact('record'));
+        return view('products.show', compact('record'));
     }
 
 

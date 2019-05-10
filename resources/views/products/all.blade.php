@@ -245,8 +245,8 @@
           @csrf
             <input type="hidden" name="id" id="product_id">
             <div class="form-group"  >
-              <label for="email" class="control-label">Email</label>
-              <input class="form-control" minlength="2" maxlength="32" name="email" type="text" id="email">
+              <label for="email" class="control-label">Emails (most:3)</label>
+              <textarea placeholder="friend1@some.com&#10friend2@some.com" class="form-control" name="emails"></textarea>
             </div>
         </div>
    

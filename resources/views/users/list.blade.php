@@ -73,11 +73,15 @@
 
                   @if($r->admin())
                     @if(!$r->admin($record->id))
-                      @if($r->spare($record->id))
-                        <a href="/users/spare_cancel/{{ $record->id }}" class="badge badge-dark">Spare: <i class="fa fa-unlock" aria-hidden="true"></i></a>
-                      @else
-                        <a href="/users/spare_give/{{ $record->id }}" class="badge badge-light">Spare: <i class="fa fa-lock" aria-hidden="true"></i></a>
-                      @endif
+
+                      @foreach($r->limit($record->id) as $key => $value)
+                        <a href="/users/unlimit/{{ $record->id }}/{{ $key }}" class="badge badge-dark"><i class="fa fa-plug" aria-hidden="true"></i> {{ $value }}</a>
+                      @endforeach
+
+                      @foreach($r->unlimit($record->id) as $key => $value)
+                        <a href="/users/limit/{{ $record->id }}/{{ $key }}" class="badge badge-light">{{ $value }}</a>
+                      @endforeach
+
                     @endif
                   @endif
 

@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Web Routes 
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -60,6 +60,8 @@ Route::group(['middleware' => ['verified', 'state']], function () {
     Route::post('/users/search', 'UserController@search');
     Route::get('/users/show/{id}', 'UserController@show');
     Route::get('/users/delete/{id}', 'UserController@delete');
+    Route::get('/users/limit/{id}/{conf_id}', 'UserController@limit');
+    Route::get('/users/unlimit/{id}/{conf_id}', 'UserController@unlimit');
 
     // 产品
     Route::get('/products/create', 'ProductController@create');
@@ -72,12 +74,12 @@ Route::group(['middleware' => ['verified', 'state']], function () {
     Route::post('/products/send', 'ProductController@send');
 
     // spare only
-    Route::group(['middleware' => ['spare']], function () {
+    // Route::group(['middleware' => ['spare']], function () {
         Route::get('/products', 'ProductController@index');
         Route::post('/products/search', 'ProductController@search');
         Route::get('/products/search/{type}/{id}', 'ProductController@searchType');
         Route::get('/products/clear_search/{string}', 'ProductController@searchClear');
-    });
+    // });
 
     // conf
     Route::get('/conf/brands', 'ConfController@brands');
@@ -89,7 +91,15 @@ Route::group(['middleware' => ['verified', 'state']], function () {
 
 
 Route::get('/test', function() {
-    abort('401');
+    $a = new App\Helpers\Role;
+
+    $b = $a->limit(10);
+
+    $c = 82;
+
+    if (array_key_exists($c, $b)) $b = Arr::except($b, $c);
+
+    print_r($b);
 });
 
 

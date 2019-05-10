@@ -7,8 +7,10 @@ use Kris\LaravelFormBuilder\FormBuilderTrait;
 use Auth;
 use Session;
 use Mail;
+use Illuminate\Support\Arr;
 
 use App\User;
+use App\conf;
 use App\Forms\PasswordForm;
 use App\Forms\ContactForm;
 use App\Forms\UserForm;
@@ -20,7 +22,7 @@ class UserController extends Controller
     use FormBuilderTrait;
 
     /**
-     * Index
+     * Index 
      *
      */
     public function index(Role $role)
@@ -116,6 +118,12 @@ class UserController extends Controller
         $exists = User::where('email', $request->email)->first();
         if($exists) return redirect()->back()->withErrors(['email'=>'this Email has been taken!'])->withInput();
 
+        $limit = $request->except(['_token', 'name', 'email']);
+
+        // $brand_ids = array_values($limit);
+
+        // print_r($brand_ids);
+
         $password = str_random(6);
         $password = strtolower($password);
 
@@ -124,6 +132,7 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => bcrypt($password),
             'email_verified_at' => now(),
+            'auth->limit' => $limit,
         ];
 
         if($request->spare) $new['auth->spare'] = true;
@@ -260,6 +269,44 @@ class UserController extends Controller
         
         User::findOrFail($id)->delete();
         return redirect('users');
+    }
+
+    // lock 锁定
+    public function limit($id, $conf_id, Role $role)
+    {
+        if(!$role->admin() || !$role->gt($id)) abort('403');
+
+        $conf = Conf::findOrFail($conf_id);
+        $old = $role->limit($id);
+        // $new = $old;
+        if(!array_key_exists($conf->key, $old)) $old = array_add($old, $conf->id, $conf->key);
+
+        $user = User::findOrFail($id);
+
+        $user->update([
+            'auth->limit' => $old,
+        ]);
+
+        return redirect()->back();
+    }
+
+    // lock 解锁
+    public function unlimit($id, $conf_id, Role $role)
+    {
+        if(!$role->admin() || !$role->gt($id)) abort('403');
+
+        $conf = Conf::findOrFail($conf_id);
+        $old = $role->limit($id);
+
+        if (array_key_exists($conf->id, $old)) $old = Arr::except($old, $conf->id);
+        
+        $user = User::findOrFail($id);
+
+        $user->update([
+            'auth->limit' => $old,
+        ]);
+
+        return redirect()->back();
     }
 }
 

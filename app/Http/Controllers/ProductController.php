@@ -10,6 +10,7 @@ use Image;
 use Session;
 use Mail;
 use Illuminate\Support\Arr;
+use Log;
 
 use App\Product;
 use App\Conf;
@@ -21,12 +22,21 @@ class ProductController extends Controller
 {
     use FormBuilderTrait;
 
+    private $limitIds;
+    private $role;
     /**
-     * Products
+     * Products 
      *
      */
     public function index()
     { 
+        $this->role = new Role;
+        $this->limitIds = $this->role->limitIds();
+
+        // Log::alert($this->limitIds);
+
+        // session(['limits' => $this->role->limitIds()]);
+
         $categories = Conf::where('level', 1)
                         ->where('type', 'category')
                         ->with(['subs' => function ($query_1){
@@ -58,6 +68,11 @@ class ProductController extends Controller
                                 $query->whereHas('products', function ($q4) {
                                     // 有图片
                                     $q4->whereNotNull('img');
+                                });
+                                $query->whereHas('products', function ($q5) {
+                                    if(!$this->role->admin()) {
+                                        $q5->whereIn('brand_id', $this->limitIds);
+                                    }
                                 });
 
                                 $query->whereHas('products', function ($q) {
@@ -91,6 +106,13 @@ class ProductController extends Controller
 
 
         $brands = Conf::where('type', 'brand')
+                        ->where(function ($q5) {
+                            // 品牌限制
+                            if(!$this->role->admin()) {
+                                $q5->whereIn('id', $this->limitIds);
+                            }
+                        })
+
                         ->whereHas('brand_products', function ($q1) {
                             if(Session::has('search_category_id')) {
                                 $q1->where('category_id', session('search_category_id'));
@@ -112,6 +134,7 @@ class ProductController extends Controller
                             // 有图片
                             $q4->whereNotNull('img');
                         })
+                        
                         ->whereHas('brand_products', function ($q) {
 
                             // keywords
@@ -128,6 +151,12 @@ class ProductController extends Controller
                         ->get();
 
         $products = Product::whereNotNull('img')
+                            ->where(function ($q5) {
+                                // 品牌限制
+                                if(!$this->role->admin()) {
+                                    $q5->whereIn('brand_id', $this->limitIds);
+                                }
+                            })
                             ->where(function ($q1) {
                                 // search_category_id
                                 if(Session::has('search_category_id')) {
@@ -288,7 +317,6 @@ class ProductController extends Controller
     public function store(Request $request, Role $role)
     {
         if(!$role->admin()) abort(403);
-
 
         $all = $request->except(['category_text']);
 

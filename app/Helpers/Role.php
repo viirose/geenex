@@ -6,6 +6,7 @@ use Auth;
 
 use App\User;
 use App\Org;
+use App\Conf;
 
 
 /**
@@ -122,6 +123,49 @@ class Role
         if($this->root() && !$this->root($id)) return true;
         if($this->admin() && !$this->admin($id)) return true;
         return false;
+    }
+
+
+    /**
+     * 品牌限制
+     *
+     */
+    public function limit($id=0)
+    {
+        $user = $this->choose($id);
+
+        $auth = json_decode($user->auth, true);
+
+        return $auth && array_key_exists('limit', $auth) &&  is_array($auth['limit']) ? $auth['limit'] : [];
+    }
+
+    /**
+     * 品牌限制
+     *
+     */
+    public function limitIds($id=0)
+    {
+        $limit = $this->limit($id);
+
+        if(!count($limit)) return [];
+
+        $ids = array_keys($limit);
+        $new = [];
+
+        for ($i=0; $i < count($ids); $i++) { 
+            array_push($new, intval($ids[$i]));
+        }
+
+        return $new;
+    }
+
+    public function unlimit($id=0)
+    {
+        $un = Conf::where('type', 'brand')
+                    ->whereNotIn('id', $this->limitIds($id))
+                    ->pluck('key', 'id')
+                    ->toArray();
+        return $un;
     }
 
 }

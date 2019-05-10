@@ -91,15 +91,7 @@ Route::group(['middleware' => ['verified', 'state']], function () {
 
 
 Route::get('/test', function() {
-    $a = new App\Helpers\Role;
 
-    $b = $a->limit(10);
-
-    $c = 82;
-
-    if (array_key_exists($c, $b)) $b = Arr::except($b, $c);
-
-    print_r($b);
 });
 
 

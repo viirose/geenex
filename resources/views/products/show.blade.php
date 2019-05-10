@@ -59,10 +59,7 @@ $f = new App\Helpers\Filter;
               </table>
 
                 <p></p>
-              <div class="row">
-                <a href="/inquiries/add/{{$record->id}}" class="btn btn-primary btn-sm">add to My Inquiry</a> &nbsp
-                <a href="javascript:send({{$record->id}})" class="btn btn-outline-primary btn-sm">Email to a friend</a>
-              </div>
+
 
             </div>
           </div>

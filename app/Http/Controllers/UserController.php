@@ -10,7 +10,7 @@ use Mail;
 use Illuminate\Support\Arr;
 
 use App\User;
-use App\conf;
+use App\Conf;
 use App\Forms\PasswordForm;
 use App\Forms\ContactForm;
 use App\Forms\UserForm;

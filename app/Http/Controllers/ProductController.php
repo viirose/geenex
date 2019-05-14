@@ -349,7 +349,7 @@ class ProductController extends Controller
         $title = 'Edit: '.$record->part_no;
         $icon = 'wrench';
 
-        return view('form', compact('form','title','icon'));
+        return view('form', compact('form_product','title','icon'));
     }
 
 

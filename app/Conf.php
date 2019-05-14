@@ -30,6 +30,8 @@ class Conf extends Model
     public function master()
     {
         return $this->hasOne('App\Conf', 'id', 'parent_id');
+        // return $this->blongsTo('App\Conf', 'parent_id', 'id');
+
     }
 
 

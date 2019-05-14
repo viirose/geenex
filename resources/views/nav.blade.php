@@ -62,7 +62,7 @@
                     <div class="dropdown-menu">
                     @if (Auth::check())
                       @if($r->root())
-                      <a href="/conf/categories" class="dropdown-item"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Categories</a>
+                      <a href="/conf/categories" class="dropdown-item"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Material Group</a>
                       <a href="/conf/brands" class="dropdown-item"><i class="fa fa-tags" aria-hidden="true"></i> Manufacturers</a>
                       @endif
 

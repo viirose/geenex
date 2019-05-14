@@ -337,9 +337,12 @@ class ProductController extends Controller
 
         $record = Product::findOrFail($id);
 
+        $category_text = $record->category->master->master->key.'-'.$record->category->master->key.'-'.$record->category->key;
+
         $form = $this->form(ProductForm::class, [
             'method' => 'POST',
             'model' => $record,
+            'data' => ['category_text' => $category_text],
             'url' => '/products/update/'.$id
         ]);
 
@@ -358,7 +361,7 @@ class ProductController extends Controller
     {
         if(!$role->admin()) abort(403);
 
-        $all = $request->all();
+        $all = $request->except(['category_text']);
 
         $record = Product::findOrFail($id);
 

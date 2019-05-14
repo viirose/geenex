@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes 
+| Web Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -86,6 +86,8 @@ Route::group(['middleware' => ['verified', 'state']], function () {
     Route::post('/conf/brands/do', 'ConfController@brandDo');
     Route::get('/conf/categories', 'ConfController@categories');
     Route::post('/conf/categories/do', 'ConfController@categoryDo');
+    Route::get('/conf/categories/delete/{id}', 'ConfController@delete');
+    Route::get('/conf/brands/delete/{id}', 'ConfController@deleteBrand');
 
 });
 

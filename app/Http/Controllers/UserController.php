@@ -145,7 +145,7 @@ class UserController extends Controller
             'password' => $password,
         ];
 
-        Mail::to(config('mail.reply_to.address'))
+        Mail::to($request->email)
                 ->send(new Password($message));
 
 

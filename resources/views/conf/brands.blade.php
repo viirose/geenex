@@ -18,6 +18,7 @@
                   {{ $record->key }}
                   <small>code: {{ $f->show($record->info, 'code') }}</small>
                 </a>
+                <a href="/conf/brands/delete/{{$record->id}}" class="badge badge-danger"> delete!</a>
               </h3>
             @endforeach
           @else

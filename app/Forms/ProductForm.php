@@ -48,11 +48,14 @@ class ProductForm extends Form
     // form
     public function buildForm()
     {
+        $category_text = $this->getData('category_text') ? $this->getData('category_text') : null;
+
         $this
         
         ->add('category_text', 'text', [
             'attr' => ['readonly' => 'readonly'],
-            'label' => 'Category (use selector)',
+            'label' => 'Material Group (use selector)',
+            'default_value' => $category_text,
             'rules' => 'required',
         ])
 
@@ -79,17 +82,17 @@ class ProductForm extends Form
             'choices' => $this->availability(),
             'rules' => 'required'
         ])
-        ->add('remark', 'text', [
-            'label' => 'Remark',
-            'rules' => 'min:2|max:32'
-        ])
+        // ->add('remark', 'text', [
+        //     'label' => 'Remark',
+        //     'rules' => 'min:2|max:32'
+        // ])
         ->add('weight', 'text', [
             'label' => 'Weight',
             'rules' => 'min:3|max:20'
         ])
-        ->add('content', 'textarea', [
-            'label' => 'Content',
-            'rules' => 'min:2|max:200'
+        ->add('remark', 'textarea', [
+            'label' => 'Remark',
+            'rules' => 'min:2|max:500'
         ])
         ->add('submit','submit',[
             'label' => 'Next',

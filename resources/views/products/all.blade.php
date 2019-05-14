@@ -27,11 +27,11 @@
             @endif
 
             @if(Session::has('search_category_id'))
-              <a href="/products/clear_search/search_category_id" class="badge badge-info">Category: {{ $f->showConf(session('search_category_id')) }}</a>
+              <a href="/products/clear_search/search_category_id" class="badge badge-info">Material Group: {{ $f->showConf(session('search_category_id')) }}</a>
             @endif
 
             @if(Session::has('search_level') && Session::has('search_level_id'))
-              <a href="/products/clear_search/search_level" class="badge badge-danger">Categories: {{ $f->showConf(session('search_level')) }}</a>
+              <a href="/products/clear_search/search_level" class="badge badge-danger">Material Group: {{ $f->showConf(session('search_level')) }}</a>
             @endif
 
             @if(Session::has('search_brand_id'))
@@ -80,7 +80,7 @@
                             <td>{{ $product->brand->key }}</td>
                           </tr>
                           <tr>
-                            <td>Category</td>
+                            <td>Material Group</td>
                             <td>
                               {{ $product->category->master->master->key }} -
                               {{ $product->category->master->key }} -
@@ -101,7 +101,7 @@
                           </tr>
                         </tbody>
                       </table>
-                      <a href="/products/show/{{$product->id}}" class="btn btn-light btn-sm">show</a>
+                      <a href="/products/show/{{$product->id}}" class="btn btn-light btn-sm">show on new page</a>
                       <a href="/inquiries/add/{{$product->id}}" class="btn btn-light btn-sm">add to My Inquiry</a>
                       <a href="javascript:send({{$product->id}})" class="btn btn-outline-light btn-sm">Email to a friend</a>
 
@@ -145,7 +145,7 @@
               </form>
             </div>
             <div class="sidebar-widget mb-4">
-              <h3 class="sidebar-widget-heading"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Categories</h3>
+              <h3 class="sidebar-widget-heading"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Material Group</h3>
               <ul class="list-unstyled pl-0 mt-4">
               @if(count($categories))
                   <div id="categories_menu">

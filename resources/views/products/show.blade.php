@@ -36,7 +36,7 @@ $f = new App\Helpers\Filter;
                     <td>{{ $record->brand->key }}</td>
                   </tr>
                   <tr>
-                    <td>Category</td>
+                    <td>Material Group</td>
                     <td>
                       {{ $record->category->master->master->key }} -
                       {{ $record->category->master->key }} -

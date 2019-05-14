@@ -208,7 +208,7 @@ class UserController extends Controller
             'url' => '/users/contact/store'
         ]);
 
-        $title = 'Contact';
+        $title = 'This address will be used for your delivery and invoice address, you can edit or alter this after account creation in your address book.';
         $icon = 'address-card-o';
 
         return view('form', compact('form','title','icon'));
@@ -236,12 +236,17 @@ class UserController extends Controller
 
         Auth::user()->update(['contact_verified_at' => now(), 'info->contact' => json_encode($array)]);
 
-        $path = '/';
+        $text = 'Congratulations! You have send the contact infomaation, we will active your accout in 24 hours! Thank you!';
+        $color = 'success';
+        $icon = 'rocket';
+        return view('note', compact('text', 'color', 'icon'));
 
-        if(Session::has('target_url')) $path = session('target_url');
-        Session::forget('target_url');
+        // $path = '/';
 
-        return redirect($path);
+        // if(Session::has('target_url')) $path = session('target_url');
+        // Session::forget('target_url');
+
+        // return redirect($path);
     }
 
 

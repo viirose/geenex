@@ -32,19 +32,19 @@ class ContactForm extends Form
             'rules' => 'min:2|max:200'
         ])
         ->add('phone', 'text', [
-            'label' => 'Phone',
+            'label' => 'Telephone*',
             'rules' => 'min:2|max:20'
         ])
         ->add('street', 'text', [
-            'label' => 'Street Address',
+            'label' => 'Street Address*',
             'rules' => 'required|min:2|max:32'
         ])
         ->add('city', 'text', [
-            'label' => 'City',
+            'label' => 'City*',
             'rules' => 'required|min:2|max:32'
         ])
         ->add('post_code', 'text', [
-            'label' => 'Post Code',
+            'label' => 'Post Code*',
             'rules' => 'required|min:2|max:32'
         ])
         ->add('country', 'text', [

@@ -208,7 +208,7 @@ class UserController extends Controller
             'url' => '/users/contact/store'
         ]);
 
-        $title = 'This address will be used for your delivery and invoice address, you can edit or alter this after account creation in your address book.';
+        $title = 'Contact <br><small>This address will be used for your delivery and invoice address, you can edit or alter this after account creation in your address book.</small>';
         $icon = 'address-card-o';
 
         return view('form', compact('form','title','icon'));

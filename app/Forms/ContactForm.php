@@ -31,22 +31,27 @@ class ContactForm extends Form
             'label' => 'Company',
             'rules' => 'min:2|max:200'
         ])
+        ->add('phone', 'text', [
+            'label' => 'Phone',
+            'rules' => 'min:2|max:20'
+        ])
         ->add('street', 'text', [
-            'label' => 'Street, number*',
+            'label' => 'Street Address',
             'rules' => 'required|min:2|max:32'
         ])
         ->add('city', 'text', [
-            'label' => 'City, ZIP*',
+            'label' => 'City',
+            'rules' => 'required|min:2|max:32'
+        ])
+        ->add('post_code', 'text', [
+            'label' => 'Post Code',
             'rules' => 'required|min:2|max:32'
         ])
         ->add('country', 'text', [
             'label' => 'Country*',
             'rules' => 'required|min:2|max:32'
         ])
-        ->add('phone', 'text', [
-            'label' => 'Phone',
-            'rules' => 'min:2|max:20'
-        ])
+        
         // ->add('email', 'text', [
         //     'label' => 'Email*',
         //     'rules' => 'required|email'

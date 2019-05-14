@@ -226,10 +226,11 @@ class UserController extends Controller
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'company' => $request->company,
+            'phone' => $request->phone,
             'street' => $request->street,
             'city' => $request->city,
+            'post_code' => $request->post_code,
             'country' => $request->country,
-            'phone' => $request->phone,
     
         ];
 

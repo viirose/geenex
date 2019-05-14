@@ -124,8 +124,10 @@ class ConfController extends Controller
      * 删除 
      * 
      */
-    public function delete($id)
+    public function delete($id, Role $role)
     {
+        if(!$role->root()) abort('403');
+
         $record = Conf::findOrFail($id);
 
         if($record->subs->count() || $record->products->count()) abort('403');
@@ -140,8 +142,10 @@ class ConfController extends Controller
      * 删除品牌
      * 
      */
-    public function deleteBrand($id)
+    public function deleteBrand($id, Role $role)
     {
+        if(!$role->root()) abort('403');
+
         $record = Conf::findOrFail($id);
 
         if($record->brand_products->count()) abort('403');

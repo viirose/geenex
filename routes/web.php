@@ -58,10 +58,14 @@ Route::group(['middleware' => ['verified', 'state']], function () {
     Route::get('/users/spare_cancel/{id}', 'UserController@spareCancel');
     Route::get('/users/spare_give/{id}', 'UserController@spareGive');
     Route::post('/users/search', 'UserController@search');
-    Route::get('/users/show/{id}', 'UserController@show');
+    Route::get('/users/show/{id?}', 'UserController@show');
     Route::get('/users/delete/{id}', 'UserController@delete');
     Route::get('/users/limit/{id}/{conf_id}', 'UserController@limit');
     Route::get('/users/unlimit/{id}/{conf_id}', 'UserController@unlimit');
+
+    Route::get('/users/edit/{id?}', 'UserController@edit');
+    Route::get('/users/contact/edit/{id?}', 'UserController@contactEdit');
+    Route::post('/users/contact/update/{id?}', 'UserController@contactUpdate');
 
     // 产品
     Route::get('/products/create', 'ProductController@create');

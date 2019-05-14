@@ -61,12 +61,21 @@ class UserController extends Controller
      * show
      *
      */
-    public function show($id, Role $role)
+    public function show(Role $role, $id=0)
     {
-        if(!$role->admin()) abort('403');
+        if($id === 0) $id = Auth::id();
+
+        if(!$role->gt($id) && !$role->self($id)) abort('403');
 
         $record = User::findOrFail($id);
-        return view('users.show', compact('record'));
+
+        $contacts = [];
+        $info = json_decode($record->info, true);
+        if(isset($info['contact'])) $contacts = $info['contact']; 
+
+        ksort($contacts);
+
+        return view('users.show', compact('record', 'contacts'));
     }
 
 
@@ -220,21 +229,22 @@ class UserController extends Controller
     */
     public function contactStore(Request $request)
     {
-        $array = [
+        $array = $request->except(['_token']);
+        // $array = [
 
-            'salutation' => $request->salutation,
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'company' => $request->company,
-            'phone' => $request->phone,
-            'street' => $request->street,
-            'city' => $request->city,
-            'post_code' => $request->post_code,
-            'country' => $request->country,
+        //     'salutation' => $request->salutation,
+        //     'first_name' => $request->first_name,
+        //     'last_name' => $request->last_name,
+        //     'company' => $request->company,
+        //     'phone' => $request->phone,
+        //     'street' => $request->street,
+        //     'city' => $request->city,
+        //     'post_code' => $request->post_code,
+        //     'country' => $request->country,
     
-        ];
+        // ];
 
-        Auth::user()->update(['contact_verified_at' => now(), 'info->contact' => json_encode($array)]);
+        Auth::user()->update(['contact_verified_at' => now(), 'info->contact' => $array]);
 
         $text = 'Congratulations! You have send the contact infomaation, we will active your accout in 24 hours! Thank you!';
         $color = 'success';
@@ -313,6 +323,70 @@ class UserController extends Controller
         ]);
 
         return redirect()->back();
+    }
+
+
+    /**
+     * 信息修改
+     *
+     */
+    public function edit($id=0)
+    {
+        # code...
+    }
+
+    /**
+     * 联系信息修改
+     *
+     */
+    public function contactEdit($id=0)
+    {
+        $url = '/users/contact/update';
+
+        if($id === 0) {
+            $id = Auth::id();
+            $url .= '/'.$id;
+        }
+
+        $record = User::findOrFail($id);
+
+        $info = json_decode($record->info, true);
+
+        $contact = [];
+
+        if(isset($info['contact'])) $contact = $info['contact'];
+
+        $form = $this->form(ContactForm::class, [
+            'method' => 'POST',
+            'data' => ['contact' => $contact],
+            'url' => $url
+        ]);
+
+        $title = 'Edit Contact: '.$record->name;
+        $icon = 'address-card-o';
+
+        return view('form', compact('form','title','icon'));
+    }
+
+
+    /**
+     * 联系信息修改 - 保存
+     *
+     */
+    public function contactUpdate(Request $request, $id=0)
+    {
+        if($id === 0) $id = Auth::id();
+
+        $contact = $request->except(['_token']);
+
+        $record = User::findOrFail($id);
+
+        $record->update(['info->contact' => $contact]);
+
+        $text = 'Success! Contact updated';
+        $color = 'success';
+        $icon = 'address-card-o';
+        return view('note', compact('text', 'color', 'icon'));
     }
 }
 

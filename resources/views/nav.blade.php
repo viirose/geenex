@@ -70,6 +70,7 @@
                       <a href="/products/create" class="dropdown-item"><i class="fa fa-cube" aria-hidden="true"></i> Add Products</a>
                       <a href="/users" class="dropdown-item"><i class="fa fa-users" aria-hidden="true"></i> Users</a>
                       @endif
+                      <a href="/users/show" class="dropdown-item"><i class="fa fa-address-card-o" aria-hidden="true"></i> Address Book</a>
                       <a href="/users/reset_password" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> Reset Password</a>
                       <a href="/logout" class="dropdown-item"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a>
                     @else

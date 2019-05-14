@@ -6,49 +6,65 @@ use Kris\LaravelFormBuilder\Form;
 
 class ContactForm extends Form
 {
+    private function val($array, $key)
+    {
+        return count($array) && array_key_exists($key, $array) ? $array[$key] : null;
+    }
+
     // form
     public function buildForm()
     {
+        $contact = $this->getData('contact');
+
         $this
-        ->add('salutation', 'select', [
+        ->add('1_alutation', 'select', [
             'label' => "Salutation*",
             'choices' => ['Mr.' => "Mr.", 'Mrs.' => "Mrs"],
+            'default_value' => $this->val($contact, '1_alutation'),
             'rules' => 'required'
         ])
         // ->add('title', 'text', [
         //     'label' => 'Title',
         //     'rules' => 'min:3|max:50'
         // ])
-        ->add('first_name', 'text', [
+        ->add('2_first_name', 'text', [
             'label' => 'First name*',
+            'default_value' => $this->val($contact, '2_first_name'),
             'rules' => 'required|min:2|max:32'
         ])
-        ->add('last_name', 'text', [
+        ->add('3_last_name', 'text', [
             'label' => 'Last name*',
+            'default_value' => $this->val($contact, '3_last_name'),
             'rules' => 'required|min:2|max:32'
         ])
-        ->add('company', 'text', [
+        ->add('4_company', 'text', [
             'label' => 'Company',
+            'default_value' => $this->val($contact, '4_company'),
             'rules' => 'min:2|max:200'
         ])
-        ->add('phone', 'text', [
+        ->add('5_phone', 'text', [
             'label' => 'Telephone*',
+            'default_value' => $this->val($contact, '5_phone'),
             'rules' => 'min:2|max:20'
         ])
-        ->add('street', 'text', [
+        ->add('6_street', 'text', [
             'label' => 'Street Address*',
+            'default_value' => $this->val($contact, '6_street'),
             'rules' => 'required|min:2|max:32'
         ])
-        ->add('city', 'text', [
+        ->add('7_city', 'text', [
             'label' => 'City*',
+            'default_value' => $this->val($contact, '7_city'),
             'rules' => 'required|min:2|max:32'
         ])
-        ->add('post_code', 'text', [
+        ->add('8_post_code', 'text', [
             'label' => 'Post Code*',
+            'default_value' => $this->val($contact, '8_post_code'),
             'rules' => 'required|min:2|max:32'
         ])
-        ->add('country', 'text', [
+        ->add('9_country', 'text', [
             'label' => 'Country*',
+            'default_value' => $this->val($contact, '9_country'),
             'rules' => 'required|min:2|max:32'
         ])
         
@@ -58,6 +74,7 @@ class ContactForm extends Form
         // ])
         ->add('url', 'text', [
             'label' => 'Internet URL ',
+            'default_value' => $this->val($contact, 'url'),
             'rules' => 'min:2|max:200'
         ])
         // ->add('content', 'textarea', [

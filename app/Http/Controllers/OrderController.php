@@ -104,7 +104,7 @@ class OrderController extends Controller
     {
         if($id === 0) $id = Auth::id();
 
-        $records = Inquiry::where('user_id', $id)->paginate(30);
+        $records = Inquiry::where('user_id', $id)->latest()->paginate(30);
 
         return view('inquiries.show', compact('records'));
     }

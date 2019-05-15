@@ -8,13 +8,13 @@ class ContactForm extends Form
 {
     private function val($array, $key)
     {
-        return count($array) && array_key_exists($key, $array) ? $array[$key] : null;
+        return isset($array) && count($array) && array_key_exists($key, $array) ? $array[$key] : null;
     }
 
     // form
     public function buildForm()
     {
-        $contact = $this->getData('contact');
+        if($this->getData('contact')) $contact = $this->getData('contact');
 
         $this
         ->add('1_alutation', 'select', [

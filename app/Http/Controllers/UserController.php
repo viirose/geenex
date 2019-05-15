@@ -247,7 +247,7 @@ class UserController extends Controller
 
         Auth::user()->update(['contact_verified_at' => now(), 'info->contact' => $array]);
 
-        $text = 'Congratulations! You have send the contact infomaation, we will active your accout in 24 hours! Thank you!';
+        $text = 'Congratulations! You have updated your contact infomation, we will active your accout in 24 hours! Thank you!';
         $color = 'success';
         $icon = 'rocket';
         return view('note', compact('text', 'color', 'icon'));
@@ -285,7 +285,7 @@ class UserController extends Controller
         if(!$role->admin() || !$role->gt($id)) abort('403');
 
         $record = User::findOrFail($id);
-        
+
         Mail::to($record->email)
                 ->send(new AccountDelete($record));
         

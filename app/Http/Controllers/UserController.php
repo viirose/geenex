@@ -288,6 +288,8 @@ class UserController extends Controller
 
         Mail::to($record->email)
                 ->send(new AccountDelete($record));
+
+        $record->delete();
         
         return redirect('users');
     }

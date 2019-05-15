@@ -14,7 +14,7 @@ class ContactForm extends Form
     // form
     public function buildForm()
     {
-        if($this->getData('contact')) $contact = $this->getData('contact');
+        $contact = $this->getData('contact') ? $this->getData('contact') : [];
 
         $this
         ->add('1_alutation', 'select', [

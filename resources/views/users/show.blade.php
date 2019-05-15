@@ -10,9 +10,9 @@
     <div class="container">
       <h4>
         @if($r->admin())
-        <a href="/users"><i class="fa fa-users" aria-hidden="true"></i> Users</a> 
+        <a href="/users"><i class="fa fa-users" aria-hidden="true"></i> Users</a> /
         @endif
-        <span>/ {{ $record->name }}</span>
+        <span> {{ $record->name }}</span>
       </h4>
       
         <div class="cent">

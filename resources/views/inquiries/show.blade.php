@@ -39,7 +39,7 @@
             </table>
             <div>{{ $records->links() }}</div>
             @else
-              <div class="alert alert-info"> No users</div>
+              <div class="alert alert-info"> No History Inquiries </div>
             @endif
 
             </div>

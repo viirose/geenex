@@ -15,6 +15,7 @@ use App\Forms\PasswordForm;
 use App\Forms\ContactForm;
 use App\Forms\UserForm;
 use App\Mail\Password;
+use App\Mail\AccountDelete;
 use App\Helpers\Role;
 
 class UserController extends Controller
@@ -282,8 +283,12 @@ class UserController extends Controller
     public function delete($id, Role $role)
     {
         if(!$role->admin() || !$role->gt($id)) abort('403');
+
+        $record = User::findOrFail($id);
         
-        User::findOrFail($id)->delete();
+        Mail::to($record->email)
+                ->send(new AccountDelete($record));
+        
         return redirect('users');
     }
 

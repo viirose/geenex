@@ -73,7 +73,7 @@ class UserController extends Controller
         $info = json_decode($record->info, true);
         if(isset($info['contact'])) $contacts = $info['contact']; 
 
-        ksort($contacts);
+        if(is_array($contacts)) ksort($contacts);
 
         return view('users.show', compact('record', 'contacts'));
     }

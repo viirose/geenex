@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use Mail;
+use Auth;
 
 use App\Mail\OrderShipped;
 use App\Product;
+use App\Inquiry;
 
 class OrderController extends Controller
 {
@@ -82,13 +84,29 @@ class OrderController extends Controller
         Mail::to(config('mail.reply_to.address'))
                 ->cc('309266143@qq.com')
                 ->send(new OrderShipped($request));
-        
+
+        Inquiry::create([
+            'user_id' => Auth::id(),
+            'product_ids' => json_encode(session('inquiries')),
+            'message' => $request->message,
+        ]);
+
         if(Session::has('inquiries')) Session::forget('inquiries');
 
         $text = 'your email has been send successfully!';
         $color = 'success';
         $icon = 'paper-plane-o';
         return view('note', compact('text', 'color', 'icon'));
+    }
+
+
+    public function show($id=0)
+    {
+        if($id === 0) $id = Auth::id();
+
+        $records = Inquiry::where('user_id', $id)->paginate(30);
+
+        return view('inquiries.show', compact('records'));
     }
 
 }

@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use Session;
 use App\Conf;
+use App\Product;
 
 /**
  * Filter
@@ -65,6 +66,26 @@ class Filter
             return $flag === 0 ? null : $flag;
             exit();
         }
+
+    }
+
+    /**
+     * 获取咨询列表文件
+     *
+     */
+    public function getProducts($json)
+    {
+        $product_ids = json_decode($json, true);
+
+        $recrods = Product::whereIn('id', $product_ids)
+                            ->get();
+        $out = '';
+
+        foreach ($recrods as $recrod) {
+            $out .= '<a href="/products/show/'.$recrod->id.'" class="badge badge-info">'.$recrod->name.'</a> &nbsp';
+        }
+
+        return $out;
 
     }
 

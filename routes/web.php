@@ -46,6 +46,7 @@ Route::group(['middleware' => ['verified', 'state']], function () {
 
     // 咨询列表 - 邮件
     Route::post('/inquiries/send', 'OrderController@send');
+    Route::get('/inquiries/show/{id?}', 'OrderController@show');
 
     // 人员
     Route::get('/users', 'UserController@index');

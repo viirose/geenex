@@ -29,4 +29,10 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // inquiries
+    public function inquiries()
+    {
+        return $this->hasMany('App\Inquiry', 'user_id', 'id');
+    }
 }

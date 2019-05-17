@@ -1,6 +1,7 @@
 <?php
   $f = new App\Helpers\Filter;
   $r = new App\Helpers\Role;
+  $rc = new App\Helpers\Recent;
 ?>
 @extends('../nav')
 
@@ -150,6 +151,7 @@
                 </div>
               </form>
             </div>
+
             <div class="sidebar-widget mb-4">
               <h3 class="sidebar-widget-heading"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Material Group</h3>
               <ul class="list-unstyled pl-0 mt-4">
@@ -193,7 +195,7 @@
               </ul>
             </div>
 
-            <div class="sidebar-widget">
+            <div class="sidebar-widget mb-4">
               <h4 class="sidebar-widget-heading"><i class="fa fa-tags" aria-hidden="true"></i> Sort By Manufacturer</h4>
               <ul class="list-inline pl-0 mt-4">
               @if(count($brands))
@@ -210,6 +212,17 @@
 
               </ul>
             </div>
+            @if(count($rc->show()))
+            <div class="sidebar-widget mb-4">
+              <h4 class="sidebar-widget-heading"><i class="fa fa-history" aria-hidden="true"></i> Recnt Focused</h4>
+              <ul class="list-inline pl-0 mt-4">
+                @foreach($rc->show() as $key => $val)
+                  <li><a href="/products/show/{{ $key }}" class="text-dark">{{ Str::limit($val, 31) }}</a></li>
+                @endforeach
+              </ul>
+            </div>
+            @endif
+
           </aside>
         </div>
       </div>

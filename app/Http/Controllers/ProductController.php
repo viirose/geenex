@@ -16,6 +16,7 @@ use App\Product;
 use App\Conf;
 use App\Forms\ProductForm;
 use App\Helpers\Role;
+use App\Helpers\Recent;
 use App\Mail\Share;
 
 class ProductController extends Controller
@@ -434,9 +435,11 @@ class ProductController extends Controller
      * show 
      *
      */
-    public function show($id)
+    public function show($id, Recent $rc)
     {
         $record = Product::findOrFail($id);
+
+        $rc->add($id);
 
         return view('products.show', compact('record'));
     }
@@ -461,7 +464,7 @@ class ProductController extends Controller
      * 邮件
      *
      */
-    public function send(Request $request)
+    public function send(Request $request, Recent $rc)
     {
         $emails = explode("\n", $request->emails);
 
@@ -487,6 +490,8 @@ class ProductController extends Controller
 
         // 生成token
         $record = Product::findOrFail($request->id);
+        $rc->add($request->id);
+
         $token = $record->token;
         $url = config('app.url').'/products/share/'.$request->id.'/';
 

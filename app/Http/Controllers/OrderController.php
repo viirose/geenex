@@ -10,6 +10,7 @@ use Auth;
 use App\Mail\OrderShipped;
 use App\Product;
 use App\Inquiry;
+use App\Helpers\Recent;
 
 class OrderController extends Controller
 {
@@ -36,9 +37,11 @@ class OrderController extends Controller
      * 增加
      *
      */
-    public function add($id)
+    public function add($id, Recent $rc)
     {
         $array = session('inquiries');
+
+        $rc->add($id);
 
         if(!in_array($id, $array)) {
             array_push($array, $id);

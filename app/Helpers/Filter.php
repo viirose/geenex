@@ -88,7 +88,11 @@ class Filter
         return $out;
 
     }
-
+    
+    /**
+     * 获取咨询列表文件
+     *
+     */
     public function getContact($key)
     {
         $arr = explode('_', $key);

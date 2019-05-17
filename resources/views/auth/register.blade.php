@@ -7,9 +7,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }} <a href="/login">Already have accounts? To Login</a></div>
+                <div class="card-header">{{ __('Register') }} <a href="/login">Log in</a></div>
 
                 <div class="card-body">
+                    <div class="alert alert-info">By creating an account with website, you will be able to view our spare part database by material groups, search your target parts by keywords or part numbers and send inquiries online.</div>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 

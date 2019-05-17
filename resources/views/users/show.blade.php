@@ -1,5 +1,6 @@
 <?php
   $r = new App\Helpers\Role;
+  $f = new App\Helpers\Filter;
 ?>
 @extends('../nav')
 
@@ -26,7 +27,7 @@
                   <ul class="list-unstyled">
                     @if(isset($contacts) && count($contacts))
                       @foreach($contacts as $key=>$value)
-                        <li>&nbsp&nbsp {{$key}} : {{$value}}</li>
+                        <li>&nbsp&nbsp <strong>{{ $f->getContact($key) }} : </strong>{{$value}}</li>
                       @endforeach
                     @endif
                   </ul>

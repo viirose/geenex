@@ -8,9 +8,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }} <a href="/register">Need accounts? Register now</a></div>
+                <div class="card-header">{{ __('Log In') }} </div>
 
                 <div class="card-body">
+                    <p>If you have an account with us, please log in.</p>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

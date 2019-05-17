@@ -16,6 +16,8 @@ use App\Forms\ContactForm;
 use App\Forms\UserForm;
 use App\Mail\Password;
 use App\Mail\AccountDelete;
+use App\Mail\NewRegister;
+use App\Mail\AccountActive;
 use App\Helpers\Role;
 
 class UserController extends Controller
@@ -143,11 +145,13 @@ class UserController extends Controller
             'password' => bcrypt($password),
             'email_verified_at' => now(),
             'auth->limit' => $limit,
+            'auth->from' => 'created',
+            'auth->must_rest_password' => true,
         ];
 
         if($request->spare) $new['auth->spare'] = true;
 
-        User::create($new);
+        $record = User::create($new);
 
         $message = [
             'name' => $request->name,
@@ -159,7 +163,7 @@ class UserController extends Controller
                 ->send(new Password($message));
 
 
-        $text = 'A User has been created successfully!<br><a href="/users" class="btn btn-success btn-sm"> all users</a>';
+        $text = 'A User has been created successfully!<br><a href="/users/contact/create/'.$record->id.'" class="btn btn-success btn-sm"> Update Contact</a>';
         $color = 'success';
         $icon = 'user-o';
         return view('note', compact('text', 'color', 'icon'));
@@ -200,25 +204,34 @@ class UserController extends Controller
     public function savePassword(Request $request)
     {
         $form = $this->form(PasswordForm::class);
-        if($request->password !== $request->confirm_password) redirect()->back()->withErrors(['confirm_password'=>'密码不一致!'])->withInput();
-        Auth::user()->update(['password'=>bcrypt($request->password)]);
+        if($request->password !== $request->confirm_password) redirect()->back()->withErrors(['confirm_password'=>'Two inconsistencies in password input!'])->withInput();
 
-        $text = 'success!';
-        return view('note', compact('text'));
+        Auth::user()->update([
+            'password'=>bcrypt($request->password),
+            'auth->must_rest_password' => false,
+        ]);
+
+        $text = 'Password Reset Succeed!';
+        $color = 'success';
+        $icon = 'check-square-o';
+        return view('note', compact('text', 'color', 'icon'));
     }
 
     /**
     * 联系方式
     *
     */
-    public function contactCreate()
+    public function contactCreate($id=0)
     {
+        $url = $id === 0 ? '/users/contact/store' : '/users/contact/store'.'/'.$id;
+
         $form = $this->form(ContactForm::class, [
             'method' => 'POST',
-            'url' => '/users/contact/store'
+            'url' => $url,
         ]);
 
-        $title = 'Contact <br><br><div class="alert alert-info"><small>This address will be used for your delivery and invoice address, you can edit or alter this after account creation in your address book.</small></div>';
+        $title = $id === 0 ? 'Contact <br><br><div class="alert alert-info"><small>This address will be used for your delivery and invoice address, you can edit or alter this after account creation in your address book.</small></div>' : 'Contact <br><br><div class="alert alert-success"><small>You will active the account directly by finishing this form.</small></div>';
+
         $icon = 'address-card-o';
 
         return view('form', compact('form','title','icon'));
@@ -228,28 +241,31 @@ class UserController extends Controller
     * 保存
     *
     */
-    public function contactStore(Request $request)
+    public function contactStore(Request $request, $id=0)
     {
+        $record = $id === 0 ? Auth::user() : User::findOrFail($id);
+
         $array = $request->except(['_token']);
-        // $array = [
 
-        //     'salutation' => $request->salutation,
-        //     'first_name' => $request->first_name,
-        //     'last_name' => $request->last_name,
-        //     'company' => $request->company,
-        //     'phone' => $request->phone,
-        //     'street' => $request->street,
-        //     'city' => $request->city,
-        //     'post_code' => $request->post_code,
-        //     'country' => $request->country,
-    
-        // ];
+        $all = [
+            'contact_verified_at' => now(), 
+            'info->contact' => $array
+        ];
 
-        Auth::user()->update(['contact_verified_at' => now(), 'info->contact' => $array]);
+        if($id === 0)  $all['auth->need_active'] = true;
 
-        $text = 'Congratulations! You have updated your contact infomation, we will active your accout in 24 hours! Thank you!';
+        $record->update($all);
+
+        $text = $id === 0 ? 'Thanks for the update! Your account will be activated in 24 hours!.' : 'Success! The account has been activated!';
+
+        // 发送邮件
+        if($id === 0) {
+            Mail::to(config('mail.reply_to.address'))
+                ->send(new NewRegister($record));
+        }
+
         $color = 'success';
-        $icon = 'rocket';
+        $icon = 'check-square-o';
         return view('note', compact('text', 'color', 'icon'));
 
         // $path = '/';
@@ -306,8 +322,14 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
 
+        if($role->needActive($user->id)) {
+            Mail::to($user->email)
+                ->send(new AccountActive($user));
+        }
+
         $user->update([
             'auth->limit' => $old,
+            'auth->need_active' => false,
         ]);
 
         return redirect()->back();
@@ -352,6 +374,7 @@ class UserController extends Controller
 
         if($id === 0) {
             $id = Auth::id();
+        }else{
             $url .= '/'.$id;
         }
 

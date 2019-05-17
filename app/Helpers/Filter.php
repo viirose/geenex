@@ -89,6 +89,33 @@ class Filter
 
     }
 
+    public function getContact($key)
+    {
+        $arr = explode('_', $key);
+
+        $num = count($arr);
+
+        switch ($num) {
+            case 1:
+                return $arr[0];
+                break;
+
+            case 2:
+                return $arr[1];
+                break;
+
+            case 3:
+                return $arr[1].' '.$arr[2];
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+
+        return null;
+    }
+
 }
 
 

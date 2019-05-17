@@ -10,6 +10,8 @@
                 <div class="card-header">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
+                    <p>Retrieve your password here
+Please enter your email address and we’ll send you a link to set a new password.</p>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}

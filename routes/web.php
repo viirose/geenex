@@ -38,8 +38,8 @@ Route::get('/inquiries/clear', 'OrderController@clear');
 Route::get('/logout', 'UserController@logout');
 
 // 联系方式
-Route::get('/users/contact/create', 'UserController@contactCreate')->middleware('verified');
-Route::post('/users/contact/store', 'UserController@contactStore')->middleware('verified');
+Route::get('/users/contact/create/{id?}', 'UserController@contactCreate');
+Route::post('/users/contact/store/{id?}', 'UserController@contactStore');
 
 
 Route::group(['middleware' => ['verified', 'state']], function () {
@@ -98,7 +98,7 @@ Route::group(['middleware' => ['verified', 'state']], function () {
 
 
 Route::get('/test', function() {
-    // 
+    echo Request::path();
 });
 
 

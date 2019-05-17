@@ -93,7 +93,7 @@ class OrderController extends Controller
 
         if(Session::has('inquiries')) Session::forget('inquiries');
 
-        $text = 'your email has been send successfully!';
+        $text = 'Your inquiry has been successfully sent, our sales team will contact you soon.';
         $color = 'success';
         $icon = 'paper-plane-o';
         return view('note', compact('text', 'color', 'icon'));

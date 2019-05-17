@@ -96,14 +96,20 @@
                             <td>{{ $product->weight }}</td>
                           </tr>
                           <tr>
-                            <td>Remark</td>
+                            <td class="align-top">Remark</td>
                             <td>{!! $f->fit($product->remark) !!}</td>
                           </tr>
                         </tbody>
                       </table>
-                      <a href="/products/show/{{$product->id}}" class="btn btn-light btn-sm">show on new page</a>
-                      <a href="/inquiries/add/{{$product->id}}" class="btn btn-light btn-sm">add to My Inquiry</a>
-                      <a href="javascript:send({{$product->id}})" class="btn btn-outline-light btn-sm">Email to a friend</a>
+                      <div class="row">
+                        <div class="col-10 col-sm-4 btns"><a href="/products/show/{{$product->id}}" class="btn btn-light btn-sm btn-block">show on new page</a></div>
+                        <div class="col-10 col-sm-4 btns"><a href="/inquiries/add/{{$product->id}}" class="btn btn-light btn-sm btn-block">add to My Inquiry</a></div>
+                        <div class="col-10 col-sm-4 btns"><a href="javascript:send({{$product->id}})" class="btn btn-outline-light btn-sm btn-block">Email to a friend</a></div>
+                      </div>
+                      
+                      
+                      
+
 
                       @if(Auth::check() && $r->admin())
                         <ul class="list-unstyled pl-0 mt-4">
@@ -237,7 +243,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-        <h3>Email to a Friend</h3>
+        <h3>Email to A Friend</h3>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
    
@@ -245,7 +251,7 @@
           @csrf
             <input type="hidden" name="id" id="product_id">
             <div class="form-group"  >
-              <label for="email" class="control-label">Emails (most:3)</label>
+              <label for="email" class="control-label">Recipient Email Address (max 3 recipients)</label>
               <textarea placeholder="friend1@some.com&#10friend2@some.com" class="form-control" name="emails"></textarea>
             </div>
         </div>

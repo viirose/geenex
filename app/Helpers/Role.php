@@ -168,6 +168,24 @@ class Role
         return $un;
     }
 
+    public function mustResetPassword($id=0)
+    {
+        $user = $this->choose($id);
+
+        $auth = json_decode($user->auth, true);
+
+        return $auth && array_key_exists('must_rest_password', $auth) &&  $auth['must_rest_password'] == true ? true : false;
+    }
+
+    public function needActive($id=0)
+    {
+        $user = $this->choose($id);
+
+        $auth = json_decode($user->auth, true);
+
+        return $auth && array_key_exists('need_active', $auth) &&  $auth['need_active'] == true ? true : false;
+    }
+
 }
 
 

@@ -68,19 +68,19 @@
                             <td>G{{ $f->show($product->brand->info, 'code', '-') }}{{ $f->show($product->category->master->master->info, 'code', '-') }}{{ $f->show($product->category->master->info, 'code', '-') }}{{ $f->show($product->category->info, 'code', '-') }}{{ $product->id }}</td>
                           </tr>
                           <tr>
-                            <td><strong>Part Name</strong></td>
+                            <td><strong>Part&nbspName</strong></td>
                             <td>{!! $f->fit($product->name) !!}</td>
                           </tr>
                           <tr>
-                            <td><strong>Part Nr.</strong></td>
+                            <td><strong>Part&nbspNr.</strong></td>
                             <td>{!! $f->fit($product->part_no) !!}</td>
                           </tr>
                           <tr>
-                            <td><strong>Part for</strong></td>
+                            <td><strong>Part&nbspfor</strong></td>
                             <td>{{ $product->brand->key }}</td>
                           </tr>
                           <tr>
-                            <td><strong>Material Group</strong></td>
+                            <td><strong>Material&nbspGroup</strong></td>
                             <td>
                               {{ $product->category->master->master->key }} -
                               {{ $product->category->master->key }} -

@@ -223,7 +223,7 @@ class UserController extends Controller
     */
     public function contactCreate(Role $role, $id=0)
     {
-        if(!$role->admin()) abort('403');
+        // if(!$role->admin()) abort('403');
 
         $url = $id === 0 ? '/users/contact/store' : '/users/contact/store'.'/'.$id;
 
@@ -245,7 +245,7 @@ class UserController extends Controller
     */
     public function contactStore(Role $role, Request $request, $id=0)
     {
-        if(!$role->admin()) abort('403');
+        // if(!$role->admin()) abort('403');
         
         $user = $id === 0 ? Auth::user() : User::findOrFail($id);
 

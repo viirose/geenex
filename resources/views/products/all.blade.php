@@ -80,7 +80,7 @@
                             <td>{{ $product->brand->key }}</td>
                           </tr>
                           <tr>
-                            <td><strong>Material&nbspGroup</strong></td>
+                            <td><strong>Material&nbspGroup&nbsp</strong></td>
                             <td>
                               {{ $product->category->master->master->key }} -
                               {{ $product->category->master->key }} -

@@ -36,3 +36,4 @@ class AccountActive extends Mailable
                 ->subject('GENNEX: Account activated!')
                 ->view('mails.account_active', compact('user'));
     }
+}

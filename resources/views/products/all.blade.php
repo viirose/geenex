@@ -64,7 +64,7 @@
                       <table class="text-white">
                         <tbody>
                           <tr>
-                            <td>GENNEX Ref.</td>
+                            <td>GENNEX_Ref.</td>
                             <td>G{{ $f->show($product->brand->info, 'code', '-') }}{{ $f->show($product->category->master->master->info, 'code', '-') }}{{ $f->show($product->category->master->info, 'code', '-') }}{{ $f->show($product->category->info, 'code', '-') }}{{ $product->id }}</td>
                           </tr>
                           <tr>

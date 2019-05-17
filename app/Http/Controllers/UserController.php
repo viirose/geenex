@@ -243,7 +243,7 @@ class UserController extends Controller
     */
     public function contactStore(Request $request, $id=0)
     {
-        $record = $id === 0 ? Auth::user() : User::findOrFail($id);
+        $user = $id === 0 ? Auth::user() : User::findOrFail($id);
 
         $array = $request->except(['_token']);
 
@@ -254,14 +254,14 @@ class UserController extends Controller
 
         if($id === 0)  $all['auth->need_active'] = true;
 
-        $record->update($all);
+        $user->update($all);
 
         $text = $id === 0 ? 'Thanks for the update! Your account will be activated in 24 hours!.' : 'Success! The account has been activated!';
 
         // 发送邮件
         if($id === 0) {
             Mail::to(config('mail.reply_to.address'))
-                ->send(new NewRegister($record));
+                ->send(new NewRegister($user));
         }
 
         $color = 'success';

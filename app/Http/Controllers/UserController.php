@@ -322,17 +322,18 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
 
-        if($role->needActive($user->id)) {
-            Mail::to($user->email)
-                ->send(new AccountActive($user));
-        }
+        echo $user->email;
+        // if($role->needActive($user->id)) {
+            // Mail::to($user->email)
+            //     ->send(new AccountActive($user));
+        // }
 
-        $user->update([
-            'auth->limit' => $old,
-            'auth->need_active' => false,
-        ]);
+        // $user->update([
+        //     'auth->limit' => $old,
+        //     'auth->need_active' => false,
+        // ]);
 
-        return redirect()->back();
+        // return redirect()->back();
     }
 
     // lock 解锁

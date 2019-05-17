@@ -194,9 +194,9 @@ class ProductController extends Controller
                                 }
                             });
 
-                        $all = $pre->count();
+        $all = $pre->count();
 
-                        $products = $pre->paginate(30);
+        $products = $pre->paginate(30);
 
         return view('products.all', compact('categories', 'brands', 'products','all'));
 
@@ -321,6 +321,8 @@ class ProductController extends Controller
     {
         if(!$role->admin()) abort(403);
 
+        if(!$request->category_id) return redirect()->back()->withErrors(['category_text'=>'please select!'])->withInput();
+
         $all = $request->except(['category_text']);
 
         $all['created_by'] = Auth::id();
@@ -363,6 +365,8 @@ class ProductController extends Controller
     public function update(Request $request, $id, Role $role)
     {
         if(!$role->admin()) abort(403);
+
+        if(!$request->category_id) return redirect()->back()->withErrors(['category_text'=>'please select!'])->withInput();
 
         $all = $request->except(['category_text']);
 

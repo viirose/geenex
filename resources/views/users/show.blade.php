@@ -40,10 +40,6 @@
               <a href="/users/delete/{{$record->id}}" class="btn btn-danger btn-sm"> Delete This User !</a>
               @endif
 
-              @if($r->self($record->id))
-              <a href="/users/edit/{{$record->id}}" class="btn btn-primary btn-sm"> eidt</a>
-              @endif
-
               </div>
 
             </div>

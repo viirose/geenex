@@ -217,7 +217,7 @@
               <h4 class="sidebar-widget-heading"><i class="fa fa-history" aria-hidden="true"></i> Recnt Focused</h4>
               <ul class="list-inline pl-0 mt-4">
                 @foreach($rc->show() as $key => $val)
-                  <li><a href="/products/show/{{ $key }}" class="text-dark">{{ Str::limit($val, 22) }}</a></li>
+                  <li><a href="/products/show/{{ $key }}" class="text-dark">{{ Str::limit($val, 25) }}</a></li>
                 @endforeach
               </ul>
             </div>

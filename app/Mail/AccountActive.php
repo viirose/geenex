@@ -33,7 +33,7 @@ class AccountActive extends Mailable
     {
         $user = $this->user;
         return $this
-                ->subject('GENNEX: Account activated!')
+                ->subject('GENNEX: note')
                 ->view('mails.account_active', compact('user'));
     }
 }

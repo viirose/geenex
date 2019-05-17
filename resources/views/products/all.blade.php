@@ -68,19 +68,19 @@
                             <td>G{{ $f->show($product->brand->info, 'code', '-') }}{{ $f->show($product->category->master->master->info, 'code', '-') }}{{ $f->show($product->category->master->info, 'code', '-') }}{{ $f->show($product->category->info, 'code', '-') }}{{ $product->id }}</td>
                           </tr>
                           <tr>
-                            <td>Part Name</td>
+                            <td><strong>Part Name</strong></td>
                             <td>{!! $f->fit($product->name) !!}</td>
                           </tr>
                           <tr>
-                            <td>Part Nr.</td>
+                            <td><strong>Part Nr.</strong></td>
                             <td>{!! $f->fit($product->part_no) !!}</td>
                           </tr>
                           <tr>
-                            <td>Part for</td>
+                            <td><strong>Part for</strong></td>
                             <td>{{ $product->brand->key }}</td>
                           </tr>
                           <tr>
-                            <td>Material Group</td>
+                            <td><strong>Material Group</strong></td>
                             <td>
                               {{ $product->category->master->master->key }} -
                               {{ $product->category->master->key }} -
@@ -88,15 +88,15 @@
                             </td>
                           </tr>
                           <tr>
-                            <td>Availability</td>
+                            <td><strong>Availability</strong></td>
                             <td>{{ $product->availability->key }}</td>
                           </tr>
                           <tr>
-                            <td>Weight</td>
+                            <td><strong>Weight</strong></td>
                             <td>{{ $product->weight }}</td>
                           </tr>
                           <tr>
-                            <td class="align-top">Remark</td>
+                            <td class="align-top"><strong>Remark</strong></td>
                             <td>{!! $f->fit($product->remark) !!}</td>
                           </tr>
                         </tbody>

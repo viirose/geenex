@@ -114,8 +114,8 @@
                       @if(Auth::check() && $r->admin())
                         <ul class="list-unstyled pl-0 mt-4">
                           <li>Created by: {{ $product->creater->name }}</li>
-                          <li>Created at: {{ $product->created_at }}</li>
-                          <li>Updated at: {{ $product->updated_at }}</li>
+                          <li>Created at: {{ $product->created_at }} [{{ $product->created_at->diffForHumans() }}]</li>
+                          <li>Updated at: {{ $product->updated_at }} [{{ $product->updated_at->diffForHumans() }}]</li>
                           <li>
                             <a href="/products/edit/{{ $product->id }}" class="btn btn-outline-light btn-sm">edit</a>
                             <a href="javascript:del({{ $product->id }})" class="btn btn-danger btn-sm">delete!</a>

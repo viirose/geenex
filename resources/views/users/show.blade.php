@@ -23,7 +23,8 @@
                 <li><strong>Email:</strong>  {{ $record->email }}</li>
                 <li><strong>Name: </strong> {{ $record->name }}</li>
                 <li><strong>Created At:</strong>  {{ $record->created_at }}</li>
-                <li><strong>Infomation:</strong> <a href="/users/contact/edit/{{ $record->id }}" class="badge badge-success">Update</a>
+                <li><strong>Updated At:</strong>  {{ $record->updated_at }}</li>
+                <li><strong>Contact Infomation:</strong> <a href="/users/contact/edit/{{ $record->id }}" class="badge badge-success">Update</a>
                   <ul class="list-unstyled">
                     @if(isset($contacts) && count($contacts))
                       @foreach($contacts as $key=>$value)

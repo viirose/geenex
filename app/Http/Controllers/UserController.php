@@ -322,10 +322,10 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
 
-        echo $user->email;
+        // echo $user->email;
         // if($role->needActive($user->id)) {
-            // Mail::to($user->email)
-            //     ->send(new AccountActive($user));
+            Mail::to($user->email)
+                ->send(new AccountDelete($user));
         // }
 
         // $user->update([

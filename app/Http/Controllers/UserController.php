@@ -325,7 +325,7 @@ class UserController extends Controller
         // echo $user->email;
         // if($role->needActive($user->id)) {
             Mail::to($user->email)
-                ->send(new AccountDelete($user));
+                ->send(new AccountActive($user));
         // }
 
         // $user->update([

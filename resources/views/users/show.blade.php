@@ -13,7 +13,7 @@
         @if($r->admin())
         <a href="/users"><i class="fa fa-users" aria-hidden="true"></i> Users</a> /
         @endif
-        <span> {{ $record->name }}</span>
+        <span><i class="fa fa-address-card-o" aria-hidden="true"></i> {{ $record->name }}</span>
       </h4>
       
         <div class="cent">

@@ -24,7 +24,7 @@
                 <li><strong>Name: </strong> {{ $record->name }}</li>
                 <li><strong>Created At:</strong>  {{ $record->created_at }} [{{ $record->created_at->diffForHumans() }}]</li>
                 <li><strong>Updated At:</strong>  {{ $record->updated_at }} [{{ $record->updated_at->diffForHumans() }}]</li>
-                <li><strong>Contact Infomation:</strong> <a href="/users/contact/edit/{{ $record->id }}" class="badge badge-success">Update</a>
+                <li><strong>Contact Infomation:</strong> <a href="/users/contact/edit/{{ $record->id }}" class="badge badge-success"><i class="fa fa-spinner" aria-hidden="true"></i> Update</a>
                   <ul class="list-unstyled">
                     @if(isset($contacts) && count($contacts))
                       @foreach($contacts as $key=>$value)

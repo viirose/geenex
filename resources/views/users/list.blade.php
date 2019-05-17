@@ -43,7 +43,7 @@
                 <tr class="{{ $r->locked($record->id) ? 'alert-warning' : '' }}">
                   <td>
 
-                    <a href="/users/show/{{$record->id}}">{!! preg_replace('//s*/', '\&nbsp', $f->fit($record->name, 'keywords_user')) !!} </a>
+                    <a href="/users/show/{{$record->id}}">{!! str_replace(array("\r\n", "\r", "\n"), '&nbsp', $f->fit($record->name, 'keywords_user')) !!} </a>
                     
                     
 

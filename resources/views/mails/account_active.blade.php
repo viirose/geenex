@@ -1,9 +1,9 @@
 <div>
-    Deer 
+    Deer {{ $user->name }}
 </div>
 
 <div>
-Your account with our website has been ok.<br>
+Your account with our website has been approved.<br>
 Thanks for your registration.<br>
 
 <br>

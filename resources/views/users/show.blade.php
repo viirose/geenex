@@ -36,7 +36,8 @@
               </ul>
               <div class="row">
 
-              @if($r->gt($record->id))
+              @if($r->gt($record->id) && $r->root())
+              <a href="/users/edit/{{$record->id}}" class="btn btn-primary btn-sm"> edit</a> &nbsp
               <a href="/users/delete/{{$record->id}}" class="btn btn-danger btn-sm"> Delete This User !</a>
               @endif
 

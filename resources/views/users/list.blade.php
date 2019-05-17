@@ -45,8 +45,6 @@
 
                     <a href="/users/show/{{$record->id}}">{!! Str::replaceArray(' ', ['&nbsp'], $f->fit($record->name, 'keywords_user')) !!} </a>
                     
-                    
-
                     @if($r->self($record->id))
                       <span class="badge badge-success">me</span>
                     @endif

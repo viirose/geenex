@@ -221,8 +221,10 @@ class UserController extends Controller
     * 联系方式
     *
     */
-    public function contactCreate($id=0)
+    public function contactCreate(Role $role, $id=0)
     {
+        if(!$role->admin()) abort('403');
+
         $url = $id === 0 ? '/users/contact/store' : '/users/contact/store'.'/'.$id;
 
         $form = $this->form(ContactForm::class, [
@@ -241,8 +243,10 @@ class UserController extends Controller
     * 保存
     *
     */
-    public function contactStore(Request $request, $id=0)
+    public function contactStore(Role $role, Request $request, $id=0)
     {
+        if(!$role->admin()) abort('403');
+        
         $user = $id === 0 ? Auth::user() : User::findOrFail($id);
 
         $array = $request->except(['_token']);
@@ -361,17 +365,72 @@ class UserController extends Controller
      * 信息修改
      *
      */
-    public function edit($id=0)
+    public function edit(Role $role, $id)
     {
-        # code...
+        if(!$role->root() || !$role->gt($id)) abort('403');
+
+        $record = User::findOrFail($id);
+
+        $form = $this->form(UserForm::class, [
+            'method' => 'POST',
+            'model' => $record,
+            'data' => ['mode' => 'edit'],
+            'url' => '/users/update/'.$id
+        ]);
+
+        $title = 'Edit: '.$record->name;
+        $icon = 'user-o';
+
+        return view('form', compact('form','title','icon'));
     }
+
+    /**
+     * 更新email信息
+     *
+     */
+    public function update(Request $request, Role $role, $id)
+    {
+        if(!$role->root() || !$role->gt($id)) abort('403');
+
+        $record = User::findOrFail($id);
+
+        $old_email = $record->email;
+
+        $changes = [];
+
+
+        if($request->email != $old_email) {
+
+            $exists = User::where('email', $request->email)
+                        // ->where('id', '<>', $record->id)
+                        ->first();
+
+            if($exists) return redirect()->back()->withErrors(['email'=>'this Email has been taken!'])->withInput();
+
+            $changes['email'] = $request->email;
+        }
+
+        if($request->name != $record->name) $changes['name'] = $request->name;
+
+        if(count($changes)) $record->update($changes);
+
+
+        $text = count($changes) ? 'Updated successfully!<br><br><a href="/users/show/'.$record->id.'" class="btn btn-success btn-sm"> have a look</a>' : 'Nothing changes';
+        $color = 'success';
+        $icon = 'user-o';
+        return view('note', compact('text', 'color', 'icon'));
+    }
+
+
 
     /**
      * 联系信息修改
      *
      */
-    public function contactEdit($id=0)
+    public function contactEdit(Role $role, $id=0)
     {
+        if(!$role->self($id) && !$role->gt($id)) abort('403');
+
         $url = '/users/contact/update';
 
         if($id === 0) {
@@ -405,8 +464,10 @@ class UserController extends Controller
      * 联系信息修改 - 保存
      *
      */
-    public function contactUpdate(Request $request, $id=0)
+    public function contactUpdate(Role $role, Request $request, $id=0)
     {
+        if(!$role->self($id) && !$role->gt($id)) abort('403');
+
         if($id === 0) $id = Auth::id();
 
         $contact = $request->except(['_token']);

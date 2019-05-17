@@ -20,6 +20,7 @@ class UserForm extends Form
     {
         $brands = $this->brands();
 
+
         $this
         ->add('email', 'email', [
             'label' => 'Email*',
@@ -30,14 +31,21 @@ class UserForm extends Form
             'rules' => 'min:2|max:20'
         ]);
 
-        foreach ($brands as $key => $value) {
+        if($this->getData('mode') && $this->getData('mode') == 'edit') {
+            // 
+        }else{
 
-            $this->add($value, 'checkbox', [
-                'value' => $key,
-                'label' => $key,
-                'checked' => false
-            ]);
+            foreach ($brands as $key => $value) {
+
+                $this->add($value, 'checkbox', [
+                    'value' => $key,
+                    'label' => $key,
+                    'checked' => false
+                ]);
+            }
         }
+        
+
 
         // ->add('spare', 'checkbox', [
         //     'value' => 1,

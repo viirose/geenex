@@ -64,7 +64,9 @@ Route::group(['middleware' => ['verified', 'state']], function () {
     Route::get('/users/limit/{id}/{conf_id}', 'UserController@limit');
     Route::get('/users/unlimit/{id}/{conf_id}', 'UserController@unlimit');
 
-    Route::get('/users/edit/{id?}', 'UserController@edit');
+    Route::get('/users/edit/{id}', 'UserController@edit');
+    Route::post('/users/update/{id}', 'UserController@update');
+
     Route::get('/users/contact/edit/{id?}', 'UserController@contactEdit');
     Route::post('/users/contact/update/{id?}', 'UserController@contactUpdate');
 

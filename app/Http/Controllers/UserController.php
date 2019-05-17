@@ -323,7 +323,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         if($role->needActive($user->id)) {
-            Mail::to('7569300@qq.com')
+            Mail::to($user->email)
                 ->send(new AccountActive($user));
         }
 

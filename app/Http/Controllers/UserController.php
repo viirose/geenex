@@ -100,6 +100,24 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    // lock 锁定
+    public function setAdmin($id, Role $role)
+    {
+        if(!$role->root() || !$role->gt($id)) abort('403');
+
+        User::findOrFail($id)->update(['auth->admin' => true]);
+        return redirect()->back();
+    }
+
+    // lock 解锁
+    public function removeAdmin($id, Role $role)
+    {
+        if(!$role->root() || !$role->gt($id)) abort('403');
+
+        User::findOrFail($id)->update(['auth->admin' => false]);
+        return redirect()->back();
+    }
+
     /**
      * new User
      *

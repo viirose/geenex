@@ -37,8 +37,14 @@
               <div class="row">
 
               @if($r->gt($record->id) && $r->root())
-              <a href="/users/edit/{{$record->id}}" class="btn btn-primary btn-sm"> edit</a> &nbsp
-              <a href="/users/delete/{{$record->id}}" class="btn btn-danger btn-sm"> Delete This User !</a>
+                @if(!$r->root($record->id) && $r->admin($record->id))
+                  <a href="/users/remove_admin/{{$record->id}}" class="btn btn-outline-primary btn-sm"> remove admin</a> &nbsp
+                @else
+                  <a href="/users/set_admin/{{$record->id}}" class="btn btn-primary btn-sm"><i class="fa fa-magic" aria-hidden="true"></i> promote to admin</a> &nbsp
+                @endif
+
+                <a href="/users/edit/{{$record->id}}" class="btn btn-warning btn-sm"> edit</a> &nbsp
+                <a href="/users/delete/{{$record->id}}" class="btn btn-danger btn-sm"> Delete This User !</a>
               @endif
 
               </div>

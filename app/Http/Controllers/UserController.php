@@ -324,7 +324,7 @@ class UserController extends Controller
 
         $all = [
             'auth->limit' => $old,
-        ]
+        ];
 
         if($role->needActive($user->id)) {
             Mail::to($user->email)

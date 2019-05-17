@@ -13,7 +13,7 @@
       <div class="container">
         <!-- wordPress installation-->
         <header class="section header mb-5">
-          <h2><i class="fa fa-cube" aria-hidden="true"></i> Products [{{ $products->count() }}] </h2>
+          <h2><i class="fa fa-cube" aria-hidden="true"></i> Products [{{ $all }}] </h2>
           <p class="lead">
 
             @if(Session::has('keywords') || Session::has('search_category_id') || Session::has('search_brand_id') || Session::has('search_level'))

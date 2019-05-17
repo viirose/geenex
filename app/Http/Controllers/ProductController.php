@@ -151,7 +151,7 @@ class ProductController extends Controller
                         ->withCount('brand_products')
                         ->get();
 
-        $products = Product::whereNotNull('img')
+        $pre = Product::whereNotNull('img')
                             ->where(function ($q5) {
                                 // 品牌限制
                                 if(!$this->role->admin()) {
@@ -192,11 +192,13 @@ class ProductController extends Controller
                                     //   ->orWhere('remark', 'like', '%'.session('keywords').'%')
                                     //   ->orWhere('content', 'like', '%'.session('keywords').'%');
                                 }
-                            })
+                            });
 
-                            ->paginate(30);
+                        $all = $pre->count();
 
-        return view('products.all', compact('categories', 'brands', 'products'));
+                        $products = $pre->paginate(30);
+
+        return view('products.all', compact('categories', 'brands', 'products','all'));
 
     }
 

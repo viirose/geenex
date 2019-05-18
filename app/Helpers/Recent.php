@@ -41,7 +41,7 @@ class Recent
         $out = [];
         if(count($arr)) {
             for ($i=0; $i < count($arr); $i++) { 
-                $out = array_add($out, $this->recent_array[$i], $arr[$this->recent_array[$i]]);
+                if(isset($this->recent_array[$i])) $out = array_add($out, $this->recent_array[$i], $arr[$this->recent_array[$i]]);
             }
         }
 

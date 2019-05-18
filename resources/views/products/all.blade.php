@@ -53,7 +53,7 @@
                       <img src="{{ $product->img ? asset($product->img) : asset('img/sample.jpg') }}" class="rounded list-icon">
                       <span class="list-head"><strong>{!! $f->fit($product->part_no) !!}</strong><br>
                         <strong>{!! $f->fit($product->name) !!}</strong><br>
-                        for: {!! $product->brand->key !!}
+                        Part for {!! $product->brand->key !!}
                       </span>
                       
                     </button>

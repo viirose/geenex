@@ -40,8 +40,13 @@ class OrderController extends Controller
     public function add($id, Recent $rc)
     {
         $array = session('inquiries');
-
-        $rc->add($id);
+        
+        try {
+            $rc->add($id);
+            
+        } catch (Exception $e) {
+            // 
+        }
 
         if(!in_array($id, $array)) {
             array_push($array, $id);

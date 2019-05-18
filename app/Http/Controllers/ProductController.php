@@ -445,7 +445,11 @@ class ProductController extends Controller
     {
         $record = Product::findOrFail($id);
 
-        $rc->add($id);
+        try { 
+            $rc->add($id);
+        } catch (Exception $e) {
+            // Log::info($e);
+        }
 
         return view('products.show', compact('record'));
     }
@@ -496,7 +500,13 @@ class ProductController extends Controller
 
         // 生成token
         $record = Product::findOrFail($request->id);
-        $rc->add($request->id);
+
+        try {
+            
+            $rc->add($request->id);
+        } catch (Exception $e) {
+            
+        }
 
         $token = $record->token;
         $url = config('app.url').'/products/share/'.$request->id.'/';

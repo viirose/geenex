@@ -24,7 +24,7 @@ class Recent
 
         $info_array = json_decode($info, true);
 
-        $this->recent_array = $info_array && isset($info_array['recent']) ? $info_array['recent'] : []; 
+        $this->recent_array = $info && $info_array && isset($info_array['recent']) ? $info_array['recent'] : []; 
     }
 
 

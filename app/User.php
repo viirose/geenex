@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
@@ -35,4 +36,5 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Inquiry', 'user_id', 'id');
     }
+
 }

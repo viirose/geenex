@@ -278,7 +278,7 @@ class UserController extends Controller
 
         $user->update($all);
 
-        $text = $id === 0 ? 'Thanks for the update! Your account will be activated in 24 hours!.' : 'Success! The account has been activated!';
+        $text = $id === 0 ? 'Thanks for the update! Your account will be activated in 24 hours!' : 'Success! The account has been activated!';
 
         // 发送邮件
         if($id === 0) {

@@ -17,7 +17,7 @@ class ContactForm extends Form
         $contact = $this->getData('contact') ? $this->getData('contact') : [];
 
         $this
-        ->add('1_alutation', 'select', [
+        ->add('1_salutation', 'select', [
             'label' => "Salutation*",
             'choices' => ['Mr.' => "Mr.", 'Mrs.' => "Mrs"],
             'default_value' => $this->val($contact, '1_alutation'),

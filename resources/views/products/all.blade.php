@@ -51,7 +51,10 @@
                   <h4 class="mb-0 accordion-heading">
                     <button data-toggle="collapse" data-target="#collapse{{$product->id}}" aria-expanded="false" aria-controls="collapse{{$product->id}}" class="d-flex align-items-center">
                       <img src="{{ $product->img ? asset($product->img) : asset('img/sample.jpg') }}" class="rounded list-icon">
-                      <span class="list-head"><strong>{!! $f->fit($product->part_no) !!}</strong><br>{!! $f->fit($product->name) !!}</span>
+                      <span class="list-head"><strong>{!! $f->fit($product->part_no) !!}</strong><br>
+                        <strong>{!! $f->fit($product->name) !!}</strong><br>
+                        for: {!! $product->brand->key !!}
+                      </span>
                       
                     </button>
                   </h4>

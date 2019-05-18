@@ -1,5 +1,5 @@
 <div>
-    Deer {{ $info['name'] }}
+    Deer {{ $info['name'] }}<br><br>
 
 </div>
 

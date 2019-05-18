@@ -42,13 +42,14 @@ class VerifyEmailNotification extends Notification
         }
 
         return (new MailMessage)
-            ->subject(Lang::getFromJson('GENNEX: Verify Email Address'))
-            ->line(Lang::getFromJson('Please click the button below to verify your email address.'))
+            ->subject('GENNEX: Verify Email Address')
+            ->line('Hello '.$notifiable->getKey('name'))
+            ->line('We’ve received a request of account creation with email address '.$notifiable->getKey('email').' on our website www.joclift.com. If you submitted such request, please click the Verify Email Address button below to proceed.')
             ->action(
-                Lang::getFromJson('Verify Email Address'),
+                'Verify Email Address',
                 $this->verificationUrl($notifiable)
             )
-            ->line(Lang::getFromJson('If you did not create an account, no further action is required.'));
+            ->line('In case you didn’t submit such request, please disregard this email and no further action is required.');
     }
 
     /**

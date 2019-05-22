@@ -99,7 +99,7 @@
   <div class="text-center">
     <p>
       <small>&copy; {{ today()->year }} {{ config('site.info.corp_full_name') }}</small> <br>
-      <small><a href="http://www.miitbeian.gov.cn">{{ config('site.info.beian') }}</a></small>
+      <small><a href="http://beian.miit.gov.cn">{{ config('site.info.beian') }}</a></small>
     </p>
     <p>
       

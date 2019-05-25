@@ -292,6 +292,14 @@ class ProductController extends Controller
         return $this->index();
     }
 
+    /**
+     * /products 跳转 /products/spares
+     *
+     */
+    public function jump()
+    {
+        return redirect('/products/spares');
+    }
 
 
     /**

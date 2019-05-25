@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Web Routes 
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -27,15 +27,10 @@ Route::get('/conf/category_info/{id}', 'ConfController@categoryInfo');
 // 产品
 Route::get('/products/share/{id}/{token}', 'ProductController@share');
 
-
-// 咨询列表
-Route::get('/inquiries', 'OrderController@inquiries');
-Route::get('/inquiries/add/{id}', 'OrderController@add');
-Route::get('/inquiries/delete/{id}', 'OrderController@delete');
-Route::get('/inquiries/clear', 'OrderController@clear');
-
-
 Route::get('/logout', 'UserController@logout');
+
+Route::get('/accounts/create', 'UserController@accountCreate');
+Route::post('/accounts/store', 'UserController@accountStore');
 
 // 联系方式
 Route::get('/users/contact/create/{id?}', 'UserController@contactCreate');
@@ -47,6 +42,10 @@ Route::group(['middleware' => ['verified', 'state']], function () {
     // 咨询列表 - 邮件
     Route::post('/inquiries/send', 'OrderController@send');
     Route::get('/inquiries/show/{id?}', 'OrderController@show');
+    Route::get('/inquiries', 'OrderController@inquiries');
+    Route::get('/inquiries/add/{id}', 'OrderController@add');
+    Route::get('/inquiries/delete/{id}', 'OrderController@delete');
+    Route::get('/inquiries/clear', 'OrderController@clear');
 
     // 人员
     Route::get('/users', 'UserController@index');
@@ -67,11 +66,16 @@ Route::group(['middleware' => ['verified', 'state']], function () {
     Route::post('/users/update/{id}', 'UserController@update');
     Route::get('/users/contact/edit/{id?}', 'UserController@contactEdit');
     Route::post('/users/contact/update/{id?}', 'UserController@contactUpdate');
-
     Route::get('/users/set_admin/{id}', 'UserController@setAdmin'); # admin
     Route::get('/users/remove_admin/{id}', 'UserController@removeAdmin'); 
 
     // 产品
+    Route::get('/products', 'ProductController@jump');
+    Route::get('/products/spares', 'ProductController@index');
+    Route::post('/products/search', 'ProductController@search');
+    Route::get('/products/search/{type}/{id}', 'ProductController@searchType');
+    Route::get('/products/clear_search/{string}', 'ProductController@searchClear');
+
     Route::get('/products/create', 'ProductController@create');
     Route::post('/products/store', 'ProductController@store');
     Route::post('/products/img/store', 'ProductController@imgStore');
@@ -80,14 +84,6 @@ Route::group(['middleware' => ['verified', 'state']], function () {
     Route::get('/products/delete/{id}', 'ProductController@delete');
     Route::get('/products/show/{id}', 'ProductController@show');
     Route::post('/products/send', 'ProductController@send');
-
-    // spare only
-    // Route::group(['middleware' => ['spare']], function () {
-        Route::get('/products', 'ProductController@index');
-        Route::post('/products/search', 'ProductController@search');
-        Route::get('/products/search/{type}/{id}', 'ProductController@searchType');
-        Route::get('/products/clear_search/{string}', 'ProductController@searchClear');
-    // });
 
     // conf
     Route::get('/conf/brands', 'ConfController@brands');
@@ -101,7 +97,7 @@ Route::group(['middleware' => ['verified', 'state']], function () {
 
 
 Route::get('/test', function() {
-
+    abort('403');
 });
 
 

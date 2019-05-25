@@ -42,13 +42,12 @@
                   <li class="nav-item dropdown">
                     <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-cube" aria-hidden="true"></i> Product & Service</a>
                     <div class="dropdown-menu">
-                      <a href="/products" class="dropdown-item"> Spare Parts</a>
-                      <a href="/products" class="dropdown-item"> Metal Processing</a>
-                      <a href="/products" class="dropdown-item"> Lift Material</a>
+                      <a href="/products/spares" class="dropdown-item"> Spare Parts</a>
+                      <a href="/products/metal_processing" class="dropdown-item"> Metal Processing</a>
+                      <a href="/products/lift_material" class="dropdown-item"> Lift Material</a>
                     </div>
 
                   </li>
-                  <!-- Link-->
                   <!-- Link-->
                   <li class="nav-item"><a href="/inquiries" class="nav-link">|   &nbsp<i class="fa fa-list-ul" aria-hidden="true"></i> My Inquiry 
                     @if(Session::has('inquiries') && count(session('inquiries')))
@@ -76,7 +75,7 @@
                       <a href="/logout" class="dropdown-item"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a>
                     @else
                       <a href="/login" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> Login</a>
-                      <a href="/register" class="dropdown-item"><i class="fa fa-anchor" aria-hidden="true"></i> Register</a>
+                      <a href="/accounts/create" class="dropdown-item"><i class="fa fa-anchor" aria-hidden="true"></i> Register</a>
                     @endif
                     </div>
 

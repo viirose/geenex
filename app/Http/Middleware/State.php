@@ -19,6 +19,7 @@ class State
         $role = new Role;
 
         if($role->locked()) abort('403');
+        if(!$role->authorized()) abort('402');
         if($role->mustResetPassword() && $request->path() != 'users/reset_password' && $request->path() != 'users/save_password') return redirect('/users/reset_password');
 
         if(!$role->contactVerified()) {

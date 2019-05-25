@@ -7,13 +7,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }} <a href="/login"> Already have an account? Log In</a></div>
+                <div class="card-header">{{ __('Create an Account ') }} <a href="/login"> Already have an account? Log In</a></div>
 
                 <div class="card-body">
                     <div class="alert alert-info">By creating an account with our website, you will be able to view our spare part database by material groups, search your target parts by keywords or part numbers and send inquiries online.</div>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
+                        <h4><i class="fa fa-address-card-o" aria-hidden="true"></i> Personal Information</h4>
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -41,6 +41,8 @@
                                 @endif
                             </div>
                         </div>
+
+                        <h4>Address Information</h4>
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>

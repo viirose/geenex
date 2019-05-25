@@ -62,6 +62,19 @@ class Role
     }
 
     /**
+     * au
+     *
+     */
+    public function authorized($id=0)
+    {
+        if($this->admin($id)) return true;
+
+        $auth_array = json_decode($this->choose($id)->auth, true);
+
+        return $auth_array && array_key_exists('limit', $auth_array);
+    }
+
+    /**
      * 联系方式
      *
      */

@@ -14,6 +14,7 @@ use App\Conf;
 use App\Forms\PasswordForm;
 use App\Forms\ContactForm;
 use App\Forms\UserForm;
+use App\Forms\RegisterForm;
 use App\Mail\Password;
 use App\Mail\AccountDelete;
 use App\Mail\NewRegister;
@@ -25,7 +26,7 @@ class UserController extends Controller
     use FormBuilderTrait;
 
     /**
-     * Index 
+     * Index  
      *
      */
     public function index(Role $role)
@@ -119,6 +120,71 @@ class UserController extends Controller
     }
 
     /**
+     * 用户自行注册
+     *
+     */
+    public function accountCreate()
+    {
+
+        $form = $this->form(RegisterForm::class, [
+            'method' => 'POST',
+            'url' => '/accounts/store'
+        ]);
+
+        $title = 'Create an Account ';
+        $icon = 'key';
+
+        return view('form_account', compact('form','title','icon'));
+    }
+
+    /**
+     * 用户自行注册 - 写入
+     *
+     */
+    public function accountStore(Request $request)
+    {
+        // 校验
+        $exists = User::where('email', $request->email)->first();
+        if($exists) return redirect()->back()->withErrors(['email'=>'this Email has been taken!'])->withInput();
+
+        if($request->email !== $request->confirm_email) return redirect()->back()->withErrors(['email'=>'Email not confirmed!'])->withInput();
+        if($request->password !== $request->confirm_password) return redirect()->back()->withErrors(['password'=>'Password not confirmed!'])->withInput();
+
+        $contact = $request->except([
+            '_token', 
+            'email',
+            'confirm_email',
+            'password',
+            'confirm_password',
+        ]);
+
+        $real_contact = [];
+
+        foreach ($contact as $key => $value) {
+            $real_contact = array_add($real_contact, substr($key,2), $value);
+        }
+
+        $new = [
+            'name' => $request->c_2_first_name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'contact_verified_at' => now(),
+            'info->contact' => $real_contact,
+        ];
+
+        $user = User::create($new);
+
+        $user->sendEmailVerificationNotification();
+
+        return view('auth.verify');
+
+        // $text = 'An email with verifying links has been send to the email address, please verifying ';
+        // $color = 'success';
+        // $icon = 'user-o';
+        // return view('note', compact('text', 'color', 'icon'));
+    }
+
+    /**
      * new User
      *
      */
@@ -180,11 +246,13 @@ class UserController extends Controller
         Mail::to($request->email)
                 ->send(new Password($message));
 
+        return redirect('/users/contact/create/'.$record->id);
 
-        $text = 'A User has been created successfully!<br><a href="/users/contact/create/'.$record->id.'" class="btn btn-success btn-sm"> Update Contact</a>';
-        $color = 'success';
-        $icon = 'user-o';
-        return view('note', compact('text', 'color', 'icon'));
+
+        // $text = 'A User has been created successfully!<br><a href="/users/contact/create/'.$record->id.'" class="btn btn-success btn-sm"> Update Contact</a>';
+        // $color = 'success';
+        // $icon = 'user-o';
+        // return view('note', compact('text', 'color', 'icon'));
     }
 
 
@@ -348,10 +416,10 @@ class UserController extends Controller
             'auth->limit' => $old,
         ];
 
-        if($role->needActive($user->id)) {
+        if(!$role->authorized($user->id)) {
             Mail::to($user->email)
                 ->send(new AccountActive($user));
-            $all['auth->need_active'] = false;
+            // $all['auth->need_active'] = false;
         }
 
         $user->update($all);

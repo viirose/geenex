@@ -29,12 +29,17 @@ Route::post('/products/search', 'ProductController@search');
 Route::get('/products/search/{type}/{id}', 'ProductController@searchType');
 Route::get('/products/clear_search/{string}', 'ProductController@searchClear');
 Route::get('/products/show/{id}', 'ProductController@show');
+// Route::get('/products/category/{id}', 'ProductController@showCategory');
 
 // 咨询列表
 Route::get('/inquiries', 'OrderController@inquiries');
 Route::get('/inquiries/add/{id}', 'OrderController@add');
 Route::get('/inquiries/delete/{id}', 'OrderController@delete');
 Route::get('/inquiries/clear', 'OrderController@clear');
+
+// 项目
+Route::get('/projects', 'ProjectController@index');
+
 
 
 Route::get('/logout', 'UserController@logout');
@@ -70,6 +75,12 @@ Route::group(['middleware' => ['verified', 'state']], function () {
 
     Route::get('/conf/categories', 'ConfController@categories');
     Route::post('/conf/categories/do', 'ConfController@categoryDo');
+
+    // 项目
+    Route::get('/projects/create', 'ProjectController@create');
+    Route::post('/projects/store', 'ProjectController@store');
+    Route::post('/projects/img/store', 'ProjectController@imgStore');
+    Route::get('/projects/delete/{id}', 'ProjectController@delete');
 
 });
 

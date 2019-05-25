@@ -157,6 +157,11 @@ class ProductController extends Controller
 
     }
 
+    public function showCategory($id)
+    {
+        # code...
+    }
+
 
     /**
      * 关键词

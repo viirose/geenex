@@ -58,7 +58,7 @@
                               <a class="dropdown-item" href="#">{{ $level1->key }}</a>
                               <div class="dropdown-menu" >
                                 @foreach($level1->subs as $level2)
-                                  <a class="dropdown-item" href="#">{{ $level2->key }}</a>
+                                  <a class="dropdown-item" href="/products/search/category/{{ $level2->id }}">{{ $level2->key }}</a>
                                 @endforeach
                               </div>
                           </div>
@@ -101,6 +101,7 @@
 
                       @if($r->admin())
                       <a href="/products/create" class="dropdown-item"><i class="fa fa-cube" aria-hidden="true"></i> 发布产品</a>
+                      <a href="/projects/create" class="dropdown-item"><i class="fa fa-bank" aria-hidden="true"></i> 发布项目案例</a>
                       <a href="/users" class="dropdown-item"><i class="fa fa-users" aria-hidden="true"></i> 用户</a>
                       @endif
                       <a href="/users/reset_password" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> 重置密码</a>

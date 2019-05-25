@@ -1,5 +1,7 @@
 <?php
   $r = new App\Helpers\Role;
+
+  $menus = App\Conf::where('type','category')->where('level',1)->get();
 ?>
 <!DOCTYPE html>
 <html>
@@ -47,12 +49,22 @@
                   <!-- Link-->
                 </li>
                   <li class="nav-item dropdown">
-                    <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">产品和服务</a>
-                    <div class="dropdown-menu">
-                      <a href="/products" class="dropdown-item"> 产品</a>
-                      <a href="/products" class="dropdown-item"> 项目服务</a>
-                      <a href="/products" class="dropdown-item"> 订制</a>
-                    </div>
+                    <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">产品中心</a>
+
+                      <div class="dropdown-menu">
+
+                          @foreach($menus as $level1)
+                          <div class="dropdown-submenu">
+                              <a class="dropdown-item" href="#">{{ $level1->key }}</a>
+                              <div class="dropdown-menu" >
+                                @foreach($level1->subs as $level2)
+                                  <a class="dropdown-item" href="#">{{ $level2->key }}</a>
+                                @endforeach
+                              </div>
+                          </div>
+                          @endforeach
+
+                      </div>
 
                   </li>
                   <!-- Link-->

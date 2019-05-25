@@ -75,7 +75,7 @@ Route::group(['middleware' => ['verified', 'state']], function () {
 
 
 Route::get('/test', function() {
-
+    return view('dropdown');
 });
 
 

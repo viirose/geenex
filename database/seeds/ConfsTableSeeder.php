@@ -51,30 +51,28 @@ class ConfsTableSeeder extends Seeder
                 'parent_id' => 2,
                 'level' => 2,
                 'type' => 'category',
-                'key' => '标准机柜',
+                'key' => '服务器机柜',
                 'info' => '{"code":1}',
             ]);
             Conf::create([
                 'parent_id' => 2,
                 'level' => 2,
                 'type' => 'category',
-                'key' => '附件',
+                'key' => '网络机柜',
                 'info' => '{"code":2}',
             ]);
-
             Conf::create([
-                'parent_id' => 3,
+                'parent_id' => 2,
                 'level' => 2,
                 'type' => 'category',
-                'key' => '线材',
+                'key' => '墙柜',
                 'info' => '{"code":3}',
             ]);
-
             Conf::create([
-                'parent_id' => 3,
+                'parent_id' => 2,
                 'level' => 2,
                 'type' => 'category',
-                'key' => '面板',
+                'key' => 'PDU',
                 'info' => '{"code":4}',
             ]);
 
@@ -82,8 +80,32 @@ class ConfsTableSeeder extends Seeder
                 'parent_id' => 3,
                 'level' => 2,
                 'type' => 'category',
-                'key' => '附件',
-                'info' => '{"code":5}',
+                'key' => '光纤系统',
+                'info' => '{"code":0}',
+            ]);
+
+            Conf::create([
+                'parent_id' => 3,
+                'level' => 2,
+                'type' => 'category',
+                'key' => '配件',
+                'info' => '{"code":1}',
+            ]);
+
+            Conf::create([
+                'parent_id' => 3,
+                'level' => 2,
+                'type' => 'category',
+                'key' => '屏蔽线材',
+                'info' => '{"code":2}',
+            ]);
+
+            Conf::create([
+                'parent_id' => 3,
+                'level' => 2,
+                'type' => 'category',
+                'key' => '非屏蔽线材',
+                'info' => '{"code":3}',
             ]);
 
             // ------------- end level 2 : elevator

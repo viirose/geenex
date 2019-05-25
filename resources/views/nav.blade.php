@@ -49,7 +49,7 @@
                   <!-- Link-->
                 </li>
                   <li class="nav-item dropdown">
-                    <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">产品中心</a>
+                    <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">产品中心</a>
 
                       <div class="dropdown-menu">
 
@@ -69,15 +69,29 @@
                   </li>
                   <!-- Link-->
                   <!-- Link-->
-                  <li class="nav-item"><a href="/inquiries" class="nav-link">|   &nbsp<i class="fa fa-list-ul" aria-hidden="true"></i> 咨询
+
+                  <li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">|   &nbsp 技术支持
                     @if(Session::has('inquiries') && count(session('inquiries')))
                       <span class="badge badge-danger">{{ count(session('inquiries')) }}</span>
                     @endif
                   </a>
+                  <div class="dropdown-menu">
+                    <a href="/inquiries" class="dropdown-item"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> 咨询
+                      @if(Session::has('inquiries') && count(session('inquiries')))
+                        <span class="badge badge-danger">{{ count(session('inquiries')) }}</span>
+                      @endif
+                    </a>
+                    <a href="/downloads" class="dropdown-item"><i class="fa fa-download" aria-hidden="true"></i> 下载</a>
+                  </div>
+
                 </li>
+
+                <li class="nav-item"><a href="/projects" class="nav-link">|   &nbsp 案例精选 </a>
+                </li>
+
                   </li>
                   <li class="nav-item dropdown">
-                    <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">|  &nbsp<i class="fa fa-{{ Auth::check() ? 'user-circle-o' : 'user-o' }}" aria-hidden="true"></i> {{ Auth::check() ? Auth::user()->name : '' }} {!! Auth::check() && !$r->emailVerified() ? ' <span class="text-danger">[not verified]</span>' : '' !!}</a>
+                    <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">|  &nbsp<i class="fa fa-{{ Auth::check() ? 'user-circle-o' : 'user-o' }}" aria-hidden="true"></i> {{ Auth::check() ? Auth::user()->name : '' }} {!! Auth::check() && !$r->emailVerified() ? ' <span class="text-danger">[not verified]</span>' : '' !!}</a>
                     <div class="dropdown-menu">
                     @if (Auth::check())
                       @if($r->root())

@@ -151,7 +151,7 @@ class ProductController extends Controller
                                 }
                             })
 
-                            ->paginate(30);
+                            ->paginate(9);
 
         return view('products.all', compact('categories', 'brands', 'products'));
 

@@ -18,7 +18,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
-Route::post('/contact/quick', 'HomeController@quick');
+
 
 // Route::get('/login', 'UserController@login');
 // Route::get('/home', 'HomeController@index')->name('home'); 
@@ -38,7 +38,7 @@ Route::post('/users/contact/store/{id?}', 'UserController@contactStore');
 
 
 Route::group(['middleware' => ['verified', 'state']], function () {
-
+    Route::post('/contact/quick', 'HomeController@quick');
     // 咨询列表 - 邮件
     Route::post('/inquiries/send', 'OrderController@send');
     Route::get('/inquiries/show/{id?}', 'OrderController@show');

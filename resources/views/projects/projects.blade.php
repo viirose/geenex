@@ -24,7 +24,9 @@
                   <a href="/projects/delete/{{ $record->id }}" class="btn btn-sm btn-danger"> 删除!</a>
                 @endif
               </h3>
-              {!! $record->content !!}
+              <pre>
+                {!! $record->content !!}
+              </pre>
             </div>
           </div>
             </div>

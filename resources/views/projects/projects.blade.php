@@ -25,7 +25,7 @@
                 @endif
               </h3>
               
-              <pre style="overflow:hidden;word-wrap:break-word;">
+              <pre class="pr">
                 {!! $record->content !!}
               </pre>
             </div>

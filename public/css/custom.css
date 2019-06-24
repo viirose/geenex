@@ -81,6 +81,6 @@
     border-radius: 6px 0 6px 6px;
 }
 .pr {
-    overflow: wrap;
+    white-space: pre-wrap;
     word-break: break-all;
 }

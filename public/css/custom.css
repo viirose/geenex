@@ -82,5 +82,5 @@
 }
 .pr {
     overflow: wrap;
-    
+    word-break: break-all;
 }

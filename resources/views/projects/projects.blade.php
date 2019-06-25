@@ -25,7 +25,7 @@
                 @endif
               </h3>
               
-              <pre class="pr">{!! $record->content !!}</pre>
+              <pre class="pr">&nbsp&nbsp&nbsp&nbsp{!! $record->content !!}</pre>
             </div>
           </div>
             </div>

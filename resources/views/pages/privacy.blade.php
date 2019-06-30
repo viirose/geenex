@@ -24,11 +24,11 @@ information, including your name, mailing address, phone number, email address a
 compliance with a legal obligation to which GENNEX is subject or when we have assessed it is necessary for the
 purposes of the legitimate interests pursued by GENNEX or a third party to whom it may be necessary to disclose
 information.</p>
-      <p><pre>The personal information we collect allows us to
-1. keep you posted on GENNEX’s latest product and service
-2. ensure your requirements (such as inquiries) are met at events
-3. diagnose problems with our server or administer our website
-4. improve the content of our websites and our services</pre></p>
+      <p>The personal information we collect allows us to<br>
+1. keep you posted on GENNEX’s latest product and service<br>
+2. ensure your requirements (such as inquiries) are met at events<br>
+3. diagnose problems with our server or administer our website<br>
+4. improve the content of our websites and our services</p>
     <strong>Disclosure to Third Parties</strong>
     <p>Your personal information will never be shared with third parties for their marketing purposes. However, at times
 GENNEX may provide third parties with certain personal information to provide or improve our products and services,
@@ -44,8 +44,8 @@ account. You may also request that we correct the data if it is inaccurate or de
 to retain it by law.</p>
     <div class="row top-pad"></div>
     <div class="txt-right">
-      <p><pre>JOC-GENNEX Engineering Technology Co., Ltd.
-Updated on June 26th, 2019</pre></p>
+      <p>JOC-GENNEX Engineering Technology Co., Ltd.<br>
+Updated on June 26th, 2019</p>
     </div>
     
     </div>

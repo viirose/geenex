@@ -18,6 +18,9 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
+Route::get('/privacy', 'HomeController@privacy');
+Route::get('/terms', 'HomeController@terms');
+Route::get('/profile', 'HomeController@profile');
 
 
 // Route::get('/login', 'UserController@login');
@@ -97,7 +100,8 @@ Route::group(['middleware' => ['verified', 'state']], function () {
 
 
 Route::get('/test', function() {
-    abort('403');
+    // abort('403');
+    return view('pages.privacy');
 });
 
 

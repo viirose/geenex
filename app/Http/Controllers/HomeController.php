@@ -42,4 +42,44 @@ class HomeController extends Controller
         $icon = 'paper-plane-o';
         return view('note', compact('text', 'color', 'icon'));
     }
+
+    public function privacy()
+    {
+        return view("pages.privacy");
+    }
+
+    public function terms()
+    {
+        return view("pages.terms");
+    }
+
+    public function profile()
+    {
+        return view("pages.profile");
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

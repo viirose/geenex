@@ -106,24 +106,19 @@
           <div class="col-lg-4 mb-5 mb-lg-0">
             <h5 class="footer-heading">INFORMATION</h5>
             <ul class="list-unstyled">
-              <li> <a href="#" class="footer-link">Company Profile</a></li>
-              <li> <a href="#" class="footer-link">Terms & Conditions </a></li>
-              <li> <a href="#" class="footer-link">Contact</a></li>
-              <li> <a href="#" class="footer-link">Site Map</a></li>
-              <li> <a href="#" class="footer-link">Privacy Policy</a></li>
+              <li> <a href="/profile" class="footer-link">Company Profile</a></li>
+              <li> <a href="/terms" class="footer-link">Terms & Conditions </a></li>
+              <li> <a href="/home" class="footer-link">Contact</a></li>
+              <li> <a href="/privacy" class="footer-link">Privacy Policy</a></li>
             </ul>
           </div>
-
-
-
-
 
           <div class="col-lg-4 mb-5 mb-lg-0">
             <h5 class="footer-heading">Product & Service</h5>
             <ul class="list-unstyled">
-              <li> <a href="#" class="footer-link">Spare Parts</a></li>
-              <li> <a href="#" class="footer-link">Metal Processing</a></li>
-              <li> <a href="#" class="footer-link">Lift Material</a></li>
+              <li> <a href="/products" class="footer-link">Spare Parts</a></li>
+              <li> <a href="/products" class="footer-link">Metal Processing</a></li>
+              <li> <a href="/products" class="footer-link">Lift Material</a></li>
             </ul>
           </div>
         </div>

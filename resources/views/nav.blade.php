@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>GEENEX</title>
+    <title>科创版+50ETF [财经一线]</title>
     <meta name="description" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,7 @@
     <!-- Custom font icons-->
     <link rel="stylesheet" href="{{ asset('css/fontastic.css') }}">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="{{ asset('css/style.blue.css') }}" id="theme-stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.default.css') }}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <!-- Favicon-->
@@ -31,115 +31,64 @@
   </head>
   <body>
     <!-- navbar-->
-    <header class="header">
-      <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container"><a href="/" class="navbar-brand"><img src="{{ asset('img/logo.svg') }}" alt="" class="img-fluid"></a>
-          <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right">Menu<i class="fa fa-bars ml-2"></i></button>
-          <div id="navbarSupportedContent" class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                  <!-- Link-->
-                </li>
-                  <li class="nav-item dropdown">
-                    <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-cube" aria-hidden="true"></i> Product & Service</a>
-                    <div class="dropdown-menu">
-                      <a href="/products" class="dropdown-item"> Spare Parts</a>
-                      <a href="/products" class="dropdown-item"> Metal Processing</a>
-                      <a href="/products" class="dropdown-item"> Lift Material</a>
-                    </div>
-
-                  </li>
-                  <!-- Link-->
-                  <!-- Link-->
-                  <li class="nav-item"><a href="/inquiries" class="nav-link">|   &nbsp<i class="fa fa-list-ul" aria-hidden="true"></i> My Inquiry 
-                    @if(Session::has('inquiries') && count(session('inquiries')))
-                      <span class="badge badge-danger">{{ count(session('inquiries')) }}</span>
-                    @endif
-                  </a>
-                </li>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">|  &nbsp<i class="fa fa-{{ Auth::check() ? 'user-circle-o' : 'user-o' }}" aria-hidden="true"></i> {{ Auth::check() ? Auth::user()->name : '' }} {!! Auth::check() && !$r->emailVerified() ? ' <span class="text-danger">[not verified]</span>' : '' !!}</a>
-                    <div class="dropdown-menu">
-                    @if (Auth::check())
-                      @if($r->root())
-                      <a href="/conf/categories" class="dropdown-item"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Categories</a>
-                      <a href="/conf/brands" class="dropdown-item"><i class="fa fa-tags" aria-hidden="true"></i> Manufacturers</a>
-                      @endif
-
-                      @if($r->admin())
-                      <a href="/products/create" class="dropdown-item"><i class="fa fa-cube" aria-hidden="true"></i> Add Products</a>
-                      <a href="/users" class="dropdown-item"><i class="fa fa-users" aria-hidden="true"></i> Users</a>
-                      @endif
-                      <a href="/users/reset_password" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> Reset Password</a>
-                      <a href="/logout" class="dropdown-item"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a>
-                    @else
-                      <a href="/login" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> Login</a>
-                      <a href="/register" class="dropdown-item"><i class="fa fa-anchor" aria-hidden="true"></i> Register</a>
-                    @endif
-                    </div>
-
-                  </li>
-            </ul>
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a href="./" class="nav-logo"><img src="img/logo.svg" alt="" class="img-fluid"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right">Menu<i class="fa fa-bars ml-2"></i></button>
+      <div id="navbarSupportedContent" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+              <!-- Link-->
+              <li class="nav-item"> <a href="/" class="nav-link active">联系我们</a></li>
+              <li class="nav-item"> <a href="/kcb" class="nav-link">科创版</a></li>
+              <!-- Link-->
+              <li class="nav-item"> <a href="/etf" class="nav-link">50ETF</a></li>
+              <!-- Link-->
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<!-- Login Modal-->
+<div id="login" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade bd-example-modal-lg">
+  <div role="document" class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body p-4 p-lg-5">
+        <form action="#" class="login-form text-left">
+          <div class="form-group mb-4">
+            <label>Email address</label>
+            <input type="email" name="email" placeholder="name@company.com" class="form-control">
           </div>
-        </div>
-      </nav>
-    </header>
+          <div class="form-group mb-4">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Min 8 characters" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Login" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
     @yield('content')
 
-    <footer class="main-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <div class="footer-logo"><img src="{{  asset('img/logo-footer.svg') }}" alt="..." class="img-fluid"></div>
-            <ul class="list-unstyled">
-              <li>&nbsp<span class="footer-link">49 South Zhongba Road,</span></li>
-              <li>&nbsp<span class="footer-link">Haian, Jiangsu Province,</span></li>
-              <li>&nbsp<span class="footer-link">China 226600</span></li>
-              <li>&nbsp<span class="footer-link">+86 513 8889 2688</span></li>
-              <li>&nbsp<span class="footer-link">+86 513 8180 0823 (fax)</span></li>
-              <li>&nbsp<span class="footer-link">info@joclift.con</span></li>
-            </ul>
+    <footer class="footer">
 
-          </div>
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <h5 class="footer-heading">INFORMATION</h5>
-            <ul class="list-unstyled">
-              <li> <a href="#" class="footer-link">Company Profile</a></li>
-              <li> <a href="#" class="footer-link">Terms & Conditions </a></li>
-              <li> <a href="#" class="footer-link">Contact</a></li>
-              <li> <a href="#" class="footer-link">Site Map</a></li>
-              <li> <a href="#" class="footer-link">Privacy Policy</a></li>
-            </ul>
-          </div>
-
-
-
-
-
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <h5 class="footer-heading">Product & Service</h5>
-            <ul class="list-unstyled">
-              <li> <a href="#" class="footer-link">Spare Parts</a></li>
-              <li> <a href="#" class="footer-link">Metal Processing</a></li>
-              <li> <a href="#" class="footer-link">Lift Material</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
       <div class="copyrights">
         <div class="container">
           <div class="row">
             <div class="col-lg-6 text-center text-lg-left">
               <p class="copyrights-text mb-3 mb-lg-0">
-                <small>Copyright &copy; 2019.GENNEX</small> 
-                <small><a href="http://www.miitbeian.gov.cn">苏ICP备08013754号</a></small>
+                <small>版权所有 &copy; 2019.财经一线</small> 
+                
               </p>
-            </div>
-            <div class="col-lg-6 text-center text-lg-right">
-              <ul class="list-inline social mb-0">
-                <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook"></i></a><a href="#" class="social-link"><i class="fa fa-twitter"></i></a><a href="#" class="social-link"><i class="fa fa-youtube-play"></i></a><a href="#" class="social-link"><i class="fa fa-vimeo"></i></a><a href="#" class="social-link"><i class="fa fa-pinterest"></i></a></li>
-              </ul>
             </div>
           </div>
         </div>

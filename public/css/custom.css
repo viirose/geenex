@@ -1,7 +1,6 @@
-/* your styles go here */
-@font-face{
-    font-family: 'helvetica-light';
-    src : url('../fonts/helvetica-light.otf');
+
+.nav-logo {
+    width: 7em;
 }
 
 .cent {

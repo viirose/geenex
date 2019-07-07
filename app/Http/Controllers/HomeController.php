@@ -19,27 +19,38 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $form = $this->form(QuickContactForm::class, [
-            'method' => 'POST',
-            'url' => '/contact/quick'
-        ]);
+        return view('home');
+        // $form = $this->form(QuickContactForm::class, [
+        //     'method' => 'POST',
+        //     'url' => '/contact/quick'
+        // ]);
 
-        return view('home', compact('form'));
+        // return view('home', compact('form'));
     }
 
-    /**
-     * quick mail
-     *
-     */
-    public function quick(Request $request)
+    public function etf()
     {
-        Mail::to(config('mail.reply_to.address'))
-                ->cc('309266143@qq.com')
-                ->send(new QuickMail($request));
-
-        $text = 'your email has been send successfully!';
-        $color = 'success';
-        $icon = 'paper-plane-o';
-        return view('note', compact('text', 'color', 'icon'));
+        return view('etf');
     }
+
+    public function kcb()
+    {
+        return view('kcb');
+    }
+
+    // /**
+    //  * quick mail
+    //  *
+    //  */
+    // public function quick(Request $request)
+    // {
+    //     Mail::to(config('mail.reply_to.address'))
+    //             ->cc('309266143@qq.com')
+    //             ->send(new QuickMail($request));
+
+    //     $text = 'your email has been send successfully!';
+    //     $color = 'success';
+    //     $icon = 'paper-plane-o';
+    //     return view('note', compact('text', 'color', 'icon'));
+    // }
 }

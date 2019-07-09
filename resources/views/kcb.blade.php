@@ -1,12 +1,12 @@
 @extends('nav')
 
 @section('content')
-<section>
+<section class="top-sec">
 <div class="container">
     <div class="row">
     <div class="col-lg-10 mx-auto">
-            <p><img src="img/kcb.jpg" alt="..." class="img-fluid"></p>
         <p class="lead text-muted mb-5"><strong>科创版 </strong> 就是在沪市设立的专门投资科技创新企业的股票板块。中国版“纳斯达克”，未来科技创新上市公司的摇篮。在2018 年 11 月 5 日上午，首届中国国际进口博览会开幕式传出重磅消息：将在上海证券交易所设立科创板并试点注册制，支持上海国际金融中心和科技创新中心建设，不断完善资本市场基础制度。</p>
+        <p><img src="img/kcb.jpg" alt="..." class="img-fluid"></p>
         <strong>科创版系统搭建</strong>
         <blockquote class="blockquote mb-5 text-left">
             设立科创板并试点注册制是提升服务科技创新企业能力、增强市场包容性、强化市场功能的一项资本市场重大改革举措。通过发行、交易、退市、投资者适当性、证券公司资本约束等新制度以及引入中长期资金等配套措施，增量试点、循序渐进，新增资金与试点进展同步匹配。

@@ -1,38 +1,23 @@
 @extends('nav')
 
 @section('content')
-    <!-- Hero Section-->
-    <section class="hero">
-      <div class="container mb-5">
-        <div class="row align-items-center">
-          <div class="col-lg-6">
-            <h2 class="hero-heading mb-0">前沿资讯, 资深分析</h2>
-            <div class="row">
-              <div class="col-lg-10">
-                <p class="lead text-muted mt-4 mb-4">科创版 / 50ETF资深分析师, 为您提供专业信息</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6"><img src="img/illustration-hero.svg" alt="..." class="hero-image img-fluid d-none d-lg-block"></div>
-        </div>
-      </div>
-    </section>
+
     <!-- Intro Section-->
-    <section>
+    <section class="top-sec">
       <div class="container">
-        <div class="text-center">
-          <div><img src="./img/logo.svg" alt="logo" class="nav-logo"></div>
-          <p class="lead text-muted mt-2">财经一线是由资深股市+期权分析师组成的精英团队, 专业为客户提供敏捷的分析, "为客户创造价值" 是财经一线全体成员的信仰, 我们诚挚欢迎广大朋友咨询流, 共享价值和财富!</p>
-          <a href="#" class="btn btn-primary">马上联系</a>
-        </div>
         <div class="row">
-          <div class="col-lg-7 mx-auto mt-5"><img src="img/illustration-1.svg" alt="..." class="intro-image img-fluid"></div>
+          <div class="col-sm-4 cent"><img src="img/lou.jpg" alt=""></div>
+          <div class="col-sm-8">
+              <div class="row"><img src="img/logo.svg" alt="" class="img-fluid nav-logo"></div>
+              <h3 class="text-primary">科技创新, 相遇相随</h3>
+            财经一线：投资管理平台，总部位于上海，分支机构及业务范围辐 射全国，是一家专业从事投资管理，资产管理咨询的服务机构平台。 科创板\50ETF期权定位于主流交易产品、资产管理计划、私募股权基金等产品供应商的首选发行渠道和中国 高净值客户的首选产品交易专家，业务以客户服务为核心，、宏观的经济趋势建议，帮助客 户实现财富保值增值的目标
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Integrations Section-->
-    <section>
+    <section class="top-sec">
       <div class="container">
         <div name="contact" class="text-center">
           <h2>联系我们</h2>

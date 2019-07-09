@@ -38,6 +38,11 @@ class HomeController extends Controller
         return view('kcb');
     }
 
+    public function sc()
+    {
+        return view('sc');
+    }
+
     // /**
     //  * quick mail
     //  *

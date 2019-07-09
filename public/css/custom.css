@@ -2,7 +2,14 @@
 .nav-logo {
     width: 7em;
 }
-
+.top-img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+.top-sec {
+    margin-top: -8em;
+}
 .cent {
     text-align: center;
     margin: 0 auto;

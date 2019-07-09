@@ -19,6 +19,7 @@ Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 Route::get('/', 'HomeController@index');
 Route::get('/etf', 'HomeController@etf');
 Route::get('/kcb', 'HomeController@kcb');
+Route::get('/sc', 'HomeController@sc');
 
 // Route::get('/home', 'HomeController@index');
 // Route::post('/contact/quick', 'HomeController@quick');

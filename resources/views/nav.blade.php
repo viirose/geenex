@@ -7,7 +7,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>科创版+50ETF [财经一线]</title>
-    <meta name="description" content="">
+    <meta name="keywords" content="科创板,50ETF,ETF,期权,股票,财经一线,系统搭建"/>
+    <meta name="description" content="财经一线科创板,50ETF系统搭建和咨询">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">

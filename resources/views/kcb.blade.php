@@ -4,7 +4,7 @@
 <section class="top-sec">
 <div class="container">
     <div class="row">
-    <div class="col-lg-10 mx-auto">
+    <div class="col-lg-12 mx-auto">
         <p class="lead text-muted mb-5"><strong>科创版 </strong> 就是在沪市设立的专门投资科技创新企业的股票板块。中国版“纳斯达克”，未来科技创新上市公司的摇篮。在2018 年 11 月 5 日上午，首届中国国际进口博览会开幕式传出重磅消息：将在上海证券交易所设立科创板并试点注册制，支持上海国际金融中心和科技创新中心建设，不断完善资本市场基础制度。</p>
         <p><img src="img/kcb.jpg" alt="..." class="img-fluid"></p>
         <strong>科创版系统搭建</strong>

@@ -4,7 +4,7 @@
 <section class="top-sec">
         <div class="container">
             <div class="row">
-            <div class="col-lg-10 mx-auto">
+            <div class="col-lg-12 mx-auto">
                 <strong>50ETF基础知识</strong>
                 <blockquote class="blockquote mb-5 text-left">
                 <ul class="mb-5 text-left">

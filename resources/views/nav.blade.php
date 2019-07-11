@@ -62,33 +62,9 @@
     </div>
   </nav>
 </header>
-<!-- Login Modal-->
-<div id="login" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade bd-example-modal-lg">
-  <div role="document" class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header border-bottom-0">
-        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-      </div>
-      <div class="modal-body p-4 p-lg-5">
-        <form action="#" class="login-form text-left">
-          <div class="form-group mb-4">
-            <label>Email address</label>
-            <input type="email" name="email" placeholder="name@company.com" class="form-control">
-          </div>
-          <div class="form-group mb-4">
-            <label>Password</label>
-            <input type="password" name="password" placeholder="Min 8 characters" class="form-control">
-          </div>
-          <div class="form-group">
-            <input type="submit" value="Login" class="btn btn-primary">
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+
 <section>
-  <div class="container cent"><img src="img/lee.jpg" alt="..." class="img-fluid"></div>
+  <div class="cent"><img src="img/lee.jpg" alt="..." class="huge-img img-fluid"></div>
 </section>
 
 

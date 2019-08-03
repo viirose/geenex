@@ -9,6 +9,7 @@
       <div class="container">
         <div>
           <div><h4><a href="/">首页</a>/文章中心</h4></div>
+          <p></p>
           @if(count($records))
           <div class="list-group">
             @foreach($records as $record)

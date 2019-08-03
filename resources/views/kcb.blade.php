@@ -47,25 +47,6 @@
             
         </ol>
         </blockquote>
-        <h2 class="mb-3">常见疑问</h2>
-        <ol>
-            <li>
-                <strong>为什么在近期发布</strong>
-                <blockquote class="blockquote mb-5 text-left">
-                        因为符合近期中央纾解民企困境的政策思路，即通过资本市场为科创企业融资。 10 月 31 日政治局会议以及 11 月 1 日的民营企业座谈会均强调：通过资本市场改革，拓宽民营企业融资途径，解决民营企业、中小企业发展中遇到的困难。
-                </blockquote>
-            </li>
-
-            <li>
-                <strong>具体规则未定</strong>
-                <blockquote class="blockquote mb-5 text-left">
-                        研究早在3年前就先行，注册制的法律基础在3年前也已奠定。
-                        早在 2015 年 6 月 11 日，国务院便印发《关于大力推进大众创业万众创新若干政策措施的意见》，要求推动在上海证券交易所建立战略新兴产业板，实现对资本市场的优化。
-                        
-                </blockquote>
-            </li>
-
-        </ol>
 
         <h3 class="mb-5">与其他版块的比较</h3>
        

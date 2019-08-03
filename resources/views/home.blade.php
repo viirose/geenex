@@ -43,7 +43,6 @@
               {{ str_limit($record->title, 30) }}
               <small class="text-secondary">{{ $record->created_at }}</small>
             </a>
-s
             @endforeach
           </div>
           @else

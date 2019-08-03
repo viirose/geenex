@@ -18,7 +18,9 @@
               {{ str_limit($record->title, 30) }}
               <small class="text-secondary">{{ $record->created_at }}</small>
             </a>
+            @if(Auth::check())
             <a href="/delete/{{ $record->id }}" >删除！</a>
+            @endif
 
             @endforeach
           </div>

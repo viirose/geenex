@@ -26,15 +26,7 @@
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <!-- Favicon-->
     <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
-    <script>
-      var _hmt = _hmt || [];
-      (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?3e127be7393825998c86dcb08d3477d8";
-        var s = document.getElementsByTagName("script")[0]; 
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
+    
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -56,6 +48,24 @@
               <li class="nav-item"> <a href="/etf" class="nav-link">50ETF</a></li>
               <li class="nav-item"> <a href="/sc" class="nav-link">系统搭建</a></li>
               <li class="nav-item"> <a href="/" class="nav-link">联系我们</a></li>
+              <li class="nav-item">
+                @if(Auth::check())
+                  <div class="dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown">
+                      {{ Auth::user()->name }}
+                    </a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="/pub">文章发布</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="/rest_password">修改密码</a>
+                      <a class="dropdown-item" href="/quit">退出</a>
+                    </div>
+                  </div>
+                @else
+
+                  <a href="/login" class="nav-link"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                @endif
+             </li>
               <!-- Link-->
         </ul>
       </div>
@@ -63,9 +73,6 @@
   </nav>
 </header>
 
-<section>
-  <div class="cent"><img src="img/lee.jpg" alt="..." class="huge-img img-fluid"></div>
-</section>
 
 
     @yield('content')

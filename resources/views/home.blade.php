@@ -1,6 +1,20 @@
 @extends('nav')
 
 @section('content')
+  <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?3e127be7393825998c86dcb08d3477d8";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+
+<section>
+  <div class="cent"><img src="img/lee.jpg" alt="..." class="huge-img img-fluid"></div>
+</section>
+    
 
     <!-- Intro Section-->
     <section class="top-sec">
@@ -19,6 +33,25 @@
     <!-- Integrations Section-->
     <section class="top-sec">
       <div class="container">
+        <div>
+          <h3>最近更新</h3>
+          @if(count($records))
+          <div class="list-group">
+            @foreach($records as $record)
+            <a href="/articles/show/{{ $record->id }}" class="list-group-item list-group-item-action">
+              <img src="img/{{$record->type}}1.jpg" class="article">
+              {{ str_limit($record->title, 30) }}
+              <small class="text-secondary">{{ $record->created_at }}</small>
+            </a>
+
+            @endforeach
+          </div>
+          @else
+            <div class="alert alert-info">
+              暂无新文章
+            </div>
+          @endif
+      </div>
         <div name="contact" class="text-center">
           <h2>联系我们</h2>
           <p>您可以通过以下方式联系我们, 我们有专人24小时为您服务!</p>
@@ -53,6 +86,9 @@
             </div>
           </div>
         </div>
+
+       
+
       </div>
     </section>
 

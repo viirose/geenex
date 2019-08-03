@@ -2,6 +2,20 @@
 
 @section('content')
 <section class="top-sec">
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?3e127be7393825998c86dcb08d3477d8";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+
+<section>
+  <div class="cent"><img src="img/lee.jpg" alt="..." class="huge-img img-fluid"></div>
+</section>
+
         <div class="container">
             <div class="row">
             <div class="col-lg-12 mx-auto">

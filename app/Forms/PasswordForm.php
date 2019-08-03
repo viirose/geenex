@@ -9,15 +9,15 @@ class PasswordForm extends Form
     public function buildForm()
     {
      $this->add('password', 'password', [
-            'label' => 'Password',
+            'label' => '新密码',
             'rules' => 'required|min:4|max:32'
         ])
         ->add('confirm_password', 'password', [
-            'label' => 'Confirm Password',
+            'label' => '确认新密码',
             'rules' => 'required|min:4|max:32'
         ])
         ->add('submit','submit',[
-              'label' => "OK",
+              'label' => "提交",
               'attr' => ['class' => 'btn btn-success btn-block']
         ]);
     }

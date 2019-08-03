@@ -49,6 +49,15 @@
     padding: -10px;
 }
 
+.article {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin-top: -10px;
+    margin-left: -15px;
+    margin-bottom: -8px;
+}
+
 /* ----------  分级菜单 ---------- */
 .dropdown-submenu {
     position: relative;

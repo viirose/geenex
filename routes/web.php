@@ -20,12 +20,15 @@ Route::get('/', 'HomeController@index');
 Route::get('/etf', 'HomeController@etf');
 Route::get('/kcb', 'HomeController@kcb');
 Route::get('/sc', 'HomeController@sc');
+Route::get('/articles/show/{id}', 'HomeController@show');
+Route::get('/articles', 'HomeController@all');
+Route::get('/quit', 'HomeController@quit');
 
 // Route::get('/home', 'HomeController@index');
 // Route::post('/contact/quick', 'HomeController@quick');
 
-// Route::get('/login', 'UserController@login');
-// Route::get('/home', 'HomeController@index')->name('home'); 
+// Route::get('/login', 'UserController@login')->name('login');
+Route::get('/home', 'HomeController@index')->name('home'); 
 
 // // 产品
 // Route::get('/products', 'ProductController@index');
@@ -38,7 +41,7 @@ Route::get('/sc', 'HomeController@sc');
 // Route::get('/inquiries/add/{id}', 'OrderController@add');
 // Route::get('/inquiries/delete/{id}', 'OrderController@delete');
 // Route::get('/inquiries/clear', 'OrderController@clear');
-
+ Auth::routes();
 
 // Route::get('/logout', 'UserController@logout');
 
@@ -48,33 +51,40 @@ Route::get('/sc', 'HomeController@sc');
 
 
 // Route::group(['middleware' => ['verified', 'state']], function () {
+Route::group(['middleware' => ['auth']], function () {
 
-//     // 咨询列表 - 邮件
-//     Route::post('/inquiries/send', 'OrderController@send');
+    Route::get('/pub', 'HomeController@pub');
+    Route::post('/pub/store', 'HomeController@store');
+    Route::get('/delete/{id}', 'HomeController@delete');
+    Route::get('/rest_password', 'HomeController@reset');
+    Route::post('/reset_save', 'HomeController@save');
 
-//     // 人员
-//     Route::get('/users', 'UserController@index');
-//     Route::get('/users/lock/{id}', 'UserController@lock');
-//     Route::get('/users/unlock/{id}', 'UserController@unlock');
-//     Route::get('/users/reset_password', 'UserController@resetPassword');
-//     Route::post('/users/save_password', 'UserController@savePassword');
+    // // 咨询列表 - 邮件
+    // Route::post('/inquiries/send', 'OrderController@send');
 
-//     // 产品
-//     Route::get('/products/create', 'ProductController@create');
-//     Route::post('/products/store', 'ProductController@store');
-//     Route::post('/products/img/store', 'ProductController@imgStore');
-//     Route::get('/products/edit/{id}', 'ProductController@edit');
-//     Route::post('/products/update/{id}', 'ProductController@update');
-//     Route::get('/products/delete/{id}', 'ProductController@delete');
+    // // 人员
+    // Route::get('/users', 'UserController@index');
+    // Route::get('/users/lock/{id}', 'UserController@lock');
+    // Route::get('/users/unlock/{id}', 'UserController@unlock');
+    // Route::get('/users/reset_password', 'UserController@resetPassword');
+    // Route::post('/users/save_password', 'UserController@savePassword');
 
-//     // conf
-//     Route::get('/conf/brands', 'ConfController@brands');
-//     Route::post('/conf/brands/do', 'ConfController@brandDo');
+    // // 产品
+    // Route::get('/products/create', 'ProductController@create');
+    // Route::post('/products/store', 'ProductController@store');
+    // Route::post('/products/img/store', 'ProductController@imgStore');
+    // Route::get('/products/edit/{id}', 'ProductController@edit');
+    // Route::post('/products/update/{id}', 'ProductController@update');
+    // Route::get('/products/delete/{id}', 'ProductController@delete');
 
-//     Route::get('/conf/categories', 'ConfController@categories');
-//     Route::post('/conf/categories/do', 'ConfController@categoryDo');
+    // // conf
+    // Route::get('/conf/brands', 'ConfController@brands');
+    // Route::post('/conf/brands/do', 'ConfController@brandDo');
 
-// });
+    // Route::get('/conf/categories', 'ConfController@categories');
+    // Route::post('/conf/categories/do', 'ConfController@categoryDo');
+
+});
 
 
 Route::get('/test', function() {

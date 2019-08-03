@@ -34,7 +34,7 @@
     <section class="top-sec">
       <div class="container">
         <div>
-          <h3>最近更新</h3>
+          <h3>最近更新 <a href="/articles">(查看全部）</a></h3>
           @if(count($records))
           <div class="list-group">
             @foreach($records as $record)
@@ -43,7 +43,7 @@
               {{ str_limit($record->title, 30) }}
               <small class="text-secondary">{{ $record->created_at }}</small>
             </a>
-
+s
             @endforeach
           </div>
           @else

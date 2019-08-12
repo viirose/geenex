@@ -6,12 +6,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>科创板最新资源 [财经一线]</title>
-    <meta name="keywords" content="科创板,50ETF,ETF,期权,股票,财经一线,系统搭建"/>
-    <meta name="description" content="财经一线科创板,50ETF系统搭建和咨询">
+    <title>科创板[财经一线]</title>
+    <meta name="robots" content="all,follow">
+    <meta name="keywords" content="科创板,科创板软件,科创板分仓系统,科创板平台,科创板股票,财经一线,科创板门槛,科创板交易规则,什么是科创板"/>
+    <meta name="description" content="科创板交易指南,软件平台搭建及使用">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <!-- Font Awesome CSS-->

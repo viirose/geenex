@@ -1,7 +1,7 @@
 <?php
   $f = new App\Helpers\Filter;
   $r = new App\Helpers\Role;
-  $rc = new App\Helpers\Recent;
+  // $rc = new App\Helpers\Recent;
 ?>
 @extends('../nav')
 
@@ -67,24 +67,21 @@
                       <p></p>
                       <table class="text-white">
                         <tbody>
+
                           <tr>
-                            <td><strong>GENNEX&nbspRef.&nbsp</strong> </td>
-                            <td>G{{ $f->show($product->brand->info, 'code', '-') }}{{ $f->show($product->category->master->master->info, 'code', '-') }}{{ $f->show($product->category->master->info, 'code', '-') }}{{ $f->show($product->category->info, 'code', '-') }}{{ $product->id }}</td>
-                          </tr>
-                          <tr>
-                            <td><strong>Part&nbspName</strong></td>
+                            <td><strong>Product&nbspName</strong></td>
                             <td>{!! $f->fit($product->name) !!}</td>
                           </tr>
                           <tr>
-                            <td><strong>Part&nbspNr.</strong></td>
+                            <td><strong>Product&nbspNr.</strong></td>
                             <td>{!! $f->fit($product->part_no) !!}</td>
                           </tr>
                           <tr>
-                            <td><strong>Part&nbspfor</strong></td>
+                            <td><strong>Product&nbspfor</strong></td>
                             <td>{{ $product->brand->key }}</td>
                           </tr>
                           <tr>
-                            <td><strong>Material&nbspGroup&nbsp</strong></td>
+                            <td><strong>Type&nbspGroup&nbsp</strong></td>
                             <td>
                               {{ $product->category->master->master->key }} -
                               {{ $product->category->master->key }} -
@@ -108,7 +105,6 @@
                       <div class="row">
                         <div class="col-10 col-sm-4 btns"><a href="/products/show/{{$product->id}}" class="btn btn-light btn-sm btn-block">show on new page</a></div>
                         <div class="col-10 col-sm-4 btns"><a href="/inquiries/add/{{$product->id}}" class="btn btn-light btn-sm btn-block">add to My Inquiry</a></div>
-                        <div class="col-10 col-sm-4 btns"><a href="javascript:send({{$product->id}})" class="btn btn-outline-light btn-sm btn-block">Email to a friend</a></div>
                       </div>
                       
                       
@@ -215,16 +211,7 @@
 
               </ul>
             </div>
-            @if(count($rc->show()))
-            <div class="sidebar-widget mb-4">
-              <h4 class="sidebar-widget-heading"><i class="fa fa-history" aria-hidden="true"></i> Recnt Focused</h4>
-              <ul class="list-inline pl-0 mt-4">
-                @foreach($rc->show() as $key => $val)
-                  <li><a href="/products/show/{{ $key }}" class="text-dark">{{ Str::limit($val, 25) }}</a></li>
-                @endforeach
-              </ul>
-            </div>
-            @endif
+
 
           </aside>
         </div>

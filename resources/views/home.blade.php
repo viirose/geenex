@@ -6,11 +6,11 @@
       <div class="container mb-5">
         <div class="row align-items-center">
           <div class="col-lg-6">
-            <h3 class="hero-heading mb-0">Your right source of spare parts</h3>
-            <h3 class="hero-heading mb-0">Find It Now</h3>
+            <h3 class="hero-heading mb-0">A Frofessional Rotational Molding Factory</h3>
+            <h3 class="hero-heading mb-0">Find Now</h3>
             <div class="row">
               <div class="col-lg-10">
-                <p class="lead text-muted mt-4 mb-4">Type in the manufacturer’s part number or the part’s description to get the list of parts available.</p>
+                <p class="lead text-muted mt-4 mb-4">Input the keyword to get the list of products available. And you are welcome to  contact us for additional services.</p>
               </div>
             </div>
             <form action="/products/search" method="post" class="subscription-form">
@@ -21,7 +21,7 @@
               </div>
             </form>
           </div>
-          <div class="col-lg-6"><img src="img/main.jpg" alt="..." class="hero-image img-fluid d-none d-lg-block"></div>
+          <div class="col-lg-6"><img src="img/main.png" alt="..." class="hero-image img-fluid d-none d-lg-block"></div>
         </div>
       </div>
     </section>
@@ -46,11 +46,7 @@
             <div class="box">
               <div class="icon d-flex align-items-end"><img src="img/placeholder.svg" alt="" class="img-fluid"></div>
               <h5>Address</h5>
-              <p class="text-small font-weight-light">JOC-GENNEX Engineering Technology Co., Ltd.
-49 South Zhongba Road,
-Haian, Jiangsu Province,
-China 226600
-</p>
+              <p class="text-small font-weight-light">JIANGSU HENJOU ROTATIONAL MOLDING CO.,LTD</p>
             </div>
             <div class="box">
               <div class="icon d-flex align-items-end"><img src="img/technology.svg" alt="" class="img-fluid"></div>

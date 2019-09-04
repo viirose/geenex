@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>GEENEX</title>
+    <title>HENJOU</title>
     <meta name="description" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +24,7 @@
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('img/hj.png') }}">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -33,18 +33,17 @@
     <!-- navbar-->
     <header class="header">
       <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container"><a href="/" class="navbar-brand"><img src="{{ asset('img/logo.svg') }}" alt="" class="img-fluid"></a>
+        <div class="container"><a href="/" class="navbar-brand"><img src="{{ asset('img/hj.svg') }}" alt="" class="logo"></a>
           <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right">Menu<i class="fa fa-bars ml-2"></i></button>
           <div id="navbarSupportedContent" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                   <!-- Link-->
                 </li>
                   <li class="nav-item dropdown">
-                    <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-cube" aria-hidden="true"></i> Product & Service</a>
+                    <a id="pages" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-cube" aria-hidden="true"></i> Products</a>
                     <div class="dropdown-menu">
-                      <a href="/products/spares" class="dropdown-item"> Spare Parts</a>
-                      <a href="/products/metal_processing" class="dropdown-item"> Metal Processing</a>
-                      <a href="/products/lift_material" class="dropdown-item"> Lift Material</a>
+                      <a href="/products/spares" class="dropdown-item"> Products</a>
+                      <a href="/products/metal_processing" class="dropdown-item"> Custom Manufacture</a>
                     </div>
 
                   </li>
@@ -61,21 +60,19 @@
                     <div class="dropdown-menu">
                     @if (Auth::check())
                       @if($r->root())
-                      <a href="/conf/categories" class="dropdown-item"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Material Group</a>
-                      <a href="/conf/brands" class="dropdown-item"><i class="fa fa-tags" aria-hidden="true"></i> Manufacturers</a>
+                      <a href="/conf/categories" class="dropdown-item"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 分类</a>
+                      <a href="/conf/brands" class="dropdown-item"><i class="fa fa-tags" aria-hidden="true"></i> 行业</a>
                       @endif
 
                       @if($r->admin())
-                      <a href="/products/create" class="dropdown-item"><i class="fa fa-cube" aria-hidden="true"></i> Add Products</a>
-                      <a href="/users" class="dropdown-item"><i class="fa fa-users" aria-hidden="true"></i> Users</a>
+                      <a href="/products/create" class="dropdown-item"><i class="fa fa-cube" aria-hidden="true"></i> 产品发布</a>
+                      <a href="/users" class="dropdown-item"><i class="fa fa-users" aria-hidden="true"></i> 用户管理</a>
                       @endif
-                      <a href="/inquiries/show" class="dropdown-item"><i class="fa fa-list-ul" aria-hidden="true"></i> Inquires</a>
-                      <a href="/users/show" class="dropdown-item"><i class="fa fa-address-card-o" aria-hidden="true"></i> Address Book</a>
-                      <a href="/users/reset_password" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> Reset Password</a>
-                      <a href="/logout" class="dropdown-item"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a>
+                      <a href="/inquiries/show" class="dropdown-item"><i class="fa fa-list-ul" aria-hidden="true"></i> 咨询列表</a>
+                      <a href="/users/reset_password" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> 重置密码</a>
+                      <a href="/logout" class="dropdown-item"><i class="fa fa-power-off" aria-hidden="true"></i> 退出</a>
                     @else
                       <a href="/login" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> Login</a>
-                      <a href="/accounts/create" class="dropdown-item"><i class="fa fa-anchor" aria-hidden="true"></i> Register</a>
                     @endif
                     </div>
 
@@ -92,14 +89,14 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-4 mb-5 mb-lg-0">
-            <div class="footer-logo"><img src="{{  asset('img/logo-footer.svg') }}" alt="..." class="img-fluid"></div>
+            <div class="footer-logo"><img src="{{  asset('img/hj-footer.svg') }}" alt="..." class="img-fluid"></div>
             <ul class="list-unstyled">
-              <li>&nbsp<span class="footer-link">49 South Zhongba Road,</span></li>
-              <li>&nbsp<span class="footer-link">Haian, Jiangsu Province,</span></li>
-              <li>&nbsp<span class="footer-link">China 226600</span></li>
-              <li>&nbsp<span class="footer-link">+86 513 8889 2688</span></li>
-              <li>&nbsp<span class="footer-link">+86 513 8180 0823 (fax)</span></li>
-              <li>&nbsp<span class="footer-link">info@joclift.con</span></li>
+              <li>&nbsp<span class="footer-link">Qixiong Industrial Park</span></li>
+              <li>&nbsp<span class="footer-link">Shuyang, Jiangsu Province,</span></li>
+              <li>&nbsp<span class="footer-link">China 223600</span></li>
+              <li>&nbsp<span class="footer-link">+86 527 8889 2688</span></li>
+              <li>&nbsp<span class="footer-link">+86 527 8180 0823 (fax)</span></li>
+              <li>&nbsp<span class="footer-link">hi@henjou.con</span></li>
             </ul>
 
           </div>
@@ -128,8 +125,7 @@
           <div class="row">
             <div class="col-lg-6 text-center text-lg-left">
               <p class="copyrights-text mb-3 mb-lg-0">
-                <small>Copyright &copy; 2019.GENNEX</small> 
-                <small><a href="http://beian.miit.gov.cn">苏ICP备08013754号</a></small>
+                <small>Copyright &copy; 2019. HENJOU (JIANGSU) ROTATIONAL MOLDING CO.,LTD</small> 
               </p>
             </div>
             <div class="col-lg-6 text-center text-lg-right">

@@ -1,9 +1,8 @@
 /* your styles go here */
-@font-face{
-    font-family: 'helvetica-light';
-    src : url('../fonts/helvetica-light.otf');
-}
 
+.logo {
+    width: 120px;
+}
 .cent {
     text-align: center;
     margin: 0 auto;

@@ -31,8 +31,8 @@ class ProductController extends Controller
      */
     public function index()
     { 
-        $this->role = new Role;
-        $this->limitIds = $this->role->limitIds();
+        // $this->role = new Role;
+        // $this->limitIds = $this->role->limitIds();
 
         // Log::alert($this->limitIds);
 
@@ -70,11 +70,11 @@ class ProductController extends Controller
                                     // 有图片
                                     $q4->whereNotNull('img');
                                 });
-                                $query->whereHas('products', function ($q5) {
-                                    if(!$this->role->admin()) {
-                                        $q5->whereIn('brand_id', $this->limitIds);
-                                    }
-                                });
+                                // $query->whereHas('products', function ($q5) {
+                                //     if(!$this->role->admin()) {
+                                //         $q5->whereIn('brand_id', $this->limitIds);
+                                //     }
+                                // });
 
                                 $query->whereHas('products', function ($q) {
 
@@ -109,9 +109,9 @@ class ProductController extends Controller
         $brands = Conf::where('type', 'brand')
                         ->where(function ($q5) {
                             // 品牌限制
-                            if(!$this->role->admin()) {
-                                $q5->whereIn('id', $this->limitIds);
-                            }
+                            // if(!$this->role->admin()) {
+                            //     $q5->whereIn('id', $this->limitIds);
+                            // }
                         })
 
                         ->whereHas('brand_products', function ($q1) {
@@ -154,9 +154,9 @@ class ProductController extends Controller
         $pre = Product::whereNotNull('img')
                             ->where(function ($q5) {
                                 // 品牌限制
-                                if(!$this->role->admin()) {
-                                    $q5->whereIn('brand_id', $this->limitIds);
-                                }
+                                // if(!$this->role->admin()) {
+                                //     $q5->whereIn('brand_id', $this->limitIds);
+                                // }
                             })
                             ->where(function ($q1) {
                                 // search_category_id
@@ -422,14 +422,14 @@ class ProductController extends Controller
         $image = Image::make($img)
                 ->insert('img/watermark.png')
 
-                ->text('Part Nr. '.strtoupper($exists->part_no), 390, 50, function($font) {
+                ->text('No. '.strtoupper($exists->part_no), 390, 50, function($font) {
                     $font->file('fonts/helvetica-light.otf');
                     $font->size(36);
                     $font->color('#fff');
                     $font->align('center');
                     $font->valign('top');
                 })
-                ->text('Part Nr. '.strtoupper($exists->part_no), 389, 49, function($font) {
+                ->text('No. '.strtoupper($exists->part_no), 389, 49, function($font) {
                     $font->file('fonts/helvetica-light.otf');
                     $font->size(36);
                     $font->color('#000');

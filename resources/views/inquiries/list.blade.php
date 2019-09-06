@@ -8,6 +8,7 @@
         <div class="col-sm-7 cent">
             <div class="card card-light form-card">
             <h4><i class="fa fa-list-ul" aria-hidden="true"></i> My Inquiry [{{ $records->count() }}]</h4>
+            <p><a href="/inquiries/show" class="btn btn-outline-primary btn-sm">History</a></p>
             <blockquote class="blockquote text-left ">
               <ol class="cart-item">
             @if($records->count())

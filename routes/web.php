@@ -32,8 +32,8 @@ Route::get('/products/share/{id}/{token}', 'ProductController@share');
 
 Route::get('/logout', 'UserController@logout');
 
-// Route::get('/accounts/create', 'UserController@accountCreate');
-// Route::post('/accounts/store', 'UserController@accountStore');
+Route::get('/accounts/create', 'UserController@accountCreate');
+Route::post('/accounts/store', 'UserController@accountStore');
 
 // 联系方式
 Route::get('/users/contact/create/{id?}', 'UserController@contactCreate');
@@ -47,16 +47,18 @@ Route::get('/products/search/{type}/{id}', 'ProductController@searchType');
 Route::get('/products/clear_search/{string}', 'ProductController@searchClear');
 
 Route::post('/contact/quick', 'HomeController@quick');
-// 咨询列表 - 邮件
-Route::post('/inquiries/send', 'OrderController@send');
-Route::get('/inquiries', 'OrderController@inquiries');
-Route::get('/inquiries/add/{id}', 'OrderController@add');
-Route::get('/inquiries/delete/{id}', 'OrderController@delete');
-Route::get('/inquiries/clear', 'OrderController@clear');
+
 
 Route::group(['middleware' => ['verified', 'state']], function () {
     
     Route::get('/inquiries/show/{id?}', 'OrderController@show');
+
+    // 咨询列表 - 邮件
+    Route::post('/inquiries/send', 'OrderController@send');
+    Route::get('/inquiries', 'OrderController@inquiries');
+    Route::get('/inquiries/add/{id}', 'OrderController@add');
+    Route::get('/inquiries/delete/{id}', 'OrderController@delete');
+    Route::get('/inquiries/clear', 'OrderController@clear');
 
     // 人员
     Route::get('/users', 'UserController@index');

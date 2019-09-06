@@ -73,6 +73,7 @@
                       <a href="/logout" class="dropdown-item"><i class="fa fa-power-off" aria-hidden="true"></i> 退出</a>
                     @else
                       <a href="/login" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> Login</a>
+                      <a href="/accounts/create" class="dropdown-item"><i class="fa fa-edit" aria-hidden="true"></i> Register</a>
                     @endif
                     </div>
 

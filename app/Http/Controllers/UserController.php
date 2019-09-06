@@ -176,12 +176,12 @@ class UserController extends Controller
 
         $user->sendEmailVerificationNotification();
 
-        return view('auth.verify');
+        // return view('auth.verify');
 
-        // $text = 'An email with verifying links has been send to the email address, please verifying ';
-        // $color = 'success';
-        // $icon = 'user-o';
-        // return view('note', compact('text', 'color', 'icon'));
+        $text = 'An email with verifying links has been send to the email address, please verifying ';
+        $color = 'success';
+        $icon = 'user-o';
+        return view('note', compact('text', 'color', 'icon'));
     }
 
     /**

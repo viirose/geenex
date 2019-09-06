@@ -11,7 +11,7 @@
             <h4><i class="fa fa-{{ $icon }}" aria-hidden="true"></i> {!! $title !!}</h4>
             <p>Already have an account? <a href="/login">Log In</a></p>
               {!! form_start($form) !!}
-              <div class="alert alert-info">By creating an account with our website, you will be able to view our spare part database by material groups, search your target parts by keywords or part numbers and send inquiries online.</div>
+              <div class="alert alert-info">By creating an account with our website, you can send inquiries directly and save them for use</div>
               <p><span class="badge badge-info"><i class="fa fa-address-card-o" aria-hidden="true"></i> Personal Information</span></p>
               {!! form_row($form->c_1_salutation) !!}
               {!! form_row($form->c_2_first_name) !!}

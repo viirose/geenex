@@ -28,11 +28,11 @@
             @endif
 
             @if(Session::has('search_category_id'))
-              <a href="/products/clear_search/search_category_id" class="badge badge-info">Types: {{ $f->showConf(session('search_category_id')) }}</a>
+              <a href="/products/clear_search/search_category_id" class="badge badge-info">Catigories: {{ $f->showConf(session('search_category_id')) }}</a>
             @endif
 
             @if(Session::has('search_level') && Session::has('search_level_id'))
-              <a href="/products/clear_search/search_level" class="badge badge-danger">Types: {{ $f->showConf(session('search_level')) }}</a>
+              <a href="/products/clear_search/search_level" class="badge badge-danger">Catigories: {{ $f->showConf(session('search_level')) }}</a>
             @endif
 
             @if(Session::has('search_brand_id'))
@@ -149,7 +149,7 @@
             </div>
 
             <div class="sidebar-widget mb-4">
-              <h3 class="sidebar-widget-heading"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Material Group</h3>
+              <h3 class="sidebar-widget-heading"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Catigories</h3>
               <ul class="list-unstyled pl-0 mt-4">
               @if(count($categories))
                   <div id="categories_menu">
@@ -192,7 +192,7 @@
             </div>
 
             <div class="sidebar-widget mb-4">
-              <h4 class="sidebar-widget-heading"><i class="fa fa-tags" aria-hidden="true"></i> Sort By Manufacturer</h4>
+              <h4 class="sidebar-widget-heading"><i class="fa fa-tags" aria-hidden="true"></i> Applied TO</h4>
               <ul class="list-inline pl-0 mt-4">
               @if(count($brands))
                 @foreach($brands as $b)

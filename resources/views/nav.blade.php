@@ -97,7 +97,7 @@
               <li>&nbsp<span class="footer-link">China 223600</span></li>
               <li>&nbsp<span class="footer-link">+86 527 8889 2688</span></li>
               <li>&nbsp<span class="footer-link">+86 527 8180 0823 (fax)</span></li>
-              <li>&nbsp<span class="footer-link">hi@henjou.con</span></li>
+              <li>&nbsp<span class="footer-link">sales@henjou.com</span></li>
             </ul>
 
           </div>

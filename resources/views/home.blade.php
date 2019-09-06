@@ -31,9 +31,7 @@
       <div class="container">
         <header class="section-header">
           <h2 class="mb-2">Quick Contact
-            @if(Auth::check())
-            : {{ Auth::user()->email }}
-            @endif
+
           </h2>
         </header>
         <div class="row align-items-center mt-5">
@@ -56,7 +54,7 @@
             <div class="box">
               <div class="icon d-flex align-items-end"><img src="img/multimedia.svg" alt="" class="img-fluid"></div>
               <h5>Email support</h5>
-              <p class="text-small font-weight-light"><strong>hi@henjou.com </strong> </p>
+              <p class="text-small font-weight-light"><strong> sales@henjou.com </strong> </p>
 
             </div>
           </div>

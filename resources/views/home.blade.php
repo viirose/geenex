@@ -51,7 +51,7 @@
             <div class="box">
               <div class="icon d-flex align-items-end"><img src="img/technology.svg" alt="" class="img-fluid"></div>
               <h5>Phone</h5>
-              <p class="text-small font-weight-light">FAX: +86 8352 1018</p><strong class="text-muted">TEL: +86 8777 4118</strong>
+              <p class="text-small font-weight-light">FAX: +86 527 8777 4118 </p><strong class="text-muted">TEL: +86 527 8352 1018</strong>
             </div>
             <div class="box">
               <div class="icon d-flex align-items-end"><img src="img/multimedia.svg" alt="" class="img-fluid"></div>

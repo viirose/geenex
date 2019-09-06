@@ -60,17 +60,17 @@
                     <div class="dropdown-menu">
                     @if (Auth::check())
                       @if($r->root())
-                      <a href="/conf/categories" class="dropdown-item"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 分类</a>
-                      <a href="/conf/brands" class="dropdown-item"><i class="fa fa-tags" aria-hidden="true"></i> 行业</a>
+                      <a href="/conf/categories" class="dropdown-item"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Categories</a>
+                      <a href="/conf/brands" class="dropdown-item"><i class="fa fa-tags" aria-hidden="true"></i> Applied to</a>
                       @endif
 
                       @if($r->admin())
-                      <a href="/products/create" class="dropdown-item"><i class="fa fa-cube" aria-hidden="true"></i> 产品发布</a>
-                      <a href="/users" class="dropdown-item"><i class="fa fa-users" aria-hidden="true"></i> 用户管理</a>
+                      <a href="/products/create" class="dropdown-item"><i class="fa fa-cube" aria-hidden="true"></i> Add products</a>
+                      <a href="/users" class="dropdown-item"><i class="fa fa-users" aria-hidden="true"></i> Users</a>
                       @endif
-                      <a href="/inquiries/show" class="dropdown-item"><i class="fa fa-list-ul" aria-hidden="true"></i> 咨询列表</a>
-                      <a href="/users/reset_password" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> 重置密码</a>
-                      <a href="/logout" class="dropdown-item"><i class="fa fa-power-off" aria-hidden="true"></i> 退出</a>
+                      <a href="/inquiries/show" class="dropdown-item"><i class="fa fa-list-ul" aria-hidden="true"></i> Inquiries</a>
+                      <a href="/users/reset_password" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> Rest Password</a>
+                      <a href="/logout" class="dropdown-item"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a>
                     @else
                       <a href="/login" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> Login</a>
                       <a href="/accounts/create" class="dropdown-item"><i class="fa fa-edit" aria-hidden="true"></i> Register</a>

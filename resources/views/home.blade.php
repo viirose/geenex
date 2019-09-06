@@ -44,7 +44,7 @@
             <div class="box">
               <div class="icon d-flex align-items-end"><img src="img/placeholder.svg" alt="" class="img-fluid"></div>
               <h5>Address</h5>
-              <p class="text-small font-weight-light">Qixiong Industrial Park, Shuyang, Jiangsu Province, China (214400)</p>
+              <p class="text-small font-weight-light">Qixiong Industrial Park, Shuyang, Jiangsu Province, China (223600)</p>
             </div>
             <div class="box">
               <div class="icon d-flex align-items-end"><img src="img/technology.svg" alt="" class="img-fluid"></div>

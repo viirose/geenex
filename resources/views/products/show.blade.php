@@ -20,23 +20,19 @@ $f = new App\Helpers\Filter;
               <table>
                 <tbody>
                   <tr>
-                    <td>GENNEX Ref.</td>
-                    <td>G{{ $f->show($record->brand->info, 'code', '-') }}{{ $f->show($record->category->master->master->info, 'code', '-') }}{{ $f->show($record->category->master->info, 'code', '-') }}{{ $f->show($record->category->info, 'code', '-') }}{{ $record->id }}</td>
-                  </tr>
-                  <tr>
-                    <td>Part Name</td>
+                    <td>Product Name</td>
                     <td>{!! $f->fit($record->name) !!}</td>
                   </tr>
                   <tr>
-                    <td>Part Nr.</td>
+                    <td>Product No</td>
                     <td>{!! $f->fit($record->part_no) !!}</td>
                   </tr>
                   <tr>
-                    <td>Part for</td>
+                    <td>Applied to</td>
                     <td>{{ $record->brand->key }}</td>
                   </tr>
                   <tr>
-                    <td>Material Group</td>
+                    <td>Category</td>
                     <td>
                       {{ $record->category->master->master->key }} -
                       {{ $record->category->master->key }} -

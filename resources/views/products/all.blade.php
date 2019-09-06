@@ -69,19 +69,19 @@
                         <tbody>
 
                           <tr>
-                            <td><strong>Product&nbspName</strong></td>
+                            <td><strong>Product&nbspName</strong>&nbsp</td>
                             <td>{!! $f->fit($product->name) !!}</td>
                           </tr>
                           <tr>
-                            <td><strong>Product&nbspNr.</strong></td>
+                            <td><strong>Product&nbspNo.</strong></td>
                             <td>{!! $f->fit($product->part_no) !!}</td>
                           </tr>
                           <tr>
-                            <td><strong>Product&nbspfor</strong></td>
+                            <td><strong>Applied to</strong></td>
                             <td>{{ $product->brand->key }}</td>
                           </tr>
                           <tr>
-                            <td><strong>Type&nbspGroup&nbsp</strong></td>
+                            <td><strong>Category</strong></td>
                             <td>
                               {{ $product->category->master->master->key }} -
                               {{ $product->category->master->key }} -

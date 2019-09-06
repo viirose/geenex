@@ -42,9 +42,9 @@ class VerifyEmailNotification extends Notification
         }
 
         return (new MailMessage)
-            ->subject('GENNEX: Verify Email Address')
+            ->subject('HENJOU: Verify Email Address')
             ->line('Hello '.$notifiable->getKey('name'))
-            ->line('We’ve received a request of account creation with email address '.$notifiable->getKey('email').' on our website www.joclift.com. If you submitted such request, please click the Verify Email Address button below to proceed.')
+            ->line('We’ve received a request of account creation with email address '.$notifiable->getKey('email').' on our website www.henjou.com. If you submitted such request, please click the Verify Email Address button below to proceed.')
             ->action(
                 'Verify Email Address',
                 $this->verificationUrl($notifiable)

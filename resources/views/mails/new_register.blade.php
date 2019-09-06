@@ -5,7 +5,7 @@ Name: {{ $user->name }}<br>
 Time: {{ $user->created_at }}<br>
 
 <br>
-You can visit https://joclift.com/users to find the details.
+You can visit https://henjou.com to find the details.
 <br>
-joclift.com
+henjou.com
 </div>

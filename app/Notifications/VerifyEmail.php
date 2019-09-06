@@ -45,16 +45,16 @@ class VerifyEmail extends Notification
         }
 
         return (new MailMessage)
-            ->subject('GENNEX: Verify Email Address')
+            ->subject('HENJOU: Verify Email Address')
             ->greeting('Hello '.$notifiable->name)
-            ->line('We’ve received a request of account creation with email address '.$notifiable->email.' on our website www.joclift.com. If you submitted such request, please click the Verify Email Address button below to proceed.')
+            ->line('We’ve received a request of account creation with email address '.$notifiable->email.' on our website www.henjou.com. If you submitted such request, please click the Verify Email Address button below to proceed.')
             ->action(
                 'Verify Email Address',
                 $this->verificationUrl($notifiable)
             )
             ->line('In case you didn’t submit such request, please disregard this email and no further action is required.')
             ->line('Thanks')
-            ->salutation('GENNEX Sales Team');
+            ->salutation('HENJOU Sales Team');
     }
 
     /**

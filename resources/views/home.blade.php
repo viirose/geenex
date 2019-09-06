@@ -46,17 +46,17 @@
             <div class="box">
               <div class="icon d-flex align-items-end"><img src="img/placeholder.svg" alt="" class="img-fluid"></div>
               <h5>Address</h5>
-              <p class="text-small font-weight-light">JIANGSU HENJOU ROTATIONAL MOLDING CO.,LTD</p>
+              <p class="text-small font-weight-light">Qixiong Industrial Park, Shuyang, Jiangsu Province, China (214400)</p>
             </div>
             <div class="box">
               <div class="icon d-flex align-items-end"><img src="img/technology.svg" alt="" class="img-fluid"></div>
               <h5>Phone</h5>
-              <p class="text-small font-weight-light">FAX: +86 513 8180 0823</p><strong class="text-muted">TEL: +86 513 8889 2688</strong>
+              <p class="text-small font-weight-light">FAX: +86 8352 1018</p><strong class="text-muted">TEL: +86 8777 4118</strong>
             </div>
             <div class="box">
               <div class="icon d-flex align-items-end"><img src="img/multimedia.svg" alt="" class="img-fluid"></div>
               <h5>Email support</h5>
-              <p class="text-small font-weight-light"><strong>info@joclift.con email </strong> </p>
+              <p class="text-small font-weight-light"><strong>hi@henjou.com </strong> </p>
 
             </div>
           </div>

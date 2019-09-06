@@ -23,11 +23,11 @@ class UsersTableSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Philip Wong',
-            'email' => 'philip.wong@joclift.com',
+            'name' => 'Louis',
+            'email' => '457646290@qq.com',
             'email_verified_at' => today(),
             'contact_verified_at' => today(),
-            'password' => bcrypt('91320621MAX120XX1'),
+            'password' => bcrypt('123456'),
             'auth' => '{"root":true}',
         ]);
 

@@ -7,9 +7,11 @@
     <div class="container">
       <h3> <strong>Company Profile</strong> </h3>
       <p>Welcome to HENJOU!</p>
-      <p>a permanent focus on rotational molding products manufacturing enterprises, located in Huaxiang Shuyang, close to the Beijing-Shanghai high-speed, traffic is very convenient. Rotational molding using rotary one-time molding, a good edge strength, light weight, impact resistance, corrosion resistance and so on. After years of development and accumulation, Everlasting has begun to take shape, with efficient personnel equipped with the most advanced equipment. The company has passed IS09001 international quality management system certification and IATF16949 quality management system certification, the company's newly developed rotomouldable fuel tank by a number of large tractor companies throughout the country and welcomed the establishment of a number of long-term and cooperation. There is no best only better, we will continue to work hard to provide you with better service, better products!
-          
+      <p>Hengjiu Rotational(Jiangsu) Moulding Co.,Ltd is a professional manufacturer in rotational moulding, Located in Shuyang where is famous as flowers, nearly Beingjing-Shanghai Expressway（G2）, convenient transportation. Rotational moulding adopts rotary one-time molding process, which has the advantages of strong edge strength, light weight, high impact, and corrosion resistance. Hengjiu has begun take the shape, efficient personnel equipment, the advanced equipment in domestic after years of the development and accumulation. At present, the company has passed ISO9001 and IATF16949 international quality management system certifications. The company have established long-term cooperation with many large enterprises benefit from the new development of rolling incubator, flowerpot etc products are welcomed. No best, but better, we will continue to try our best to provide you with the better service and products.  
       </p>
+      <p>Thank you!</p>
+      <p>Henjou Sales Team</p>
+      <p>2019/1/1</p>
 
     
     </div>

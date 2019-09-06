@@ -63,8 +63,8 @@ class ProductForm extends Form
             'attr' => ['id' => 'category_id'],
         ])
         ->add('brand_id', 'select', [
-            'label' => '所属行业',
-            'empty_value' => '=== 所属行业 ===',
+            'label' => '应用范围',
+            'empty_value' => '=== 应用范围 ===',
             'choices' => $this->brands(),
             'rules' => 'required'
         ])

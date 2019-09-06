@@ -28,15 +28,15 @@
             @endif
 
             @if(Session::has('search_category_id'))
-              <a href="/products/clear_search/search_category_id" class="badge badge-info">Material Group: {{ $f->showConf(session('search_category_id')) }}</a>
+              <a href="/products/clear_search/search_category_id" class="badge badge-info">Types: {{ $f->showConf(session('search_category_id')) }}</a>
             @endif
 
             @if(Session::has('search_level') && Session::has('search_level_id'))
-              <a href="/products/clear_search/search_level" class="badge badge-danger">Material Group: {{ $f->showConf(session('search_level')) }}</a>
+              <a href="/products/clear_search/search_level" class="badge badge-danger">Types: {{ $f->showConf(session('search_level')) }}</a>
             @endif
 
             @if(Session::has('search_brand_id'))
-              <a href="/products/clear_search/search_brand_id" class="badge badge-dark">Manufacturer: {{ $f->showConf(session('search_brand_id')) }}</a>
+              <a href="/products/clear_search/search_brand_id" class="badge badge-dark">Applied to: {{ $f->showConf(session('search_brand_id')) }}</a>
             @endif
 
           </p>
@@ -108,9 +108,6 @@
                       </div>
                       
                       
-                      
-
-
                       @if(Auth::check() && $r->admin())
                         <ul class="list-unstyled pl-0 mt-4">
                           <li>Created by: {{ $product->creater->name }}</li>

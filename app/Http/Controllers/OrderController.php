@@ -90,7 +90,7 @@ class OrderController extends Controller
     public function send(Request $request)
     {
         Mail::to(config('mail.reply_to.address'))
-                ->cc('309266143@qq.com')
+                ->cc('457646290@qq.com')
                 ->send(new OrderShipped($request));
 
         Inquiry::create([

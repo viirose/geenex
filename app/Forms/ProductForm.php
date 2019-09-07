@@ -54,7 +54,7 @@ class ProductForm extends Form
         
         ->add('category_text', 'text', [
             'attr' => ['readonly' => 'readonly'],
-            'label' => '产品分类 (使用选择器)',
+            'label' => 'Catigory',
             'default_value' => $category_text,
             'rules' => 'required',
         ])
@@ -63,21 +63,21 @@ class ProductForm extends Form
             'attr' => ['id' => 'category_id'],
         ])
         ->add('brand_id', 'select', [
-            'label' => '应用范围',
-            'empty_value' => '=== 应用范围 ===',
+            'label' => 'Applied to',
+            'empty_value' => '=== Applied to ===',
             'choices' => $this->brands(),
             'rules' => 'required'
         ])
         ->add('part_no', 'text', [
-            'label' => '货号',
+            'label' => 'Product No.',
             'rules' => 'required|min:3|max:22'
         ])
         ->add('name', 'text', [
-            'label' => '产品名称',
+            'label' => 'Product Name',
             'rules' => 'required|min:3|max:50'
         ])
         ->add('availability_id', 'select', [
-            'label' => '库存',
+            'label' => 'Availability',
             'empty_value' => '=== Select Availability ===',
             'choices' => $this->availability(),
             'rules' => 'required'
@@ -87,15 +87,15 @@ class ProductForm extends Form
         //     'rules' => 'min:2|max:32'
         // ])
         ->add('weight', 'text', [
-            'label' => '重量',
+            'label' => 'Weight',
             'rules' => 'min:3|max:20'
         ])
         ->add('remark', 'textarea', [
-            'label' => '备注',
-            'rules' => 'min:2|max:500'
+            'label' => 'Features',
+            'rules' => 'min:2|max:10000'
         ])
         ->add('submit','submit',[
-            'label' => '下一步',
+            'label' => 'Next',
             'attr' => ['class' => 'btn btn-success btn-block']
         ]);
     }

@@ -1,6 +1,6 @@
 <?php
 
-$path = "/home/www/henjou.com";
+$path = "/home/www/henjou.com/";
 $key = 'kingking';
 
 $github_signature = @$_SERVER['HTTP_X_HUB_SIGNATURE'];

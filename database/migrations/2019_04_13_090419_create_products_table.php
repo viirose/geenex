@@ -22,8 +22,8 @@ class CreateProductsTable extends Migration
             $table->integer('created_by');
             $table->integer('availability_id');
             $table->string('weight')->nullable();
-            $table->text('remark')->nullable();
-            $table->text('content')->nullable();
+            $table->longText('remark')->nullable();
+            $table->longText('content')->nullable();
             $table->string('img')->nullable();
             $table->boolean('show')->default(true);
             $table->jsonb('info')->nullable();

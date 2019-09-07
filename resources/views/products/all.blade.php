@@ -89,15 +89,11 @@
                             </td>
                           </tr>
                           <tr>
-                            <td><strong>Availability</strong></td>
-                            <td>{{ $product->availability->key }}</td>
-                          </tr>
-                          <tr>
                             <td><strong>Weight</strong></td>
                             <td>{{ $product->weight }}</td>
                           </tr>
                           <tr>
-                            <td class="align-top"><strong>Remark</strong></td>
+                            <td class="align-top"><strong>Features</strong></td>
                             <td>{!! $f->fit($product->remark) !!}</td>
                           </tr>
                         </tbody>

@@ -95,8 +95,8 @@
               <li>&nbsp<span class="footer-link">Qixiong Industrial Park</span></li>
               <li>&nbsp<span class="footer-link">Shuyang, Jiangsu Province,</span></li>
               <li>&nbsp<span class="footer-link">China 223600</span></li>
-              <li>&nbsp<span class="footer-link">+86 527 8889 2688</span></li>
-              <li>&nbsp<span class="footer-link">+86 527 8180 0823 (fax)</span></li>
+              <li>&nbsp<span class="footer-link">+86 527 8352 1018</span></li>
+              <li>&nbsp<span class="footer-link">+86 527 8777 4118 (fax)</span></li>
               <li>&nbsp<span class="footer-link">sales@henjou.com</span></li>
             </ul>
 

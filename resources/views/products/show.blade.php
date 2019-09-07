@@ -28,10 +28,6 @@ $f = new App\Helpers\Filter;
                     <td>{!! $f->fit($record->part_no) !!}</td>
                   </tr>
                   <tr>
-                    <td>Applied to</td>
-                    <td>{{ $record->brand->key }}</td>
-                  </tr>
-                  <tr>
                     <td>Category</td>
                     <td>
                       {{ $record->category->master->master->key }} -
@@ -48,7 +44,7 @@ $f = new App\Helpers\Filter;
                     <td>{{ $record->weight }}</td>
                   </tr>
                   <tr>
-                    <td>Remark</td>
+                    <td>Features</td>
                     <td>{!! $f->fit($record->remark) !!}</td>
                   </tr>
                 </tbody>

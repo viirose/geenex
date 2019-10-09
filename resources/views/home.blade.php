@@ -45,9 +45,7 @@
               <small class="text-secondary">{{ $record->created_at }}</small>
             </a>
             @endforeach
-            <div>
-                {!! $records->render() !!}
-        </div>
+
           </div>
           @else
             <div class="alert alert-info">

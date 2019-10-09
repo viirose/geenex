@@ -35,17 +35,20 @@ class HomeController extends Controller
 
     public function etf()
     {
-        return view('etf');
+        $records = Article::latest()->where('type','etf')->paginate(30);
+        return view('etf', compact('records'));
     }
 
     public function kcb()
     {
-        return view('kcb');
+        $records = Article::latest()->where('type','kcb')->paginate(30);
+        return view('kcb', compact('records'));
     }
 
     public function sc()
     {
-        return view('sc');
+        $records = Article::latest()->where('type','sc')->paginate(30);
+        return view('sc', compact('records'));
     }
 
    

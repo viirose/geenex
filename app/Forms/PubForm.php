@@ -11,7 +11,7 @@ class PubForm extends Form
         $this
         ->add('type', 'select', [
             'label' => "发布位置",
-            'choices' => ['kcb' => "科创板", 'etf' => "50ETF"],
+            'choices' => ['kcb' => "科创板", 'etf' => "50ETF", 'sc' => "系统搭建"],
             'rules' => 'required'
         ])
         ->add('title', 'text', [

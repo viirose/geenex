@@ -27,7 +27,7 @@ Route::get('/quit', 'HomeController@quit');
 // Route::get('/home', 'HomeController@index');
 // Route::post('/contact/quick', 'HomeController@quick');
 
-// Route::get('/login', 'UserController@login')->name('login');
+// Route::get('/login', 'UserController@login')->name('login'); 
 Route::get('/home', 'HomeController@index')->name('home'); 
 
 // // 产品

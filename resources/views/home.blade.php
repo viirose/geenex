@@ -24,6 +24,7 @@
           <div class="col-sm-8">
               <div class="row"><img src="img/logo.svg" alt="" class="img-fluid nav-logo"></div>
               <h3 class="text-primary">科技创新, 相遇相随</h3>
+            科创板交易平台：科创板平台为广大投资者提供零门槛开户，正规合法，系统稳定，资金安全，上海科创板交易平台独家研发软件，敬请广大投资者体验科创板平台交易测试。<br>
             财经一线：投资管理平台，总部位于上海，分支机构及业务范围辐 射全国，是一家专业从事投资管理，资产管理咨询的服务机构平台。 科创板\50ETF期权定位于主流交易产品、资产管理计划、私募股权基金等产品供应商的首选发行渠道和中国 高净值客户的首选产品交易专家，业务以客户服务为核心，、宏观的经济趋势建议，帮助客 户实现财富保值增值的目标
           </div>
         </div>
@@ -44,6 +45,9 @@
               <small class="text-secondary">{{ $record->created_at }}</small>
             </a>
             @endforeach
+            <div>
+                {!! $records->render() !!}
+        </div>
           </div>
           @else
             <div class="alert alert-info">

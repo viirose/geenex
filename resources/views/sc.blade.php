@@ -48,7 +48,7 @@
 
         
         
-        <h3>50ETF最新资讯 <a href="/articles">(文章中心）</a></h3>
+        <h3>软件开发 <a href="/articles">(文章中心）</a></h3>
         
                 <div>
                         @if(isset($records) && count($records))

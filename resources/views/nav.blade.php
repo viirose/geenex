@@ -46,7 +46,7 @@
               <li class="nav-item"> <a href="/kcb" class="nav-link">科创版</a></li>
               <!-- Link-->
               <li class="nav-item"> <a href="/etf" class="nav-link">50ETF</a></li>
-              <li class="nav-item"> <a href="/sc" class="nav-link">系统搭建</a></li>
+              <li class="nav-item"> <a href="/sc" class="nav-link">软件开发</a></li>
               <li class="nav-item"> <a href="/" class="nav-link">联系我们</a></li>
               <li class="nav-item">
                 @if(Auth::check())

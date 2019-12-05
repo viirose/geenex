@@ -47,6 +47,19 @@
           <div id="navbarSupportedContent" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                   <!-- Link-->
+                <li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">|   &nbsp 关于匠森
+                  </a>
+                  <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> 品牌简介
+                    </a>
+                    <a href="#" class="dropdown-item"><i class="fa fa-download" aria-hidden="true"></i> 发展历程</a>
+                  </div>
+
+                </li>
+
+                <li class="nav-item"><a href="#" class="nav-link">|   &nbsp 资讯中心 </a>
+                </li>
+
                 </li>
                   <li class="nav-item dropdown">
                     <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">产品中心</a>

@@ -6,10 +6,10 @@
       <div class="container mb-5">
         <div class="row align-items-center">
           <div class="col-lg-6">
-            <h3 class="hero-heading mb-0">专注机柜系统十五年!</h3>
+            <h3 class="hero-heading mb-0">专注网络基础设施二十年!</h3>
             <div class="row">
               <div class="col-lg-10">
-                <p class="lead text-muted mt-4 mb-4">15年的专注，让我们对机柜系统有了更深层次的理解和追求；从原材料到加工设备到生产工艺管理，我们精益求精，用工匠精神打造每一件“匠森”产品，目的就是为了彰显您的每一个精品工程。</p>
+                <p class="lead text-muted mt-4 mb-4">20年的专注，让我们对综合布线和机柜系统有了更深层次的理解和追求; 从原材料到加工设备到生产工艺管理，我们精益求精，用工匠精神打造每一件“匠森”产品， 目的就是为了彰显您的每一个精品工程。</p>
               </div>
             </div>
             <form action="/products/search" method="post" class="subscription-form">

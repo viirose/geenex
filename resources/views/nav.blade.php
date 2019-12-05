@@ -50,9 +50,9 @@
                 <li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">关于匠森
                   </a>
                   <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> 品牌简介
+                    <a href="#" class="dropdown-item"><i class="fa fa-star" aria-hidden="true"></i> 品牌简介
                     </a>
-                    <a href="#" class="dropdown-item"><i class="fa fa-download" aria-hidden="true"></i> 发展历程</a>
+                    <a href="#" class="dropdown-item"><i class="fa fa-magic" aria-hidden="true"></i> 发展历程</a>
                   </div>
 
                 </li>

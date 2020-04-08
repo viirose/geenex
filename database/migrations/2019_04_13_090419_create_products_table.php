@@ -26,7 +26,7 @@ class CreateProductsTable extends Migration
             $table->text('content')->nullable();
             $table->string('img')->nullable();
             $table->boolean('show')->default(true);
-            $table->jsonb('info')->nullable();
+            $table->json('info')->nullable();
             $table->timestamps();
         });
     }

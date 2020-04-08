@@ -21,7 +21,7 @@ class CreateConfsTable extends Migration
             $table->string('key');
             $table->string('text')->nullable();
             $table->string('val')->nullable();
-            $table->jsonb('info')->nullable();
+            $table->json('info')->nullable();
             $table->timestamps();
         });
     }

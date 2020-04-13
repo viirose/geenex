@@ -9,18 +9,18 @@ use App\Org;
 
 
 /**
- * 授权 
+ * 授权
  *
  */
 class Role
 {
 
     // show
-    public function show($json, $key) 
+    public function show($json, $key)
     {
         try {
             $arr = json_decode($json);
-            return $arr && array_key_exists($key, $arr) ? $arr->$key : null;
+            return $arr && Arr::has($arr, $key) ? $arr->$key : null;
         } catch (Exception $e) {
             return null;
             exit();
@@ -29,10 +29,10 @@ class Role
     }
 
     // 存在并且为为true
-    private function hasAndTrue($json, $key) 
+    private function hasAndTrue($json, $key)
     {
         $arr = json_decode($json);
-        return $arr && array_key_exists($key, $arr) && $arr->$key == true ? true : false;
+        return $arr && Arr::has($arr, $key) && $arr->$key == true ? true : false;
     }
 
     // 选择目标

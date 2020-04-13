@@ -6,6 +6,7 @@ use Auth;
 
 use App\User;
 use App\Org;
+use Arr;
 
 
 /**

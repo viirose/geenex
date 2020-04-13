@@ -21,7 +21,7 @@ class Role
     {
         try {
             $arr = json_decode($json);
-            return $arr && isset($arr[$key]) ? $arr->$key : null;
+            return $arr && isset($arr->$key) ? $arr->$key : null;
         } catch (Exception $e) {
             return null;
             exit();
@@ -33,7 +33,7 @@ class Role
     private function hasAndTrue($json, $key)
     {
         $arr = json_decode($json);
-        return $arr && isset($arr[$key]) && $arr->$key == true ? true : false;
+        return $arr && isset($arr->$key) && $arr->$key == true ? true : false;
     }
 
     // 选择目标

@@ -32,10 +32,10 @@ class ProductController extends Controller
     public function index()
     {
         $this->role = new Role;
+
+        if(!$this->role->vis() && !$this->role->admin()) return redirect('/login');
+
         $this->limitIds = $this->role->limitIds();
-
-        if(!$this->role->admin() && !$this->role->vis()) return redirect('/login');
-
         // Log::alert($this->limitIds);
 
         // session(['limits' => $this->role->limitIds()]);
@@ -111,7 +111,7 @@ class ProductController extends Controller
         $brands = Conf::where('type', 'brand')
                         ->where(function ($q5) {
                             // 品牌限制
-                            if(!$this->role->admin() && !$this->role->vis()) {
+                            if(!$this->role->vis() && !$this->role->admin()) {
                                 $q5->whereIn('id', $this->limitIds);
                             }
                         })
@@ -156,7 +156,7 @@ class ProductController extends Controller
         $pre = Product::whereNotNull('img')
                             ->where(function ($q5) {
                                 // 品牌限制
-                                if(!$this->role->admin() && !$this->role->vis()) {
+                                if(!$this->role->vis() && !$this->role->admin()) {
                                     $q5->whereIn('brand_id', $this->limitIds);
                                 }
                             })

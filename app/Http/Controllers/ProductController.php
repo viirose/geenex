@@ -33,7 +33,7 @@ class ProductController extends Controller
     {
         $this->role = new Role;
 
-        if(!$this->role->vis() && !$this->role->admin()) return redirect('/login');
+        if(!$this->role->vis() && !Auth::check()) return redirect('/login');
 
         $this->limitIds = $this->role->limitIds();
         // Log::alert($this->limitIds);

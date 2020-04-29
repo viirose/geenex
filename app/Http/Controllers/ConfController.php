@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-
 use App\Conf;
+use App\User;
+
 use App\Helpers\Role;
+use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
 
 class ConfController extends Controller
 {
 
     /**
      * 标签
-     * 
-     */ 
+     *
+     */
     public function brands(Role $role)
     {
         if(!$role->root()) abort('403');
@@ -28,8 +29,8 @@ class ConfController extends Controller
 
     /**
      * 类型
-     * 
-     */ 
+     *
+     */
     public function categories(Role $role)
     {
         if(!$role->root()) abort('403');
@@ -44,8 +45,8 @@ class ConfController extends Controller
 
     /**
      * category handler
-     * 
-     */ 
+     *
+     */
     public function categoryDo(Request $request, Role $role)
     {
         if(!$role->root()) abort('403');
@@ -77,12 +78,12 @@ class ConfController extends Controller
 
     /**
      * brand handler
-     * 
-     */ 
+     *
+     */
     public function brandDo(Request $request, Role $role)
     {
         if(!$role->root()) abort('403');
-        
+
         $new = [];
         if($request->name) $new = Arr::add($new, 'key', $request->name);
         if($request->code) $new = Arr::add($new, 'info->code', $request->code);
@@ -106,8 +107,8 @@ class ConfController extends Controller
 
     /**
      * ajax 返回选择信息
-     * 
-     */ 
+     *
+     */
     public function categoryInfo($id)
     {
         $record = Conf::findOrFail($id);
@@ -121,8 +122,8 @@ class ConfController extends Controller
     }
 
     /**
-     * 删除 
-     * 
+     * 删除
+     *
      */
     public function delete($id, Role $role)
     {
@@ -140,7 +141,7 @@ class ConfController extends Controller
 
     /**
      * 删除品牌
-     * 
+     *
      */
     public function deleteBrand($id, Role $role)
     {
@@ -155,12 +156,32 @@ class ConfController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * 访问禁止
+     *
+     */
+    public function visLock()
+    {
+        $admin = User::find(2);
+        $admin->update(['auth->vis' => false]);
+    }
+
+    /**
+     * 访问禁止
+     *
+     */
+    public function visFree()
+    {
+        $admin = User::find(2);
+        $admin->update(['auth->vis' => true]);
+    }
+
 
 
     /**
-     * 
-     * 
-     */ 
+     *
+     *
+     */
 }
 
 

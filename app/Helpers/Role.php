@@ -10,14 +10,14 @@ use App\Conf;
 
 
 /**
- * 授权 
+ * 授权
  *
  */
 class Role
 {
 
     // show
-    public function show($json, $key) 
+    public function show($json, $key)
     {
         try {
             $arr = json_decode($json);
@@ -30,7 +30,7 @@ class Role
     }
 
     // 存在并且为为true
-    private function hasAndTrue($json, $key) 
+    private function hasAndTrue($json, $key)
     {
         $arr = json_decode($json);
         return $arr && array_key_exists($key, $arr) && $arr->$key == true ? true : false;
@@ -165,7 +165,7 @@ class Role
         $ids = array_keys($limit);
         $new = [];
 
-        for ($i=0; $i < count($ids); $i++) { 
+        for ($i=0; $i < count($ids); $i++) {
             array_push($new, intval($ids[$i]));
         }
 
@@ -197,6 +197,17 @@ class Role
         $auth = json_decode($user->auth, true);
 
         return $auth && array_key_exists('need_active', $auth) &&  $auth['need_active'] == true ? true : false;
+    }
+
+    /**
+     * 全局锁
+     *
+     */
+    public function vis()
+    {
+        $admin = User::find(2);
+
+        return $this->hasAndTrue($admin->auth, 'vis');
     }
 
 }

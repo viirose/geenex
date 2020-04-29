@@ -33,6 +33,7 @@ class ProductController extends Controller
     {
         $this->role = new Role;
 
+        // 没开放交通
         if(!$this->role->vis() && !Auth::check()) return redirect('/login');
 
         if(!$this->role->vis()) {
@@ -75,7 +76,7 @@ class ProductController extends Controller
                                     $q4->whereNotNull('img');
                                 });
                                 $query->whereHas('products', function ($q5) {
-                                    if(!$this->role->admin()) {
+                                    if(!$this->role->vis() && !$this->role->admin()) {
                                         $q5->whereIn('brand_id', $this->limitIds);
                                     }
                                 });

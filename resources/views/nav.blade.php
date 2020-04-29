@@ -64,9 +64,9 @@
                       <a href="/conf/categories" class="dropdown-item"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Material Group</a>
                       <a href="/conf/brands" class="dropdown-item"><i class="fa fa-tags" aria-hidden="true"></i> Manufacturers</a>
                         @if($r->vis())
-                            Free
+                            <a href="/conf/lock" class="dropdown-item text-success"><i class="fa fa-lock" aria-hidden="true"></i> Lock Traffic</a>
                         @else
-                            Lock
+                            <a href="/conf/unlock" class="dropdown-item text-warning"><i class="fa fa-lock" aria-hidden="true"></i> Traffic set Free</a>
                         @endif
                       @endif
 

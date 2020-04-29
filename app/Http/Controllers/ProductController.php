@@ -26,11 +26,11 @@ class ProductController extends Controller
     private $limitIds;
     private $role;
     /**
-     * Products 
+     * Products
      *
      */
     public function index()
-    { 
+    {
         $this->role = new Role;
         $this->limitIds = $this->role->limitIds();
 
@@ -43,11 +43,11 @@ class ProductController extends Controller
                         ->with(['subs' => function ($query_1){
                             // $query_1->withCount('subs');
                             // $query_1->withCount(['subs' => function ($qc){
-                            //     // 
+                            //     //
                             //     // return 100;
 
                             // }]);
-                            
+
                             $query_1->with(['subs' => function ($query){
                                 $query->whereHas('products', function ($q1) {
                                     if(Session::has('search_category_id')) {
@@ -135,7 +135,7 @@ class ProductController extends Controller
                             // 有图片
                             $q4->whereNotNull('img');
                         })
-                        
+
                         ->whereHas('brand_products', function ($q) {
 
                             // keywords
@@ -154,7 +154,7 @@ class ProductController extends Controller
         $pre = Product::whereNotNull('img')
                             ->where(function ($q5) {
                                 // 品牌限制
-                                if(!$this->role->admin()) {
+                                if(!$this->role->admin() && !$this->role->vis()) {
                                     $q5->whereIn('brand_id', $this->limitIds);
                                 }
                             })
@@ -180,7 +180,7 @@ class ProductController extends Controller
 
                                 // keywords
                                 if(Session::has('keywords') && trim(session('keywords')) != '') {
-                                    
+
                                     // 不区分大小写
                                     $q->whereRaw('upper(part_no) like upper(?)', ['%'.session('keywords').'%'])
                                       ->orWhereRaw('upper(name) like upper(?)', ['%'.session('keywords').'%'])
@@ -254,7 +254,7 @@ class ProductController extends Controller
             case 'brand':
                 session(['search_brand_id' => $id]);
                 break;
-            
+
             default:
                 # code...
                 break;
@@ -287,7 +287,7 @@ class ProductController extends Controller
      */
     public function searchClear($string)
     {
-        
+
         $this->clearSession($string);
         return $this->index();
     }
@@ -397,7 +397,7 @@ class ProductController extends Controller
         if(!$record) abort('403');
 
         if($record->img) unlink($record->img);
-        
+
         $record->delete();
         return redirect()->back();
     }
@@ -409,7 +409,7 @@ class ProductController extends Controller
     public function imgStore(Request $request, Role $role)
     {
         if(!$role->admin()) abort(403);
-        
+
         $img = $request->file('avatar');
         $id = $request->id;
         // $extension = $img->getClientOriginalExtension();
@@ -446,14 +446,14 @@ class ProductController extends Controller
     }
 
     /**
-     * show 
+     * show
      *
      */
     public function show($id, Recent $rc)
     {
         $record = Product::findOrFail($id);
 
-        try { 
+        try {
             $rc->add($id);
         } catch (Exception $e) {
             // Log::info($e);
@@ -494,7 +494,7 @@ class ProductController extends Controller
             $text = 'Support 1-3 email(s) one time!';
             $color = 'danger';
             $icon = 'at';
-            return view('note', compact('text', 'color', 'icon')); 
+            return view('note', compact('text', 'color', 'icon'));
         }
 
         foreach ($emails as $email) {
@@ -510,10 +510,10 @@ class ProductController extends Controller
         $record = Product::findOrFail($request->id);
 
         try {
-            
+
             $rc->add($request->id);
         } catch (Exception $e) {
-            
+
         }
 
         $token = $record->token;
@@ -558,7 +558,7 @@ class ProductController extends Controller
                     ->bcc(trim($emails[2]))
                     ->send(new Share($info));
                 break;
-            
+
             default:
                 abort('403');
                 break;
@@ -574,7 +574,7 @@ class ProductController extends Controller
 
 
     /**
-     * 
+     *
      *
      */
 }

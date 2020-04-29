@@ -40,6 +40,14 @@ Route::get('/users/contact/create/{id?}', 'UserController@contactCreate');
 Route::post('/users/contact/store/{id?}', 'UserController@contactStore');
 
 
+// 产品
+Route::get('/products', 'ProductController@jump');
+Route::get('/products/spares', 'ProductController@index');
+Route::post('/products/search', 'ProductController@search');
+Route::get('/products/search/{type}/{id}', 'ProductController@searchType');
+Route::get('/products/clear_search/{string}', 'ProductController@searchClear');
+
+
 Route::group(['middleware' => ['verified', 'state']], function () {
     Route::post('/contact/quick', 'HomeController@quick');
     // 咨询列表 - 邮件
@@ -72,12 +80,12 @@ Route::group(['middleware' => ['verified', 'state']], function () {
     Route::get('/users/set_admin/{id}', 'UserController@setAdmin'); # admin
     Route::get('/users/remove_admin/{id}', 'UserController@removeAdmin');
 
-    // 产品
-    Route::get('/products', 'ProductController@jump');
-    Route::get('/products/spares', 'ProductController@index');
-    Route::post('/products/search', 'ProductController@search');
-    Route::get('/products/search/{type}/{id}', 'ProductController@searchType');
-    Route::get('/products/clear_search/{string}', 'ProductController@searchClear');
+    // // 产品
+    // Route::get('/products', 'ProductController@jump');
+    // Route::get('/products/spares', 'ProductController@index');
+    // Route::post('/products/search', 'ProductController@search');
+    // Route::get('/products/search/{type}/{id}', 'ProductController@searchType');
+    // Route::get('/products/clear_search/{string}', 'ProductController@searchClear');
 
     Route::get('/products/create', 'ProductController@create');
     Route::post('/products/store', 'ProductController@store');

@@ -166,6 +166,8 @@ class ConfController extends Controller
 
         $admin = User::find(2);
         $admin->update(['auth->vis' => false]);
+
+        return redirect('/');
     }
 
     /**
@@ -178,6 +180,8 @@ class ConfController extends Controller
 
         $admin = User::find(2);
         $admin->update(['auth->vis' => true]);
+
+        return redirect('/');
     }
 
 

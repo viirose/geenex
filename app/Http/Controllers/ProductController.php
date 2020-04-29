@@ -34,6 +34,8 @@ class ProductController extends Controller
         $this->role = new Role;
         $this->limitIds = $this->role->limitIds();
 
+        if(!$this->role->admin() && !$this->role->vis()) return redirect('/login');
+
         // Log::alert($this->limitIds);
 
         // session(['limits' => $this->role->limitIds()]);
@@ -109,7 +111,7 @@ class ProductController extends Controller
         $brands = Conf::where('type', 'brand')
                         ->where(function ($q5) {
                             // 品牌限制
-                            if(!$this->role->admin()) {
+                            if(!$this->role->admin() && !$this->role->vis()) {
                                 $q5->whereIn('id', $this->limitIds);
                             }
                         })

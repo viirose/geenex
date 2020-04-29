@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes 
+| Web Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -24,7 +24,7 @@ Route::get('/profile', 'HomeController@profile');
 
 
 // Route::get('/login', 'UserController@login');
-// Route::get('/home', 'HomeController@index')->name('home'); 
+// Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/conf/category_info/{id}', 'ConfController@categoryInfo');
 
 // 产品
@@ -70,7 +70,7 @@ Route::group(['middleware' => ['verified', 'state']], function () {
     Route::get('/users/contact/edit/{id?}', 'UserController@contactEdit');
     Route::post('/users/contact/update/{id?}', 'UserController@contactUpdate');
     Route::get('/users/set_admin/{id}', 'UserController@setAdmin'); # admin
-    Route::get('/users/remove_admin/{id}', 'UserController@removeAdmin'); 
+    Route::get('/users/remove_admin/{id}', 'UserController@removeAdmin');
 
     // 产品
     Route::get('/products', 'ProductController@jump');
@@ -95,6 +95,9 @@ Route::group(['middleware' => ['verified', 'state']], function () {
     Route::post('/conf/categories/do', 'ConfController@categoryDo');
     Route::get('/conf/categories/delete/{id}', 'ConfController@delete');
     Route::get('/conf/brands/delete/{id}', 'ConfController@deleteBrand');
+    // Traffic
+    Route::get('/conf/lock', 'ConfController@visLock');
+    Route::get('/conf/unlock', 'ConfController@visFree');
 
 });
 

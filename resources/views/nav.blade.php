@@ -49,7 +49,7 @@
 
                   </li>
                   <!-- Link-->
-                  <li class="nav-item"><a href="/inquiries" class="nav-link">|   &nbsp<i class="fa fa-list-ul" aria-hidden="true"></i> My Inquiry 
+                  <li class="nav-item"><a href="/inquiries" class="nav-link">|   &nbsp<i class="fa fa-list-ul" aria-hidden="true"></i> My Inquiry
                     @if(Session::has('inquiries') && count(session('inquiries')))
                       <span class="badge badge-danger">{{ count(session('inquiries')) }}</span>
                     @endif
@@ -63,6 +63,11 @@
                       @if($r->root())
                       <a href="/conf/categories" class="dropdown-item"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Material Group</a>
                       <a href="/conf/brands" class="dropdown-item"><i class="fa fa-tags" aria-hidden="true"></i> Manufacturers</a>
+                        @if($r->vis())
+                            Free
+                        @else
+                            Lock
+                        @endif
                       @endif
 
                       @if($r->admin())
@@ -128,7 +133,7 @@
           <div class="row">
             <div class="col-lg-6 text-center text-lg-left">
               <p class="copyrights-text mb-3 mb-lg-0">
-                <small>Copyright &copy; 2019 南通锦霖工程技术有限公司</small> 
+                <small>Copyright &copy; 2019 南通锦霖工程技术有限公司</small>
                 <small><a href="http://beian.miit.gov.cn">苏ICP备08013754号</a></small>
               </p>
             </div>
@@ -149,7 +154,7 @@
     <script src="{{ asset('js/front.js') }}"></script>
   <script>
     // ajax csrf
-    $(function(){ 
+    $(function(){
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

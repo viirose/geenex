@@ -160,8 +160,10 @@ class ConfController extends Controller
      * 访问禁止
      *
      */
-    public function visLock()
+    public function visLock(Role $role)
     {
+        if(!$role->root()) abort('403');
+
         $admin = User::find(2);
         $admin->update(['auth->vis' => false]);
     }
@@ -170,8 +172,10 @@ class ConfController extends Controller
      * 访问禁止
      *
      */
-    public function visFree()
+    public function visFree(Role $role)
     {
+        if(!$role->root()) abort('403');
+
         $admin = User::find(2);
         $admin->update(['auth->vis' => true]);
     }

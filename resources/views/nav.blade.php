@@ -66,7 +66,7 @@
                         @if($r->vis())
                             <a href="/conf/lock" class="dropdown-item text-success"><i class="fa fa-lock" aria-hidden="true"></i> Lock Traffic</a>
                         @else
-                            <a href="/conf/unlock" class="dropdown-item text-warning"><i class="fa fa-lock" aria-hidden="true"></i> Traffic set Free</a>
+                            <a href="/conf/unlock" class="dropdown-item text-warning"><i class="fa fa-unlock" aria-hidden="true"></i> Traffic set Free</a>
                         @endif
                       @endif
 

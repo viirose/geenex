@@ -1,7 +1,10 @@
 <?php
   $f = new App\Helpers\Filter;
   $r = new App\Helpers\Role;
-  $rc = new App\Helpers\Recent;
+  if(Auth::check()) {
+
+      $rc = new App\Helpers\Recent;
+  }
 ?>
 @extends('../nav')
 
@@ -21,7 +24,7 @@
             @else
             all products
             @endif
-            
+
 
             @if(Session::has('keywords'))
               <a href="/products/clear_search/keywords" class="badge badge-warning">Keywords: {{ session('keywords') }}</a>
@@ -41,8 +44,8 @@
 
           </p>
         </header>
-        <div class="row"> 
-          <div class="col-lg-8">   
+        <div class="row">
+          <div class="col-lg-8">
             <div id="accordion" class="faq accordion accordion-custom pb-5">
             @if(count($products))
               @foreach($products as $product)
@@ -55,7 +58,7 @@
                         <strong>{!! $f->fit($product->name) !!}</strong><br>
                         Part for {!! $product->brand->key !!}
                       </span>
-                      
+
                     </button>
                   </h4>
                 </div>
@@ -88,7 +91,7 @@
                             <td>
                               {{ $product->category->master->master->key }} -
                               {{ $product->category->master->key }} -
-                              {{ $product->category->key }} 
+                              {{ $product->category->key }}
                             </td>
                           </tr>
                           <tr>
@@ -110,9 +113,9 @@
                         <div class="col-10 col-sm-4 btns"><a href="/inquiries/add/{{$product->id}}" class="btn btn-light btn-sm btn-block">add to My Inquiry</a></div>
                         <div class="col-10 col-sm-4 btns"><a href="javascript:send({{$product->id}})" class="btn btn-outline-light btn-sm btn-block">Email to a friend</a></div>
                       </div>
-                      
-                      
-                      
+
+
+
 
 
                       @if(Auth::check() && $r->admin())
@@ -140,7 +143,7 @@
               </div>
             @endif
             <div>{{ $products->links() }}</div>
-              
+
             </div>
           </div>
           <!-- sidebar-->
@@ -175,9 +178,9 @@
                       @if(count($level_2->subs))
                          @foreach($level_2->subs as $level_3)
                   <li>  &nbsp&nbsp - <a href="/products/search/category/{{ $level_3->id }}" class="categories-link">{{ $level_3->key }}
-                    
+
                    ({{ $level_3->products_count }})
-                  
+
                  </a></li>
                          @endforeach
                       @else
@@ -203,10 +206,10 @@
               <ul class="list-inline pl-0 mt-4">
               @if(count($brands))
                 @foreach($brands as $b)
-                  <li class="list-inline-item mr-0"><a href="/products/search/brand/{{ $b->id }}" class="tag-link">{{ $b->key }} 
-                    
+                  <li class="list-inline-item mr-0"><a href="/products/search/brand/{{ $b->id }}" class="tag-link">{{ $b->key }}
+
                     <small>({{ $b->brand_products_count }})</small>
-                    
+
                   </a></li>
                 @endforeach
               @else
@@ -215,7 +218,7 @@
 
               </ul>
             </div>
-            @if(count($rc->show()))
+            @if(Auth::check() && count($rc->show()))
             <div class="sidebar-widget mb-4">
               <h4 class="sidebar-widget-heading"><i class="fa fa-history" aria-hidden="true"></i> Recnt Focused</h4>
               <ul class="list-inline pl-0 mt-4">
@@ -235,20 +238,20 @@
   <div class="modal fade" id="delete_confirm">
     <div class="modal-dialog">
       <div class="modal-content">
-   
+
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-   
+
         <div class="modal-body">
-          you can NOT cancel this operation!! 
+          you can NOT cancel this operation!!
         </div>
-   
+
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">close</button>
           <a href="#" class="btn btn-danger btn-sm" id="go">delete!!</a>
         </div>
-   
+
       </div>
     </div>
   </div>
@@ -262,7 +265,7 @@
         <h3>Email to A Friend</h3>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-   
+
         <div class="modal-body">
           @csrf
             <input type="hidden" name="id" id="product_id">
@@ -271,12 +274,12 @@
               <textarea placeholder="friend1@some.com&#10friend2@some.com" class="form-control" name="emails"></textarea>
             </div>
         </div>
-   
+
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">close</button>
           <button class="btn btn-sm btn-outline-primary" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i> send email</button>
         </div>
-   
+
       </div>
     </div>
           </form>
@@ -285,7 +288,7 @@
     <script>
       function del(id) {
         $("#delete_confirm").modal();
-        
+
         var url = '/products/delete/' + id;
         $("#go").attr('href', url);
       }

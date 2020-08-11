@@ -128,10 +128,11 @@ class UserController extends Controller
 
         $form = $this->form(RegisterForm::class, [
             'method' => 'POST',
-            'url' => '/accounts/store'
+            'url' => '/accounts/store',
+            'id' => 'register-form'
         ]);
 
-        $title = 'Create an Account ';
+        $title = 'Create an Account '; 
         $icon = 'key';
 
         return view('form_account', compact('form','title','icon'));

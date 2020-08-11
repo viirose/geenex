@@ -5,6 +5,8 @@
 <div class="row top-pad"></div>
 <section>
     <div class="container">
+      <div class="g-recaptcha" data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}">
+
         <div class="col-sm-6 cent">
           <div class="row text-left">
             <div class="card card-light form-card col-12">
@@ -34,7 +36,13 @@
             </div>
           </div>
         </div>
+      </div>
     </div>
 </section>
-
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script>
+  function onSubmit(token) {
+    document.getElementById("demo-form").submit();
+  }
+</script>
 @endsection

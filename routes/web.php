@@ -32,8 +32,8 @@ Route::get('/products/share/{id}/{token}', 'ProductController@share');
 
 Route::get('/logout', 'UserController@logout');
 
-Route::get('/accounts/create', 'UserController@accountCreate');
-Route::post('/accounts/store', 'UserController@accountStore');
+Route::get('/accounts/create', 'UserController@accountCreate')->middleware('throttle:5,10');
+Route::post('/accounts/store', 'UserController@accountStore')->middleware('throttle:5,10');
 
 // 联系方式
 Route::get('/users/contact/create/{id?}', 'UserController@contactCreate');

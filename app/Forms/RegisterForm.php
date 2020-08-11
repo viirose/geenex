@@ -78,7 +78,10 @@ class RegisterForm extends Form
         // btn
         ->add('submit','submit',[
             'label' => 'OK',
-            'attr' => ['class' => 'btn btn-primary btn-block']
+            'attr' => [
+                'class' => 'btn btn-primary btn-block',
+                
+            ],
         ]);
     }
 }
